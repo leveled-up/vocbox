@@ -6,7 +6,6 @@
 functions = require 'firebase-functions'
 express = require 'express'
 url_utility = require 'url'
-filesystem = require 'fs'
 
 # VocNox Utility & Useful Functions
 util = require './utility'
@@ -34,7 +33,8 @@ app.get "/*", (request, response) ->
   # If Action is found, run it
   if request_action?
     action_module = require './' + request_action.substr(1) + '_handler'
-    console.log "Module available. (200)" + './' + request_action.substr(1) + '_handler'
+    console.log "Module available. (200)"
+    console.log 'Calling ./' + request_action.substr(1) + '_handler/app'
     action_module.app request, response
   else
     console.log "Module not found. (404)"
