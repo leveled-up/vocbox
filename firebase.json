@@ -7,7 +7,7 @@
     "ignore": [
       "firebase.json",
       "commit.sh",
-      "README.md"
+      "README.md",
       "**/.*",
       "**/node_modules/**",
       "src/**",
