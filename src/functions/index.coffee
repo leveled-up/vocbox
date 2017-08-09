@@ -13,24 +13,31 @@ util = require './utility'
 
 # Get Possible Requests
 actions = require './actions.json'
-# actions.urls is JSON of "URL": "MODULE_WITH_ACTION_FUNCTION",
-# then in express check if available then load module and call module.app(req,res)
 
 # Initialize Express
 app = express()
 app.get "/*", (request, response) ->
   # Get & Process Request URL
   request_url = url_utility.parse request.url
-  request_action = actions[request_url.pathname]
+  request_pathname = request_url.pathname
+  if actions[request_pathname]?
+    request_action = actions[request_pathname]
+  else
+    request_action = null
 
   # If requested "/" rewrite to "/index"
   request_action = "/index" if request_url.pathname == "/"
 
+  # Log Request to Firebase Console
+  console.log "req.url = " + request.url + "; req_action = " + request_action + ";"
+
   # If Action is found, run it
   if request_action?
     action_module = require './' + request_action.substr 1 + '_handler'
+    console.log "Module available. (200)"
     action_module.app request, response
   else
+    console.log "Module not found. (404)"
     response.status 404
     response.send file_get_contents "404.html"
 
