@@ -20,7 +20,7 @@ actions = require './actions.json'
 app = express()
 app.get "/*", (request, response) ->
   # Get & Process Request URL
-  request_url = url_utility.parse req.url
+  request_url = url_utility.parse request.url
   request_action = actions[request_url.pathname]
 
   # If requested "/" rewrite to "/index"
