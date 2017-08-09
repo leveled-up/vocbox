@@ -10,10 +10,7 @@
       "**/node_modules/**"
     ],
     "rewrites": [{
-      "source": "/a/**",
-      "function": "app"
-    }, {
-      "source": "/",
+      "source": "/**",
       "function": "app"
     }]
   }
