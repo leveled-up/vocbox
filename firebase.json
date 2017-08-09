@@ -6,8 +6,12 @@
     "public": "public",
     "ignore": [
       "firebase.json",
+      "commit.sh",
+      "README.md"
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "src/**",
+      ".*"
     ],
     "rewrites": [{
       "source": "/**",
