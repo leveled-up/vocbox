@@ -5,5 +5,5 @@ install:
   - npm install -g firebase-tools
 script:
   - coffee -cbo functions/ src/functions/
-  - firebase deploy --token=$FIREBASE_TOKEN
+  - firebase deploy --token "$FIREBASE_TOKEN"
   
