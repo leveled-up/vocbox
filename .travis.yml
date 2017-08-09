@@ -2,6 +2,7 @@ language: node_js
 sudo: enabled
 install:
   - sudo npm install coffeescript
+  - sudo npm install firebase-tools
 script:
   - ls
   - coffee -cbo functions/ src/functions/
