@@ -34,7 +34,7 @@ app.get "/*", (request, response) ->
   # If Action is found, run it
   if request_action?
     action_module = require './' + request_action.substr 1 + '_handler'
-    console.log "Module available. (200)"  './' + request_action.substr 1 + '_handler'
+    console.log "Module available. (200)" + './' + request_action.substr 1 + '_handler'
     action_module.app request, response
   else
     console.log "Module not found. (404)"
