@@ -19,10 +19,10 @@ auth_sign_in = () ->
 
   ).catch((error) =>
 
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    var email = error.email;
-    var credential = error.credential;
+    errorCode = error.code;
+    errorMessage = error.message;
+    email = error.email;
+    credential = error.credential;
     console.log "Sign in failed; Error " + errorCode
 
   )
