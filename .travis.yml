@@ -3,6 +3,10 @@ sudo: enabled
 node_js:
   - "7"
 install:
+  - sudo apt-get update
+  - curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+  - sudp apt-get update
   - node --version
   - npm --version
   - sudo npm install -g coffeescript
