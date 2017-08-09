@@ -9,5 +9,6 @@ script:
   - ls
   - coffee -cbo functions/ src/functions/
   - coffee -cbo public/ src/public/
+  - firebase --help
   - firebase deploy --token "$FIREBASE_TOKEN"
   
