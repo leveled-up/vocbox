@@ -39,7 +39,7 @@ app.get "/*", (request, response) ->
   else
     console.log "Module not found. (404)"
     response.status 404
-    response.send file_get_contents "404.html"
+    response.send util.file_get_contents "404.html"
 
 # Export Express App as Cloud Function
 exports.app = functions.https.onRequest app
