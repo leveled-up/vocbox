@@ -1,6 +1,6 @@
 # Authentication
 
-ref = new Firebase config[databaseURL]
+ref = firebase.auth()
 ref.onAuth (authData) =>
   if authData
     console.log "User " + authData.uid + " is logged in with " + authData.provider
