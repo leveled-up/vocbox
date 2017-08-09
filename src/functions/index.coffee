@@ -1,4 +1,15 @@
-functions = require 'firebase-functions'
+# Cloud Functions Code for VocBox 2
+# (c) 2017 RunStorage Technologies
+# ----------------------------------------
 
-exports.helloWorld = functions.https.onRequest (request, response) ->
-  response.send("Hello from Firebase!");
+# Imports
+functions = require 'firebase-functions'
+express = require 'express'
+
+# Initialize Express
+app = express()
+app.get "/", (request, response) ->
+  response.send("<h1>Hi</h1>");
+
+# Export Express App as Cloud Function
+exports.app = functions.https.onRequest app
