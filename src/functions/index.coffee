@@ -28,16 +28,15 @@ app.get "/*", (request, response) ->
   request_action = "/index" if request_url.pathname == "/"
 
   # Log Request to Firebase Console
-  console.log "req.url = " + request.url + "; req_action = " + request_action + ";"
+  req_log = "req.url = " + request.url + "; req_action = " + request_action + "; "
 
   # If Action is found, run it
   if request_action?
     action_module = require './' + request_action.substr(1) + '_handler'
-    console.log "Module available. (200)"
-    console.log 'Calling ./' + request_action.substr(1) + '_handler/app'
+    console.log req_log + "Module available. (200); Calling ./" + request_action.substr(1) + "_handler/app"
     action_module.app request, response
   else
-    console.log "Module not found. (404)"
+    console.log req_log + "Module not found. (404)"
     response.status 404
     response.send util.file_get_contents "404.html"
 
