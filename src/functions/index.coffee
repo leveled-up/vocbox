@@ -8,8 +8,9 @@ express = require 'express'
 
 # Initialize Express
 app = express()
-app.get "/", (request, response) ->
+app.get "/*", (request, response) ->
   response.send("<h1>Hi</h1>");
+  #NOTE: request.query.id == $_GET["id"]
 
 # Export Express App as Cloud Function
 exports.app = functions.https.onRequest app
