@@ -35,15 +35,11 @@ app.get "/*", (request, response) ->
   if request_action?
     action_module = require './' + request_action.substr(1) + '_handler'
     console.log "Module available. (200)" + './' + request_action.substr(1) + '_handler'
-    test()
     action_module.app request, response
   else
     console.log "Module not found. (404)"
     response.status 404
     response.send util.file_get_contents "404.html"
-
-test = () ->
-  console.log "Test"
 
 # Export Express App as Cloud Function
 exports.app = functions.https.onRequest app
