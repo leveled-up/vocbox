@@ -36,7 +36,7 @@ if auth.currentUser?
   # Set User Details Cookie for Functions
   user_details_cookie = "__session=" + JSON.stringify user_details
   console.log "Setting/Updating user cookie: " + user_details_cookie
-  document.cookie user_details_cookie
+  document.cookie = user_details_cookie
   console.log "User signed in successfully"
 
 else
@@ -55,7 +55,7 @@ else
 
       # Auth Success
       token = result.credential.accessToken
-      document.cookie "__gtoken=" + token
+      document.cookie = "__gtoken=" + token
       console.log "Sign In Successful: __gtoken=" + token
       window.location.reload()
 
@@ -87,7 +87,7 @@ libraries_table_indexes = libraries_table_count-1
 list_entries_count = 0
 
 # Add Listener
-libraries_list_ref = database.ref 'users/' + userId + '/libraries'
+libraries_list_ref = database.ref 'users/' + user_details.uid + '/libraries'
 libraries_list_ref.on 'value', (snapshot) ->
   index_libraries_table.deleteRow 0 if list_entries_count == 0
   list_entries_count++
