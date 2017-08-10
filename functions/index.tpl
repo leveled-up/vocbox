@@ -1,21 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
   <head>
+    <meta charset="UTF-8">
     <title>$1</title>
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#157878">
-    <link rel="shortcut icon" href="https://www.runstorageapis.com/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/bootstrap.min.css">
-    <link rel="stylesheet" href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/bootstrap-theme.min.css">
-    <link href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/fonts.css" rel="stylesheet">
-    <script src="https://storage.googleapis.com/vocbox-test.appspot.com/assets/jquery.min.js"></script>
-    <script src="https://storage.googleapis.com/vocbox-test.appspot.com/assets/bootstrap.min.js"></script>
-    <link href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/material-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/normalize.css">
-    <link rel="stylesheet" href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/main.css">
-    <link rel="stylesheet" href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/index_header.css">
-    <link href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.runstorageapis.com/css/normalize.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://www.runstorageapis.com/css/cayman.css">
   </head>
   <body>
     $2

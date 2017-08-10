@@ -71,7 +71,7 @@ index_handler = (req, res) ->
     "<section class=\"page-header\">
       <h1 class=\"project-name\">Test</h1>
       <h2 class=\"project-tagline\">Hello world!</h2>
-    </section>",
+    </section><section class=\"main-content\">Hello world!</section>",
     "/main.js"
   ]
   res.send tpl2html "index", values
