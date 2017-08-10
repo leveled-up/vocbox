@@ -12,6 +12,7 @@
     <script src="https://storage.googleapis.com/vocbox-test.appspot.com/assets/jquery.min.js"></script>
     <script src="https://storage.googleapis.com/vocbox-test.appspot.com/assets/bootstrap.min.js"></script>
     <link href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/material-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/normalize.css">
     <link rel="stylesheet" href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/main.css">
     <link rel="stylesheet" href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/index_header.css">
     <link href="https://storage.googleapis.com/vocbox-test.appspot.com/assets/font-awesome.css" rel="stylesheet">
