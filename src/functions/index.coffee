@@ -4,13 +4,13 @@
 
 # Import Requirements
 functions = require 'firebase-functions'
-express = require 'express'
-url_utility = require 'url'
-filesystem = require 'fs'
+#express = require 'express'
+#url_utility = require 'url'
+#filesystem = require 'fs'
 
 # Read File to String
-file_get_contents = (file_path) ->
-  filesystem.readFileSync file_path, "utf8"
+#file_get_contents = (file_path) ->
+#  filesystem.readFileSync file_path, "utf8"
 
 # *** TEST FUNCTION ***
 #exports.test = functions.https.onRequest express().get "/test", (request, response) ->
