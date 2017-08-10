@@ -12,7 +12,7 @@ filesystem = require 'fs'
 file_get_contents = (file_path) ->
   filesystem.readFileSync file_path, "utf8"
 
-
+# *** TEST FUNCTION ***
 exports.test = functions.https.onRequest express().get "/test", (request, response) ->
   # Get & Process Request URL
   request_url = url_utility.parse request.url

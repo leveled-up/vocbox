@@ -2,10 +2,11 @@
 
 firebase.auth().onAuthStateChanged (authData) ->
   if authData
-    console.log "User " + authData.uid + " is logged in with " + authData.provider
+    console.log "User " + authData.uid + " is logged in."
   else
-    console.log "User is logged out"
-    auth_sign_in()
+    window.location.href = "/" if window.location != "/"
+    console.log "User is logged out."
+    action_user_content.innerHTML = "You're not signed in. <a href=\"#\" onclick=\"auth_sign_in()\">Sign in</a>"
 
 # Sign In w/ Google
 auth_sign_in = () ->
