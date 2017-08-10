@@ -14,7 +14,17 @@ auth_sign_in = () ->
 
     token = result.credential.accessToken
     user = result.user
-    console.log "Signed in with " + user
+    console.log "Signed in with " + user.email
+    user_details = {
+        name: user.displayName,
+        email: user.email,
+        photoUrl: user.photoURL,
+        emailVerified: user.emailVerified,
+        uid: user.uid,
+        functions_token: user.getToken()
+      }
+
+    document.cookie "__session=" + JSON.stringify user_details
 
   ).catch((error) =>
 
