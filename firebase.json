@@ -16,9 +16,6 @@
     "rewrites": [{
       "source": "/test",
       "function": "test"
-    },{
-      "source": "/test2",
-      "function": "test2"
     }]
   }
 }
