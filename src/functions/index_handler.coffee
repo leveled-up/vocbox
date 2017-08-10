@@ -1,7 +1,6 @@
 # Index Handler
 
 exports.app = (req, res) ->
-  console.log document.cookie
   res.send "Hi from <code>index_handler</code>!" +
         "<script src=\"/__/firebase/4.2.0/firebase-app.js\"></script>" +
         "<script src=\"/__/firebase/4.2.0/firebase-auth.js\"></script>"+
