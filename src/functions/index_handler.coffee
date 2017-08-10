@@ -1,8 +1,12 @@
 # Index Handler
 
 exports.app = (req, res) ->
-  res.send "Hi from <code>index_handler</code>!" +
-        "<script src=\"/__/firebase/4.2.0/firebase-app.js\"></script>" +
-        "<script src=\"/__/firebase/4.2.0/firebase-auth.js\"></script>"+
-        "<script src=\"/__/firebase/init.js\"></script>" +
-        "<script src=\"auth.js\"></script>"
+  values = [
+    "Home",
+    "<section class="page-header">
+      <h1 class="project-name">RunStorage Support</h1>
+      <h2 class="project-tagline">On this page we are guiding you through all features of the different RunStorage products.</h2>
+    </section>",
+    ""
+  ]
+  res.send util.tpl2html "index", values
