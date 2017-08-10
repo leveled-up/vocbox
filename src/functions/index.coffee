@@ -20,7 +20,7 @@ tpl2html = (template_file, values) ->
   # Render it
   values.forEach (item, index) ->
     tpl_index = index+1
-    tpl = tpl.replace "$" + new_index, item
+    tpl = tpl.replace "$" + tpl_index, item
   # Return
   return tpl
 
