@@ -43,7 +43,7 @@ else
   # User is logged out
   # Handle Sign In
   console.log "User is logged out."
-  window.location.href = "/" if window.location != "/"
+  window.location.href = "/" if window.location.pathname != "/"
 
   # Show Sign In Button & add EventListener
   index_signin_btn1.addEventListener "click", () ->
