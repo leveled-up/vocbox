@@ -17,10 +17,16 @@ app = express()
 
 # Create Express App
 app.get "/test", (request, response) ->
-
   # Get & Process Request URL
   request_url = url_utility.parse request.url
   request_pathname = request_url.pathname.substr(1).split("/")[1]
   response.send "<h1>Hello world!</h1>" + request_pathname
 
-exports.test = functions.https.onRequest test_handler
+app.get "/test2", (request, response) ->
+  # Get & Process Request URL
+  request_url = url_utility.parse request.url
+  request_pathname = request_url.pathname.substr(1).split("/")[1]
+  response.send "<h1>Hello world 2!</h1>" + request_pathname
+
+exports.test = functions.https.onRequest app
+exports.test2 = functions.https.onRequest app
