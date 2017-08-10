@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html lang="en-us">
   <head>
-    <title>Home</title>
+    <title>VocBox 2</title>
   </head>
   <body>
-    Hello world.
-    <div id="action_user_content">
-      Welcome, please enable JavaScript.
+    <!-- Home Page -->
+    <div id="action_index" style="">
+      Welcome.
+      <div id="action_index_signin" style="display: none">
+        You're not signed in. <a id="action_index_signin_btn1" href="#">Sign in w/ Google</a>
+      </div>
+      <div id="action_index_signin_error" style="display: none">
+        There was an error while signing in: <span id="action_index_signin_error_msg">Unknown Error</span>
+      </div>
+      <div id="action_index_libraries" style="display: none">
+        <a id="action_index_libraries_btn_add" href="#" class="">New Library</a>
+
+        <table id="action_index_libraries_table" class="">
+            <tr id="action_index_libraries_table_norow">
+              <td>There are no libraries yet.</td>
+            </tr>
+        </table>
+      </div>
     </div>
+
+    <!-- Add Library -->
 
     <!-- Scripts -->
     <script src="/__/firebasejs/4.2.0/firebase-app.js"></script>
     <script src="/__/firebasejs/4.2.0/firebase-auth.js"></script>
+    <script src="/__/firebasejs/4.2.0/firebase-database.js"></script>
+    <script src="/__/firebasejs/4.2.0/firebase-storage.js"></script>
     <script src="/__/firebase/init.js"></script>
     <script src="/main.js"></script>
-    <script src="/auth.js"></script>
   </body>
 </html>
