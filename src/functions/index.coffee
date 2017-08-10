@@ -2,43 +2,77 @@
 # (c) 2017 RunStorage Technologies
 # ----------------------------------------
 
-# Imports
+# Import Requirements
 functions = require 'firebase-functions'
 express = require 'express'
 url_utility = require 'url'
+filesystem = require 'fs'
 
-# VocNox Utility & Useful Functions
-util = require './utility'
+# Useful Functions
+# Read File to String
+file_get_contents = (file_path) ->
+  filesystem.readFileSync file_path, "utf8"
 
-# Get Possible Requests
-actions = require './actions.json'
+# Make Page from Template
+tpl2html = (template_file, values) ->
+  # Load Template File
+  tpl = file_get_contents "./" + template_file + ".tpl"
+  # Render it
+  values.forEach (item, index) ->
+    tpl_index = index +1
+    tpl = tpl.replace "$" + new_index, item
+  # Return
+  return tpl
+
+# Send Error 404
+error_404 = () ->
+  file_get_contents "./404.html"
+
+# Set Possible Requests
+actions = {
+  index: index_handler,
+  p404: p404_handler
+}
 
 # Initialize Express
 app = express()
+
+# Create Express App
 app.get "/*", (request, response) ->
+
   # Get & Process Request URL
   request_url = url_utility.parse request.url
-  request_pathname = request_url.pathname
+  request_pathname = request_url.pathname.substr 1
+  if request_pathname == ""
+    request_pathname = "index"
+
+  # Start Function
   if actions[request_pathname]?
-    request_action = actions[request_pathname]
+      actions[request_pathname] request, response
   else
-    request_action = null
+      actions["p404"] request, response
 
-  # If requested "/" rewrite to "/index"
-  request_action = "/index" if request_url.pathname == "/"
-
-  # Log Request to Firebase Console
-  req_log = "req.url = " + request.url + "; req_action = " + request_action + "; "
-
-  # If Action is found, run it
-  if request_action?
-    action_module = require './' + request_action.substr(1) + '_handler'
-    console.log req_log + "Module available. (200); Calling ./" + request_action.substr(1) + "_handler/app"
-    action_module.app request, response
-  else
-    console.log req_log + "Module not found. (404)"
-    response.status 404
-    response.send util.file_get_contents "404.html"
+  # Log Request
+  console.log "Requested " + request.url + "; Responded with " + request_pathname + "()"
 
 # Export Express App as Cloud Function
 exports.app = functions.https.onRequest app
+
+# ---------------------------------------------------------
+# Page Handlers
+# ---------------------------------------------------------
+
+index_handler = (req, res) ->
+  values = [
+    "Home",
+    "<section class=\"page-header\">
+      <h1 class=\"project-name\">Test</h1>
+      <h2 class=\"project-tagline\">Hello world!</h2>
+    </section>",
+    ""
+  ]
+  res.send tpl2html "index", values
+
+p404_handler = (req, res) ->
+  res.status 404
+  res.send error_404()

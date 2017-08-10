@@ -15,7 +15,5 @@ script:
   - ls
   - coffee -cbo functions/ src/functions/
   - coffee -cbo public/ src/public/
-  - cp src/functions/*.json functions/
   - firebase --help
   - firebase deploy --token "$FIREBASE_TOKEN"
-  
