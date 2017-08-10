@@ -13,8 +13,8 @@ file_get_contents = (file_path) ->
   filesystem.readFileSync file_path, "utf8"
 
 # *** TEST FUNCTION ***
-exports.test = functions.https.onRequest express().get "/test", (request, response) ->
+#exports.test = functions.https.onRequest express().get "/test", (request, response) ->
   # Get & Process Request URL
-  request_url = url_utility.parse request.url
-  request_pathname = request_url.pathname.substr(1).split("/")[1]
-  response.send "<h1>Hello world!</h1>" + request_pathname
+#  request_url = url_utility.parse request.url
+#  request_pathname = request_url.pathname.substr(1).split("/")[1]
+#  response.send "<h1>Hello world!</h1>" + request_pathname
