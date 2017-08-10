@@ -19,7 +19,7 @@ tpl2html = (template_file, values) ->
   tpl = file_get_contents "./" + template_file + ".tpl"
   # Render it
   values.forEach (item, index) ->
-    tpl_index = index +1
+    tpl_index = index+1
     tpl = tpl.replace "$" + new_index, item
   # Return
   return tpl
@@ -51,7 +51,8 @@ app.get "/*", (request, response) ->
   if actions[request_pathname]?
       actions[request_pathname] request, response
   else
-      actions["p404"] request, response
+      request_pathname = "p404"
+      actions[request_pathname] request, response
 
   # Log Request
   console.log "Requested " + request.url + "; Responded with " + request_pathname + "()"
