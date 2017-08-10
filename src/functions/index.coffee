@@ -30,8 +30,8 @@ error_404 = () ->
 
 # Set Possible Requests
 actions = {
-  index: index_handler,
-  p404: p404_handler
+  index: (req, res) -> index_handler(req, res),
+  p404: (req, res) -> p404_handler(req, res)
 }
 
 # Initialize Express
@@ -43,6 +43,7 @@ app.get "/*", (request, response) ->
   # Get & Process Request URL
   request_url = url_utility.parse request.url
   request_pathname = request_url.pathname.substr 1
+  # ^^ explode use [0] and rest add to array to pass to function e.g; index
   if request_pathname == ""
     request_pathname = "index"
 
@@ -62,6 +63,7 @@ exports.app = functions.https.onRequest app
 # Page Handlers
 # ---------------------------------------------------------
 
+# Home Page
 index_handler = (req, res) ->
   values = [
     "Home",
@@ -69,10 +71,11 @@ index_handler = (req, res) ->
       <h1 class=\"project-name\">Test</h1>
       <h2 class=\"project-tagline\">Hello world!</h2>
     </section>",
-    ""
+    "/main.js"
   ]
   res.send tpl2html "index", values
 
+# 404 Error Page
 p404_handler = (req, res) ->
   res.status 404
   res.send error_404()
