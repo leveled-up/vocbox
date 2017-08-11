@@ -111,6 +111,9 @@ application_start = () ->
     console.log "snapshot.val(): " + libraries_snapshot_data
     console.log "Updating Table."
 
+    # test
+    console.log JSON.stringify libraries_snapshot.001
+
     for index in libraries_snapshot
       item = libraries_snapshot[index]
       console.log "Processing Item " + index + ": " + JSON.stringify item
