@@ -65,6 +65,7 @@ else
       # Auth Failed
       error_details = {
         errorCode: error.code,
+        errorMessage: error.message,
         email: error.email,
         credential: error.credential
       }
