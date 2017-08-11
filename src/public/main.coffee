@@ -77,20 +77,22 @@ else
 
   index_signin.style = ""
 
+
 # After this Point the user_details is always != null
 # Show List of Libraries & Add Button
-database = firebase.database()
+if currentUser?
+  database = firebase.database()
 
-# Prepare Table
-libraries_table_count = index_libraries_table.rows.length
-libraries_table_indexes = libraries_table_count-1
-list_entries_count = 0
+  # Prepare Table
+  libraries_table_count = index_libraries_table.rows.length
+  libraries_table_indexes = libraries_table_count-1
+  list_entries_count = 0
 
-# Add Listener
-libraries_list_ref = database.ref 'users/' + user_details.uid + '/libraries'
-libraries_list_ref.on 'value', (snapshot) ->
-  index_libraries_table.deleteRow 0 if list_entries_count == 0
-  list_entries_count++
+  # Add Listener
+  libraries_list_ref = database.ref 'users/' + user_details.uid + '/libraries'
+  libraries_list_ref.on 'value', (snapshot) ->
+    index_libraries_table.deleteRow 0 if list_entries_count == 0
+    list_entries_count++
 
-  libraries_snapshot = snapshot.val()
-  console.log JSON.stringify libraries_snapshot
+    libraries_snapshot = snapshot.val()
+    console.log JSON.stringify libraries_snapshot
