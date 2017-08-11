@@ -30,8 +30,7 @@ auth.onAuthStateChanged (user) ->
         email: user.email,
         photoUrl: user.photoURL,
         emailVerified: user.emailVerified,
-        uid: user.uid,
-        functions_token: user.getToken()
+        uid: user.uid
       }
 
     # Set User Details Cookie for Functions
