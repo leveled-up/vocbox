@@ -80,7 +80,7 @@ else
 
 # After this Point the user_details is always != null
 # Show List of Libraries & Add Button
-if currentUser?
+if auth.currentUser?
   database = firebase.database()
 
   # Prepare Table
