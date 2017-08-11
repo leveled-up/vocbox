@@ -43,7 +43,6 @@ else
   # User is logged out
   # Handle Sign In
   console.log "User is logged out."
-  console.log auth.currentUser
   window.location.href = "/" if window.location.pathname != "/"
 
   # Show Sign In Button & add EventListener
