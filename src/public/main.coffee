@@ -111,8 +111,8 @@ application_start = () ->
     console.log "snapshot.val(): " + libraries_snapshot_data
     console.log "Updating Table."
 
-    # WORKAROUND: Encode then Decode
-    JSON.parse(libraries_snapshot_data).forEach (item, index) ->
+    for index in libraries_snapshot
+      item = libraries_snapshot[index]
       console.log "Processing Item " + index + ": " + JSON.stringify item
       libraries_table_row_index = list_entries_count-1
       libraries_table_row = index_libraries_table.insertRow libraries_table_row_index
