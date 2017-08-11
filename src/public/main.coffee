@@ -43,6 +43,8 @@ auth.onAuthStateChanged (user) ->
     document.cookie = user_details_cookie
     console.log "User signed in successfully"
 
+    application_start()
+
   else
     # User is logged out
     # Handle Sign In
@@ -85,10 +87,10 @@ auth.onAuthStateChanged (user) ->
 
 # After this Point the user_details is always != null
 # Show List of Libraries & Add Button
-console.log "Current Auth State: " + auth_state
-console.log "UID: " + user_details.uid
 
-if auth_state
+application_start = () ->
+  console.log "Current Auth State: " + auth_state
+  console.log "UID: " + user_details.uid
   database = firebase.database()
 
   # Prepare Table
