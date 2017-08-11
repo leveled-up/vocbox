@@ -112,7 +112,7 @@ application_start = () ->
     console.log "Updating Table."
 
     # test
-    console.log JSON.stringify libraries_snapshot["001"]["stats"]
+    console.log libraries_snapshot["001"]["stats"]["test"]["test"]
 
     for index in libraries_snapshot
       item = libraries_snapshot[index]
