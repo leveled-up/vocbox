@@ -112,7 +112,7 @@ application_start = () ->
     console.log "Updating Table."
 
     # test
-    console.log libraries_snapshot["001"]["stats"]["test"]["test"]
+    console.log libraries_snapshot["001"]["stats"]["test"]
 
     for index in libraries_snapshot
       item = libraries_snapshot[index]
