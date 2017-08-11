@@ -111,6 +111,7 @@ application_start = () ->
     console.log "Updating Table."
 
     libraries_snapshot.forEach (item, index) ->
+      console.log "Processing Item " + index + ": " + JSON.stringify item
       libraries_table_row_index = list_entries_count-1
       libraries_table_row = index_libraries_table.insertRow libraries_table_row_index
       libraries_table_row_cells = [
