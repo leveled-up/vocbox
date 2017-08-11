@@ -20,63 +20,64 @@ dom_objects.forEach (dom_object) ->
 auth = firebase.auth()
 
 # Check if currentUser <> null
-if auth.currentUser?
-  # User is logged in
-  # Get User Details
-  console.log "User seems to be logged in. Getting User Details."
-  user_details = {
-      name: user.displayName,
-      email: user.email,
-      photoUrl: user.photoURL,
-      emailVerified: user.emailVerified,
-      uid: user.uid,
-      functions_token: user.getToken()
-    }
-
-  # Set User Details Cookie for Functions
-  user_details_cookie = "__session=" + JSON.stringify user_details
-  console.log "Setting/Updating user cookie: " + user_details_cookie
-  document.cookie = user_details_cookie
-  console.log "User signed in successfully"
-
-else
-  # User is logged out
-  # Handle Sign In
-  console.log "User is logged out."
-  console.log auth.currentUser
-  window.location.href = "/" if window.location.pathname != "/"
-
-  # Show Sign In Button & add EventListener
-  index_signin_btn1.addEventListener "click", () ->
-
-    # Handle Sign In Flow
-    console.log "User requested Sign In. Initializing."
-    provider = new firebase.auth.GoogleAuthProvider()
-    firebase.auth().signInWithPopup(provider).then((result) =>
-
-      # Auth Success
-      token = result.credential.accessToken
-      document.cookie = "__gtoken=" + token
-      console.log "Sign In Successful: __gtoken=" + token
-      window.location.reload()
-
-    ).catch((error) =>
-
-      # Auth Failed
-      error_details = {
-        errorCode: error.code,
-        errorMessage: error.message,
-        email: error.email,
-        credential: error.credential
+auth.onAuthStateChanged (user) ->
+  if user?
+    # User is logged in
+    # Get User Details
+    console.log "User seems to be logged in. Getting User Details."
+    user_details = {
+        name: user.displayName,
+        email: user.email,
+        photoUrl: user.photoURL,
+        emailVerified: user.emailVerified,
+        uid: user.uid,
+        functions_token: user.getToken()
       }
 
-      console.log "Sign in failed" + JSON.stringify error_details
-      index_signin_error_msg = error_details.errorMessage if error_details.errorMessage?
-      index_signin_error.style = ""
+    # Set User Details Cookie for Functions
+    user_details_cookie = "__session=" + JSON.stringify user_details
+    console.log "Setting/Updating user cookie: " + user_details_cookie
+    document.cookie = user_details_cookie
+    console.log "User signed in successfully"
 
-    )
+  else
+    # User is logged out
+    # Handle Sign In
+    console.log "User is logged out."
+    console.log auth.currentUser
+    window.location.href = "/" if window.location.pathname != "/"
 
-  index_signin.style = ""
+    # Show Sign In Button & add EventListener
+    index_signin_btn1.addEventListener "click", () ->
+
+      # Handle Sign In Flow
+      console.log "User requested Sign In. Initializing."
+      provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(provider).then((result) =>
+
+        # Auth Success
+        token = result.credential.accessToken
+        document.cookie = "__gtoken=" + token
+        console.log "Sign In Successful: __gtoken=" + token
+        window.location.reload()
+
+      ).catch((error) =>
+
+        # Auth Failed
+        error_details = {
+          errorCode: error.code,
+          errorMessage: error.message,
+          email: error.email,
+          credential: error.credential
+        }
+
+        console.log "Sign in failed" + JSON.stringify error_details
+        index_signin_error_msg = error_details.errorMessage if error_details.errorMessage?
+        index_signin_error.style = ""
+
+      )
+
+    index_signin.style = ""
 
 
 # After this Point the user_details is always != null
