@@ -43,6 +43,7 @@ else
   # User is logged out
   # Handle Sign In
   console.log "User is logged out."
+  console.log auth.currentUser
   window.location.href = "/" if window.location.pathname != "/"
 
   # Show Sign In Button & add EventListener
@@ -94,6 +95,5 @@ if auth.currentUser?
     index_libraries_table.deleteRow 0 if list_entries_count == 0
     list_entries_count++
 
-    errorMessage: error.message,
     libraries_snapshot = snapshot.val()
     console.log JSON.stringify libraries_snapshot
