@@ -18,6 +18,7 @@ dom_objects.forEach (dom_object) ->
 
 # Authentication
 auth = firebase.auth()
+auth_state = 0
 
 # Check if currentUser <> null
 auth.onAuthStateChanged (user) ->
@@ -32,6 +33,9 @@ auth.onAuthStateChanged (user) ->
         emailVerified: user.emailVerified,
         uid: user.uid
       }
+
+    # Set Auth State Variable
+    auth_state = 1
 
     # Set User Details Cookie for Functions
     user_details_cookie = "__session=" + JSON.stringify user_details
@@ -81,7 +85,7 @@ auth.onAuthStateChanged (user) ->
 
 # After this Point the user_details is always != null
 # Show List of Libraries & Add Button
-if auth.currentUser?
+if auth_state
   database = firebase.database()
 
   # Prepare Table
