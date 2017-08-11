@@ -19,9 +19,6 @@ dom_objects.forEach (dom_object) ->
 # Authentication
 auth = firebase.auth()
 
-# Jump Here if AuthState Changes
-auth_start:
-
 # Check if currentUser <> null
 if auth.currentUser?
   # User is logged in
@@ -46,6 +43,7 @@ else
   # User is logged out
   # Handle Sign In
   console.log "User is logged out."
+  console.log auth.currentUser
   window.location.href = "/" if window.location.pathname != "/"
 
   # Show Sign In Button & add EventListener
@@ -79,8 +77,6 @@ else
 
   index_signin.style = ""
 
-auth.onAuthStateChanged (user) ->
-  repeat: goto auth_start
 
 # After this Point the user_details is always != null
 # Show List of Libraries & Add Button
