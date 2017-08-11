@@ -26,7 +26,7 @@ auth.onAuthStateChanged (user) ->
     # User is logged in
     # Get User Details
     console.log "User seems to be logged in. Getting User Details."
-    user_details = {
+    window.user_details = {
         name: user.displayName,
         email: user.email,
         photoUrl: user.photoURL,
