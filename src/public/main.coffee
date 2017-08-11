@@ -19,6 +19,9 @@ dom_objects.forEach (dom_object) ->
 # Authentication
 auth = firebase.auth()
 
+# Jump Here if AuthState Changes
+auth_start:
+
 # Check if currentUser <> null
 if auth.currentUser?
   # User is logged in
@@ -64,7 +67,6 @@ else
       # Auth Failed
       error_details = {
         errorCode: error.code,
-        errorMessage: error.message,
         email: error.email,
         credential: error.credential
       }
@@ -77,6 +79,8 @@ else
 
   index_signin.style = ""
 
+auth.onAuthStateChanged (user) ->
+  repeat: goto auth_start
 
 # After this Point the user_details is always != null
 # Show List of Libraries & Add Button
@@ -94,5 +98,6 @@ if auth.currentUser?
     index_libraries_table.deleteRow 0 if list_entries_count == 0
     list_entries_count++
 
+    errorMessage: error.message,
     libraries_snapshot = snapshot.val()
     console.log JSON.stringify libraries_snapshot
