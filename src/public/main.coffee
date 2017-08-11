@@ -107,10 +107,12 @@ application_start = () ->
     list_entries_count++
 
     libraries_snapshot = snapshot.val()
-    console.log JSON.stringify libraries_snapshot
+    libraries_snapshot_data = JSON.stringify libraries_snapshot
+    console.log "snapshot.val(): " + libraries_snapshot_data
     console.log "Updating Table."
 
-    libraries_snapshot.forEach (item, index) ->
+    # WORKAROUND: Encode then Decode
+    JSON.parse(libraries_snapshot_data).forEach (item, index) ->
       console.log "Processing Item " + index + ": " + JSON.stringify item
       libraries_table_row_index = list_entries_count-1
       libraries_table_row = index_libraries_table.insertRow libraries_table_row_index
