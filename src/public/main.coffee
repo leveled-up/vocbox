@@ -101,8 +101,26 @@ application_start = () ->
   # Add Listener
   libraries_list_ref = database.ref 'users/' + user_details.uid + '/libraries'
   libraries_list_ref.on 'value', (snapshot) ->
+
+    # When Data Changes / Page Loads, Update Table
     index_libraries_table.deleteRow 0 if list_entries_count == 0
     list_entries_count++
 
     libraries_snapshot = snapshot.val()
     console.log JSON.stringify libraries_snapshot
+    console.log "Updating Table."
+
+    libraries_snapshot.forEach (item, index) ->
+      libraries_table_row_index = list_entries_count-1
+      libraries_table_row = index_libraries_table.insertRow libraries_table_row_index
+      libraries_table_row_cells = [
+        libraries_table_row.insertCell(0),
+        libraries_table_row.insertCell(1)
+      ]
+
+      libraries_table_row_cells[0].innerHTML = item.stats.test
+      libraries_table_row_cells[1].innerHTML = "Test"
+
+
+  # Show Table
+  index_libraries.style = ""
