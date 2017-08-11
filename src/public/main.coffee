@@ -122,6 +122,8 @@ application_start = () ->
       libraries_table_row_cells[0].innerHTML = item.stats.test
       libraries_table_row_cells[1].innerHTML = "Test"
 
+    console.log "Table updated."
+
 
   # Show Table
   index_libraries.style = ""
