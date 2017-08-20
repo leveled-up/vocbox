@@ -51,12 +51,12 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
     # On Completion
     .then (results) ->
       # If Success Process & Return Results
-      console.log "hello1"
       syntax = results[0];
+      console.log JSON.stringify results
       syntax_result = {}
 
       syntax.tokens.forEach (part) ->
-        console.log JSON.stringify part
+        console.log part.partOfSpeech.tag
         syntax_result.push part
 
       # Make Result JSON
@@ -75,11 +75,11 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       #
     .catch (err) ->
       # If Fail, Return Error
-      console.log "hello2"
+      console.log err.length
       error = {
         success: false,
         text: text,
-        error: JSON.stringify err,
+        error: err,
         result: []
       }
       error_json = JSON.stringify error
