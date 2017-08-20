@@ -55,8 +55,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       syntax_result = {}
 
       syntax.tokens.forEach (part) ->
-        console.log `${part.partOfSpeech.tag}: ${part.text.content}`
-        console.log `Morphology:`, part.partOfSpeech
+        console.log JSON.stringify part
         syntax_result.push part
 
       # Make Result JSON
