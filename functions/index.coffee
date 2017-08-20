@@ -4,7 +4,7 @@ functions = require 'firebase-functions'
 express = require 'express'
 admin = require'firebase-admin'
 admin.initializeApp functions.config().firebase
-request = require 'request'
+request = require 'request-promise'
 
 # Variables
 apiKey = functions.config().firebase.apiKey
