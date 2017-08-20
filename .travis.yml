@@ -9,7 +9,7 @@ install:
   - sudo apt-get update
   - node --version
   - npm --version
-  - sudo npm install -g coffeescript
+  - sudo npm install -g coffeescript@next
   - sudo npm install -g firebase-tools
 script:
   - ls -l
