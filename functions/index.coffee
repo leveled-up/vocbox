@@ -29,7 +29,8 @@ exports.translate = functions.https.onRequest (req, res) ->
   # Run Request
   request(translateUrl, { resolveWithFullResponse: true }).then (response) ->
     console.log "Translation Status Code: " + response.statusCode
-    translatedText = response.body.data.translations[0].translatedText
+    translatedJSON = JSON.parse response.body
+    translatedText = translatedJSON.data.translations[0].translatedText
     res.send translatedText
 
 exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
