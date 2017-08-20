@@ -2,7 +2,7 @@
 # Imports
 functions = require 'firebase-functions'
 express = require 'express'
-admin = require'firebase-admin'
+admin = require 'firebase-admin'
 admin.initializeApp functions.config().firebase
 request = require 'request-promise'
 
