@@ -1,21 +1,5 @@
 {
   "database": {
     "rules": "database/database.rules.json"
-  },
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "commit.sh",
-      "README.md",
-      "**/.*",
-      "**/node_modules/**",
-      "src/**",
-      ".*"
-    ],
-    "rewrites": [{
-      "source": "/test",
-      "function": "test"
-    }]
   }
 }

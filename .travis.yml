@@ -12,8 +12,18 @@ install:
   - sudo npm install -g coffeescript
   - sudo npm install -g firebase-tools
 script:
-  - ls
-  - coffee -cbo functions/ src/functions/
-  - coffee -cbo public/ src/public/
+  - ls -l
+  - coffee -cb functions/
+  - rm functions/*.coffee
+  - coffee -cb public/
+  - rm public/*.coffee
   - firebase --help
   - firebase deploy --token "$FIREBASE_TOKEN"
+  - cd public/
+  - ftp -n $FTP_HOST.lima-ftp.de <<END_SCRIPT
+  - quote USER $FTP_USER
+  - quote PASS $FTP_PASSWD
+  - binary
+  - mput *
+  - quit
+  - END_SCRIPT
