@@ -20,10 +20,8 @@ script:
   - firebase --help
   - firebase deploy --token "$FIREBASE_TOKEN"
   - cd public/
-  - ftp -n $FTP_HOST.lima-ftp.de <<END_SCRIPT \
-    quote USER $FTP_USER \
-    quote PASS $FTP_PASSWD \
-    binary \
+  - ftp -inv $FTP_HOST.lima-ftp.de  <<END_SCRIPT \
+    user $FTP_USER $FTP_PASSWD \
     mput * \
-    quit \
+    bye \
     END_SCRIPT
