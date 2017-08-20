@@ -48,7 +48,6 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
 
   # Run Request
   language.analyzeSyntax({ document: document })
-
     # On Completion
     .then (results) ->
       # If Success Process & Return Results
@@ -72,13 +71,13 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       console.log result_json
       #res.set "Cache-Control", "public, max-age=300, s-maxage=600"
       res.send result_json
-
+      #
     .catch (err) ->
       # If Fail, Return Error
       error = {
         success: false,
         text: text,
-        error_code: err,
+        error: JSON.stringify err,
         result: []
       }
       error_json = JSON.stringify error
