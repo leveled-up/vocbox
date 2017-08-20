@@ -29,7 +29,8 @@ exports.translate = functions.https.onRequest (req, res) ->
   # Run Request
   request(translateUrl, { resolveWithFullResponse: true }).then (response) ->
     console.log "Translation Status Code: " + response.statusCode
-    res.send response.body
+    translatedText = response.body.data.translations[0].translatedText
+    res.send translatedText
 
 exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
   # Create $_GET equivalent
@@ -52,6 +53,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
     .then (results) ->
       # If Success Process & Return Results
       syntax = results[0];
+      #SHOULD BE sysntax = results[0].sentences
       console.log JSON.stringify results
       syntax_result = {}
 
