@@ -6,7 +6,8 @@
     "firebase-admin": "~4.2.1",
     "firebase-functions": "^0.5.7",
     "google-cloud": "^0.56.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
   },
   "private": true
 }
