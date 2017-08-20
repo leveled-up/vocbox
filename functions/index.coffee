@@ -18,7 +18,7 @@ createTranslateUrl = (source, target, payload) ->
   "?key=" + apiKey + "&source=" + source + "&target=" + target + "&q=" + urlencode payload
 
 # Translate Function
-translateApp = express().get "/*" (req, res) ->
+translateApp = express().get "/*", (req, res) ->
   # Create $_GET equivalent
   _get = req.query
 
