@@ -55,7 +55,8 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
     .then (results) ->
       # If Success Process & Return Results
       syntax = results[0];
-      #SHOULD BE sysntax = results[0].sentences
+      console.log "Success"
+      console.log JSON.stringify results[0].sentences[0]
       console.log JSON.stringify results
       syntax_result = {}
 
