@@ -75,7 +75,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       #
     .catch (err) ->
       # If Fail, Return Error
-      console.log err.length
+      console.log "Error" if err?
       error = {
         success: false,
         text: text,
