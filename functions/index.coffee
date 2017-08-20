@@ -28,7 +28,8 @@ exports.translate = functions.https.onRequest (req, res) ->
 
   # Run Request
   request(translateUrl, { resolveWithFullResponse: true }).then (response) ->
-    console.log response.statusCode
+    console.log "Translation Status Code: " + response.statusCode
+    res.send response.body
 
 exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
   # Create $_GET equivalent
