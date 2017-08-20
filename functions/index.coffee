@@ -18,7 +18,7 @@ createTranslateUrl = (source, target, payload) ->
   "?key=" + apiKey + "&source=" + source + "&target=" + target + "&q=" + urlencode payload
 
 # Translate Function
-translateApp = express().get "/*", (req, res) ->
+exports.translates = functions.https.onRequest (req, res) ->
   # Create $_GET equivalent
   _get = req.query
 
@@ -29,5 +29,3 @@ translateApp = express().get "/*", (req, res) ->
   # Run Request
  request(translateUrl, { resolveWithFullResponse: true }).then (response) ->
    console.log response.statusCode
-
-exports.translates = functions.https.onRequest translateApp
