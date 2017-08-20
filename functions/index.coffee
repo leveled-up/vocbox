@@ -51,6 +51,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
     # On Completion
     .then (results) ->
       # If Success Process & Return Results
+      console.log "hello1"
       syntax = results[0];
       syntax_result = {}
 
@@ -74,6 +75,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       #
     .catch (err) ->
       # If Fail, Return Error
+      console.log "hello2"
       error = {
         success: false,
         text: text,
