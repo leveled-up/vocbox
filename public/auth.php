@@ -48,7 +48,7 @@ if(isset($_COOKIE["__gtoken"]) or isset($_POST["__gtoken"])) {
 
     $user_create_query = query_user_create($user_info);
     $user_create_query_result = query($user_create_query);
-
+    echo "Test";
     $user_info_query_result = query($user_info_query);
 
     if(!isset($user_info_query_result->id))
