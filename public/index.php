@@ -15,7 +15,7 @@ basic_template();
   New Library
 </a>
 
-<br />
+<br /> <br />
 
 <table class="table table-striped" id="index_table_libraries">
   <thead>
