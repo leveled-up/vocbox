@@ -58,7 +58,7 @@ if(isset($_COOKIE["__gtoken"]) or isset($_POST["__gtoken"])) {
 
   $user = $user_info_query_result;
   $_SESSION["user"] = $user;
-var_dump($user);
+
   header("Location: $redirect_url");
   exit;
 }
