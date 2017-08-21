@@ -47,9 +47,7 @@ if(isset($_COOKIE["__gtoken"]) or isset($_POST["__gtoken"])) {
     // User does not exist in Database: Sign Up required.
 
     $user_create_query = query_user_create($user_info);
-    //$user_create_query_result = query($user_create_query);
-    if(!mysqli_query($con, $user_create_query))
-      var_dump(mysqli_error($con));
+    $user_create_query_result = query($user_create_query);
 
     $user_info_query_result = query($user_info_query);
 
