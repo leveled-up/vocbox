@@ -26,8 +26,8 @@ basic_template();
   <tbody>
     <?php
       $libraries_list_query = query_library_list($user);
-      echo $libraries_list_query;
       $libraries_list = query($libraries_list_query, false);
+      var_dump($libraries_list);
 
       if(count($libraries_list < 1))
         echo "
