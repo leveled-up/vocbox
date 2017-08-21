@@ -82,3 +82,14 @@ function query_library_statsupdate($libary, $user, $stats) {
   return $query;
 
 }
+
+// QUERY: delete an entire library
+function query_library_delete($library, $user) {
+
+  $owner = encode($user->id);
+  $libary = encode($library);
+
+  $query = "DELETE FROM libraries WHERE owner = '$owner' AND id = '$library'";
+  return $query;
+
+}
