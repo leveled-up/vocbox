@@ -5,6 +5,7 @@
 session_start();
 if(isset($_SESSION["user"])) {
 
+  $_SESSION["user"] = null;
   session_destroy();
   $_COOKIE["__gtoken"] = "";
   include("core/core.inc.php");
