@@ -46,10 +46,10 @@ function language_pair_to_text($pair) {
 
   foreach($pair as $value)
     if(isset($languages_supported_text[$value]))
-      $result[] = $languages_supported_text[$code];
+      $result[] = $languages_supported_text[$value];
     else
       return false;
 
   return join(" - ", $result);
-  
+
 }
