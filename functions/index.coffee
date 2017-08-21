@@ -60,12 +60,13 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
   language.analyzeSyntax({ document: document })
     .then (results) ->
       # If Success Process & Return Results
-      console.log "analyzeSyntax() succeeded" + JSON.stringify results
+      console.log "analyzeSyntax() succeeded: " + JSON.stringify results
       syntax = results[0].tokens
+      syntax_lang = results[0].language
       syntax_result = {}
-      console.log "Test Success"
 
       syntax.forEach (part) ->
+        console.log "Test Success: " + JSON.stringify syntax_result
         syntax_result.push part.partOfSpeech.tag
 
       console.log JSON.stringify syntax_result
@@ -74,6 +75,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       result = {
         success: true,
         text: text,
+        language: syntax_lang,
         result: syntax_result
       }
       result_json = JSON.stringify result
