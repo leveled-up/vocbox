@@ -18,7 +18,7 @@ function get_user_info_from_token($bearer) {
     exit("Error 500: Connecting to www.googleapis.com failed.");
 
   $result_obj = json_decode($result, false);
-  if($result->id == "")
+  if($result_obj->id == "")
     return false;
 
   $return = array(
