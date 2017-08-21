@@ -5,6 +5,7 @@ express = require 'express'
 admin = require 'firebase-admin'
 admin.initializeApp functions.config().firebase
 request = require 'request-promise'
+Language = require '@google-cloud/language'
 
 # Variables
 apiKey = functions.config().firebase.apiKey
@@ -15,20 +16,23 @@ urlencode = (string) ->
   encodeURIComponent string
 
 createTranslateUrl = (source, target, payload) ->
-  "?key=" + apiKey + "&source=" + source + "&target=" + target + "&q=" + urlencode payload
+  "?model=nmt&key=" + apiKey + "&source=" + source + "&target=" + target + "&q=" + urlencode payload
 
 # Translate Function
 exports.translate = functions.https.onRequest (req, res) ->
   # Create $_GET equivalent
   _get = req.query
+  console.log "Requested translate/" + JSON.stringify _get
 
   # Create Request URL
   translateParameters = createTranslateUrl _get.src, _get.trg, _get.q
   translateUrl = translateBaseUrl + translateParameters
+  console.log "Translation Request: " + translateUrl
 
   # Run Request
   request(translateUrl, { resolveWithFullResponse: true }).then (response) ->
     console.log "Translation Status Code: " + response.statusCode
+    console.log "Translation Result: " + response.body
     #translatedJSON = JSON.parse response.body
     #translatedText = translatedJSON.data.translations[0].translatedText
     #res.send translatedText
@@ -37,9 +41,9 @@ exports.translate = functions.https.onRequest (req, res) ->
 exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
   # Create $_GET equivalent
   _get = req.query
+  console.log "Requested analyzeTextSyntax/" + JSON.stringify _get
 
   # Init Client Library
-  Language = require '@google-cloud/language'
   language = Language()
 
   # Create Request
