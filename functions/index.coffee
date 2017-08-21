@@ -6,10 +6,12 @@ admin = require 'firebase-admin'
 admin.initializeApp functions.config().firebase
 request = require 'request-promise'
 Language = require '@google-cloud/language'
+Vision = require '@google-cloud/vision'
 
 # Variables
 apiKey = functions.config().firebase.apiKey
 translateBaseUrl = "https://www.googleapis.com/language/translate/v2"
+gcsImageBaseUrl = "gs://vocbox-test.appspot.com/vision_images/"
 
 # Helper Functions
 urlencode = (string) ->
@@ -38,6 +40,7 @@ exports.translate = functions.https.onRequest (req, res) ->
     #res.send translatedText
     res.send response.body
 
+# Natural Language Processing Function
 exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
   # Create $_GET equivalent
   _get = req.query
@@ -96,3 +99,51 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       # Send Error Info
       console.error error_json
       res.send error_json
+
+# Vision Function
+exports.annotateImage = functions.https.onRequest (req, res) ->
+  # Create $_GET equivalent
+  _get = req.query
+  console.log "Requested annotateImage/" + JSON.stringify _get
+
+  # Init Vision Client
+  vision = Vision();
+
+  # Prepare request
+  fileName = gcsImageBaseUrl + _get.q
+  if _get.mode == "labelDetection" or _get.mode == "textDetection"
+    mode = _get.mode
+  else
+    res.send JSON.stringify { success: false }
+    console.error "Invalid Mode"
+
+  request = {
+    source: {
+      gcsImageUri: fileName
+    }
+  }
+
+  # Run Request
+  if mode == "labelDetection"
+    vision.labelDetection(request)
+      .then (results) ->
+        labels = results[0].labelAnnotations
+        console.log 'Labels:'
+        labels.forEach (label) ->
+          console.log label.description
+          res.send label.description
+
+      .catch (err) ->
+        res.send 'Error'
+        console.error 'ERROR:' + err
+        
+  elseif mode == "textDetection"
+    vision.textDetection(image)
+      .then (results) ->
+        result = JSON.stringify results
+        console.log result
+        res.send result
+
+      .catch (err) ->
+        res.send 'Error'
+        console.error 'ERROR:' + err
