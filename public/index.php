@@ -27,7 +27,6 @@ basic_template();
     <?php
       $libraries_list_query = query_library_list($user);
       $libraries_list = query($libraries_list_query, false);
-      var_dump($libraries_list);
 
       if(count($libraries_list) < 1)
         echo "
@@ -40,7 +39,11 @@ basic_template();
         foreach($libraries_list as $library)
           echo "
           <tr>
-            <td>".language_pair_to_text($library["langs"])."</td>
+            <td>
+              <a href=\"/library/{$library[id]}\">
+                <b>".language_pair_to_text($library["langs"])."</b>
+              </a>
+            </td>
             <td>
               <i>".htmlentities($library["comment"])."</i>
             </td>
