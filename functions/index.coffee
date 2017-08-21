@@ -20,8 +20,14 @@ urlencode = (string) ->
 createTranslateUrl = (source, target, payload) ->
   "?model=nmt&key=" + apiKey + "&source=" + source + "&target=" + target + "&q=" + urlencode payload
 
+setHeaders = (res) ->
+  res.set "Content-type", "application/json"
+
 # Translate Function
 exports.translate = functions.https.onRequest (req, res) ->
+  # Set response headers
+  setHeaders res
+
   # Create $_GET equivalent
   _get = req.query
   console.log "Requested translate/" + JSON.stringify _get
@@ -43,6 +49,9 @@ exports.translate = functions.https.onRequest (req, res) ->
 
 # Natural Language Processing Function
 exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
+  # Set response headers
+  setHeaders res
+
   # Create $_GET equivalent
   _get = req.query
   console.log "Requested analyzeTextSyntax/" + JSON.stringify _get
@@ -106,6 +115,9 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
 
 # Vision Function
 exports.annotateImage = functions.https.onRequest (req, res) ->
+  # Set response headers
+  setHeaders res
+  
   # Create $_GET equivalent
   _get = req.query
   console.log "Requested annotateImage/" + JSON.stringify _get
