@@ -1,0 +1,31 @@
+<?php
+// Database Script
+
+// TABLE "USERS"
+// [ID] [NAME] [EMAIL] [GOOGLE_INFO] [LAST_SIGN_IN]
+
+// QUERY: get info of specific user id
+function query_user_info($user_id) {
+
+  $user = encode($user_id);
+  $query = "SELECT * FROM users WHERE id = '$user';";
+  return $query;
+
+}
+
+// QUERY: create new user from google info
+function query_user_create($user_info) {
+
+  $q["name"] = $user_info->auth->given_name;
+  $q["email"] = $user_info->auth->email;
+  $q["google_info"] = $user_info->gstring;
+  $q["id"] = get_user_id_from_mail($email);
+  $last_sign_in = time();
+
+  foreach($q as $vq)
+    $query .= "'".encode($vq)."', '";
+
+  $query = "INSERT INTO users VALUES($query'$last_sign_in');";
+  return $query;
+
+}

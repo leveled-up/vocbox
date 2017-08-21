@@ -20,15 +20,15 @@ auth.onAuthStateChanged (user) ->
     console.log "User seems to be logged in. Getting User Details."
 
     gtokencookie = getCookie "__gtoken"
-    if  gtokencookie == ""
+    if gtokencookie?
+      console.log "Sign In Successful: __gtoken=" + gtokencookie
+
+      # Set User Details Cookie for Functions
+      console.log "User signed in successfully"
+      window.location.reload()
+    else
       firebase.auth().signOut().then () ->
         console.log 'Signed Out'
-
-    console.log "Sign In Successful: __gtoken=" + gtokencookie
-
-    # Set User Details Cookie for Functions
-    console.log "User signed in successfully"
-    window.location.reload()
 
   else
     # User is logged out
