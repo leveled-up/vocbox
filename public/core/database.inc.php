@@ -21,7 +21,7 @@ function query_user_create($user_info) {
   $q[] = $user_info->auth->given_name; // [NAME]
   $q[] = $user_info->auth->email; // [EMAIL]
   $q[] = $user_info->gstring; // [GOOGLE_INFO]
-  $id = get_user_id_from_mail($email);
+  $id = get_user_id_from_mail($user_info->auth->email);
   $last_sign_in = time();
 
   foreach($q as $vq)
