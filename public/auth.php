@@ -43,13 +43,12 @@ if(isset($_COOKIE["__gtoken"]) or isset($_POST["__gtoken"])) {
   // Get User Info from Database
   $user_info_query = query_user_info($user_id);
   $user_info_query_result = query($user_info_query);
-  echo "test";
   if(!isset($user_info_query_result->id)) {
     // User does not exist in Database: Sign Up required.
 
     $user_create_query = query_user_create($user_info);
     $user_create_query_result = query($user_create_query);
-
+echo "test";
     $user_info_query_result = query($user_info_query);
     if(!isset($user_info_query_result->id))
       exit("Error 500: Creation of user failed.");
