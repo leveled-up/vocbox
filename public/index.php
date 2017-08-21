@@ -1,4 +1,4 @@
 <?php
 include("core/core.inc.php");
 
-echo "Signed in as ".$user;
+echo "Signed in as ".$user->name;
