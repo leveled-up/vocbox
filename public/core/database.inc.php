@@ -20,13 +20,13 @@ function query_user_create($user_info) {
   $q["name"] = $user_info->auth->given_name;
   $q["email"] = $user_info->auth->email;
   $q["google_info"] = $user_info->gstring;
-  $q["id"] = get_user_id_from_mail($email);
+  $id = get_user_id_from_mail($email);
   $last_sign_in = time();
 
   foreach($q as $vq)
     $query .= "'".encode($vq)."', ";
 
-  $query = "INSERT INTO users VALUES($query'$last_sign_in');";
+  $query = "INSERT INTO users VALUES('$id', $query'$last_sign_in');";
   echo $query;
   return $query;
 
