@@ -48,7 +48,7 @@ basic_template();
               <i>".htmlentities($library["comment"])."</i>
             </td>
             <td>
-              <a href=\"/delete_library?library={$library[id]}\" onclick=\"return confirm_library_deletion();\">
+              <a href=\"/delete_library?library={$library[id]}\" onclick=\"return confirm_library_deletion();\" class=\"btn btn-danger btn-sm\">
                 <i class=\"fa fa-times\"></i>
               </a>
             </td>
