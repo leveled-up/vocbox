@@ -144,7 +144,7 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
   else if mode == "textDetection"
     vision.textDetection(request)
       .then (results) ->
-        result = JSON.stringify results
+        result = results[0].textAnnotations[0].description
         console.log result
         res.send result
 
