@@ -35,8 +35,9 @@ exports.translate = functions.https.onRequest (req, res) ->
   request(translateUrl, { resolveWithFullResponse: true }).then (response) ->
     console.log "Translation Status Code: " + response.statusCode
     console.log "Translation Result: " + response.body
-    #translatedJSON = JSON.parse response.body
-    #translatedText = translatedJSON.data.translations[0].translatedText
+    translatedJSON = JSON.parse response.body
+    translatedText = translatedJSON.data.translations[0]
+    console.log JSON.stringify translatedText
     #res.send translatedText
     res.send response.body
 
@@ -120,7 +121,7 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
     res.send JSON.stringify { success: false }
     console.error "Invalid Mode"
 
-  console.log "Requesting " + mode + "for " + fileName
+  console.log "Requesting " + mode + " for " + fileName
   request = {
       source: {
         gcsImageUri: fileName
