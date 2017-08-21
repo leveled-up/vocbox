@@ -29,7 +29,7 @@ basic_template();
       $libraries_list = query($libraries_list_query, false);
       var_dump($libraries_list);
 
-      if(count($libraries_list < 1))
+      if(count($libraries_list) < 1)
         echo "
         <tr>
           <td>You don't have any libraries yet.</td>
