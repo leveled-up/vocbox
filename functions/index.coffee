@@ -58,18 +58,17 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
 
   # Run Request
   language.analyzeSyntax({ document: document })
-    # On Completion
     .then (results) ->
       # If Success Process & Return Results
-      syntax = results[0];
-      console.log "Success"
+      syntax = results[0]
       console.log JSON.stringify results[0].tokens[0].partOfSpeech
       console.log JSON.stringify results
       syntax_result = {}
+      console.log "Test Success"
 
       syntax.tokens.forEach (part) ->
         console.log part.partOfSpeech.tag
-        syntax_result.push part
+        syntax_result.push part.partOfSpeech.tag
 
       # Make Result JSON
       result = {
@@ -84,7 +83,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       console.log result_json
       #res.set "Cache-Control", "public, max-age=300, s-maxage=600"
       res.send result_json
-      #
+
     .catch (err) ->
       # If Fail, Return Error
       console.log "Error" if err?
@@ -117,10 +116,11 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
     res.send JSON.stringify { success: false }
     console.error "Invalid Mode"
 
+  console.log "Requesting " + mode + "for " + fileName
   request = {
-    source: {
-      gcsImageUri: fileName
-    }
+      source: {
+        gcsImageUri: fileName
+      }
   }
 
   # Run Request
@@ -130,12 +130,12 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
         labels = results[0].labelAnnotations
         labelsDescriptions = []
 
-        console.log 'Labels:'
         labels.forEach (label) ->
-          console.log label.description
           labelsDescriptions.push label.description
 
-        res.send JSON.stringify labelsDescriptions
+        labelsJSON = JSON.stringify labelsDescriptions
+        console.log labelsJSON
+        res.send labelsJSON
 
       .catch (err) ->
         res.send 'Error'
@@ -144,7 +144,10 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
   else if mode == "textDetection"
     vision.textDetection(request)
       .then (results) ->
-        result = results[0].textAnnotations[0].description
+        resultDescription = results[0].textAnnotations[0].description
+        result = [
+          resultDescription
+        ]
         console.log result
         res.send result
 
