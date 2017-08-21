@@ -1,2 +1,4 @@
 <?php
-echo "Hi <script src=\"/main.js\"></script>";
+include("core/core.inc.php");
+
+echo "Signed in as ".$user;

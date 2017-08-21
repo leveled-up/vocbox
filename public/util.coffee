@@ -1,15 +1,35 @@
 # Useful Functions for VocBox Client Scripts
+console.log "Init util.js"
 
 # HttpClient Class
 # client = new HttpClient()
-#client.get 'http://some/thing?with=arguments', (response) -> [...]
-
+# client.get 'http://some/thing?with=arguments', (response) -> [...]
 HttpClient = () ->
     this.get = (aUrl, aCallback) ->
+        console.log "Preparing HTTP GET to " + aUrl
         anHttpRequest = new XMLHttpRequest()
         anHttpRequest.onreadystatechange = () ->
+            console.log "State Changed. Status: " + anHttpRequest.status
             if anHttpRequest.readyState == 4 and anHttpRequest.status == 200
+                console.log "Status 200, Calling Callback."
                 aCallback anHttpRequest.responseText
 
         anHttpRequest.open "GET", aUrl, true
+        console.log "Calling " + aUrl
         anHttpRequest.send null
+
+# DOM Object Getting Function
+# get_objects ["dom1", "dom2", ...]
+get_objects = (dom_objects) ->
+  console.log "Getting Objects From DOM."
+  console.log JSON.stringify dom_objects
+
+  dom_objects.forEach (dom_object) ->
+    console.log "Getting " + dom_object + " from DOM."
+    window[dom_object] = document.getElementById dom_object
+
+# Get Cookie By name
+getCookie = (name) ->
+  value = "; " + document.cookie
+  parts = value.split "; " + name + "="
+  return parts.pop().split(";").shift() if parts.length == 2
