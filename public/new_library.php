@@ -29,10 +29,11 @@ if(isset($_POST["new_library_form_langs_m"])) {
 
   // Database Request
   $library_create_query = query_library_create($user, $lang, $comment);
+  echo $library_create_query;
   $library_create = query($library_create_query);
 
   // Redirect to Home Page
-  redirect("/");  
+  redirect("/");
 
 }
 
@@ -51,6 +52,7 @@ basic_template();
 <form method="post" action="" id="new_library_form">
   <p>
     What's your <b>mother tongue</b>?
+    <br /> <br />
   </p>
 
   <select name="new_library_form_langs_m" id="new_library_form_langs_m" class="form-control">
@@ -60,6 +62,7 @@ basic_template();
 
   <p>
     What's the <b>forein language</b> you want to learn?
+    <br /> <br />
   </p>
 
   <select name="new_library_form_langs_f" id="new_library_form_langs_f" class="form-control">
@@ -69,10 +72,12 @@ basic_template();
 
   <p>
     Is there anything you'd like to add (e.g. a <b>personal comment</b>)?
+    <br /> <br />
   </p>
 
   <input name="new_library_comment" id="new_library_comment" class="form-control" placeholder="No comment." />
 
+  <br /> <br />
   <button name="new_library_submit_btn" id="new_library_submit_btn" class="btn btn-primary">
     <i class="fa fa-check"></i>
     Submit
