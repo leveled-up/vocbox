@@ -51,13 +51,16 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
 
   # Create Request
   text = _get.q
-  document = {
-    'content': text,
-    type: 'PLAIN_TEXT'
+  request_params = {
+    document: {
+      content: text,
+      type: 'PLAIN_TEXT'
+    }
   }
+  # 'content' : text;; analyzeSyntax({document: request_params})
 
   # Run Request
-  language.analyzeSyntax({ document: document })
+  language.analyzeSyntax(request_params)
     .then (results) ->
       # If Success Process & Return Results
       console.log "analyzeSyntax() succeeded: " + JSON.stringify results
@@ -107,7 +110,7 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
   console.log "Requested annotateImage/" + JSON.stringify _get
 
   # Init Vision Client
-  vision = Vision();
+  vision = Vision()
 
   # Prepare request
   fileName = gcsImageBaseUrl + _get.q
@@ -134,24 +137,47 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
         labels.forEach (label) ->
           labelsDescriptions.push label.description
 
-        labelsJSON = JSON.stringify labelsDescriptions
+        labelsDescriptionsReturn = {
+          success: true,
+          labels: labelsDescriptions
+        }
+        labelsJSON = JSON.stringify labelsDescriptionsReturn
+
         console.log labelsJSON
         res.send labelsJSON
 
       .catch (err) ->
-        res.send 'Error'
-        console.error 'ERROR:' + err
+        error = {
+          success: false,
+          error: err
+          labels: []
+        }
+        errorJSON = JSON.stringify error
+
+        res.send errorJSON
+        console.error 'ERROR:' + errorJSON
 
   else if mode == "textDetection"
     vision.textDetection(request)
       .then (results) ->
         resultDescription = results[0].textAnnotations[0].description
-        result = [
-          resultDescription
-        ]
-        console.log result
-        res.send result
+
+        result = {
+          success: true,
+          description: resultDescription
+        }
+        resultReturn = JSON.stringify result
+
+        console.log resultReturn
+        res.send resultReturn
 
       .catch (err) ->
-        res.send 'Error'
-        console.error 'ERROR:' + err
+        error = {
+          success: false,
+          error: err,
+          description: ""
+        }
+        errorJSON = JSON.stringify error
+
+        res.send errorJSON
+        console.error 'ERROR:' + errorJSON
