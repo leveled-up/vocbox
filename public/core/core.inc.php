@@ -18,7 +18,12 @@ $user = (object)$_SESSION["user"];
 database_connect();
 include("core/database.inc.php");
 
+// Localization & Languages
+include("core/languages.inc.php");
+
 // Templates
+$contact_us = "<a href=\"mailto:{$error_setup[mail_address]}\">contact us</a>";
+
 function basic_template() {
   echo file_get_contents("template/basic.tpl");
 }
