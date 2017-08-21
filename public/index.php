@@ -26,6 +26,7 @@ basic_template();
   <tbody>
     <?php
       $libraries_list_query = query_library_list($user);
+      echo $libraries_list_query;
       $libraries_list = query($libraries_list_query, false);
 
       if(count($libraries_list < 1))
@@ -39,7 +40,7 @@ basic_template();
         foreach($libraries_list as $library)
           echo "
           <tr>
-            <td>".format_laguages($library["langs"])."</td>
+            <td>".language_pair_to_text($library["langs"])."</td>
             <td>
               <i>".htmlentities($library["comment"])."</i>
             </td>
