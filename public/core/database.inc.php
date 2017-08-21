@@ -24,7 +24,7 @@ function query_user_create($user_info) {
   $last_sign_in = time();
 
   foreach($q as $vq)
-    $query .= "'".encode($vq)."', '";
+    $query .= "'".encode($vq)."', ";
 
   $query = "INSERT INTO users VALUES($query'$last_sign_in');";
   echo $query;
