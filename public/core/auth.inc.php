@@ -6,7 +6,7 @@ function get_user_info_from_token($bearer) {
 
   $auth_baseurl = "https://www.googleapis.com/oauth2/v1/userinfo";
   if($bearer == "")
-    return false;
+    exit("Error 403: \$bearer was not provided.");
 
   $token = urlencode($bearer);
   $params = "?alt=json&access_token=".$token;
@@ -15,7 +15,7 @@ function get_user_info_from_token($bearer) {
   $result = file_get_contents($auth_url);
 
   if($result == "" OR $result == FALSE)
-    return false;
+    exit("Error 500: Connecting to www.googleapis.com failed.");
 
   $result_obj = json_decode($result, false);
   if($result->id == "")
