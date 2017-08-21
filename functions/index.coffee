@@ -60,7 +60,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
       # If Success Process & Return Results
       syntax = results[0];
       console.log "Success"
-      console.log JSON.stringify results[0].sentences[0]
+      console.log JSON.stringify results[0].tokens[0]
       console.log JSON.stringify results
       syntax_result = {}
 
