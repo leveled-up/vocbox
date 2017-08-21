@@ -30,6 +30,9 @@ get_objects = (dom_objects) ->
 
 # Get Cookie By name
 getCookie = (name) ->
+  console.log "Requested getting contents of " + name + " cookie."
+  console.log "Current Cookies: " + document.cookie
+  
   value = "; " + document.cookie
   parts = value.split "; " + name + "="
   return parts.pop().split(";").shift() if parts.length == 2
