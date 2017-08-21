@@ -136,8 +136,8 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
       .catch (err) ->
         res.send 'Error'
         console.error 'ERROR:' + err
-        
-  elseif mode == "textDetection"
+
+  else if mode == "textDetection"
     vision.textDetection(image)
       .then (results) ->
         result = JSON.stringify results
