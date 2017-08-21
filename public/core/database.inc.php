@@ -17,9 +17,9 @@ function query_user_info($user_id) {
 // QUERY: create new user from google info
 function query_user_create($user_info) {
 
-  $q["name"] = $user_info->auth->given_name;
-  $q["email"] = $user_info->auth->email;
-  $q["google_info"] = $user_info->gstring;
+  $q[] = $user_info->auth->given_name; // [NAME]
+  $q[] = $user_info->auth->email; // [EMAIL]
+  $q[] = $user_info->gstring; // [GOOGLE_INFO]
   $id = get_user_id_from_mail($email);
   $last_sign_in = time();
 

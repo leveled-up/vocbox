@@ -50,7 +50,7 @@ if(isset($_COOKIE["__gtoken"]) or isset($_POST["__gtoken"])) {
     $user_create_query_result = query($user_create_query);
 
     $user_info_query_result = query($user_info_query);
-    echo mysqli_error($con);
+
     if(!isset($user_info_query_result->id))
       exit("Error 500: Creation of user failed.");
 

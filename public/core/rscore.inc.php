@@ -13,7 +13,7 @@ $db_setup["database_pass"] = "";
 $db_setup["database_id"] = "";
 
 // Mail Setup
-$mail_setup["base_url"] = "https://mail.runstorageapis.com/mail";
+$mail_setup["base_url"] = "https://mail.runstorageapis.com/v1";
 
 // Error Setup
 $error_setup["template_url"] = "https://www.runstorageapis.com/static/errors/error-template.v1.html";
