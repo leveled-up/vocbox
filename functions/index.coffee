@@ -131,7 +131,7 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
         console.log 'Labels:'
         labels.forEach (label) ->
           console.log label.description
-          res.send label.description
+        res.send JSON.stringify labels
 
       .catch (err) ->
         res.send 'Error'
