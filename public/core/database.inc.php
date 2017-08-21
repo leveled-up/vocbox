@@ -3,6 +3,7 @@
 
 // TABLE "USERS"
 // [ID] [NAME] [EMAIL] [GOOGLE_INFO] [LAST_SIGN_IN]
+//CREATE TABLE `users` ( `id` VARCHAR(32) NOT NULL , `name` TEXT NOT NULL , `email` TEXT NOT NULL , `google_info` LONGTEXT NOT NULL , `last_sign_in` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM COMMENT = 'TABE USERS: [ID] [NAME] [EMAIL] [GOOGLE_INFO] [LAST_SIGN_IN]';
 
 // QUERY: get info of specific user id
 function query_user_info($user_id) {
