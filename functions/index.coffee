@@ -128,10 +128,14 @@ exports.annotateImage = functions.https.onRequest (req, res) ->
     vision.labelDetection(request)
       .then (results) ->
         labels = results[0].labelAnnotations
+        labelsDescriptions = []
+
         console.log 'Labels:'
         labels.forEach (label) ->
           console.log label.description
-        res.send JSON.stringify labels
+          labelsDescriptions.push label.description
+
+        res.send JSON.stringify labelsDescriptions
 
       .catch (err) ->
         res.send 'Error'
