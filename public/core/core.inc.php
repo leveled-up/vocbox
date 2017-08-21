@@ -12,6 +12,7 @@ $request_time = time();
 session_start();
 if(!isset($_SESSION["user"]))
   redirect("/auth?redirect=$request_url_encoded");
+$user = $_SESSION["user"];
 
 // Connect Database
 database_connect();
