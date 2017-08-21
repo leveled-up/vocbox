@@ -61,7 +61,7 @@ function query_library_list($user) {
 }
 
 // QUERY: get details about a library
-function query_library_list($library, $user) {
+function query_library_info($library, $user) {
 
   $owner = encode($user->id);
   $libary = encode($library);
