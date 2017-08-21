@@ -10,7 +10,6 @@ function query_user_info($user_id) {
 
   $user = encode($user_id);
   $query = "SELECT * FROM users WHERE id = '$user'";
-  echo $query;
   return $query;
 
 }
