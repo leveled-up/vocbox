@@ -8,10 +8,14 @@ basic_template();
   Welcome to VocBox, the Vocabulary Trainer that's focused on Machine Learning and AI. Thanks for being here. &hearts;
 </p>
 
+<br />
+
 <a href="/new_library" id="index_btn_library_new" class="btn btn-default">
   <i class="fa fa-plus"></i>
   New Library
 </a>
+
+<br />
 
 <table class="table table-striped" id="index_table_libraries">
   <thead>
