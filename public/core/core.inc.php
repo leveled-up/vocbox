@@ -16,3 +16,9 @@ $user = (object)$_SESSION["user"];
 
 // Connect Database
 database_connect();
+include("core/database.inc.php");
+
+// Templates
+function basic_template() {
+  echo file_get_contents("template/basic.tpl");
+}

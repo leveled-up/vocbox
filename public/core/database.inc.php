@@ -9,7 +9,7 @@
 function query_user_info($user_id) {
 
   $user = encode($user_id);
-  $query = "SELECT * FROM users WHERE id = '$user'";
+  $query = "SELECT * FROM users WHERE id = '$user' LIMIT 1";
   return $query;
 
 }
@@ -27,6 +27,58 @@ function query_user_create($user_info) {
     $query .= "'".encode($vq)."', ";
 
   $query = "INSERT INTO users VALUES ( '$id', $query'$last_sign_in' )";
+  return $query;
+
+}
+
+
+// TABLE "LIBRARIES"
+// [ID] [OWNER] [LANGS] [STATS] [COMMENT]
+// CREATE TABLE `libraries` ( `id` INT NOT NULL AUTO_INCREMENT , `owner` VARCHAR(32) NOT NULL , `langs` VARCHAR(5) NOT NULL , `stats` LONGTEXT NOT NULL , `comment` LONGTEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM COMMENT = 'TABLE \"LIBRARIES\" [ID] [OWNER] [LANGS] [STATS] [COMMENT]';
+
+// QUERY: create new library
+function query_library_create($user, $lang, $comment) {
+
+  $owner = encode($user->id);
+  $langs = encode(join("-", $lang));
+  $comment = encode($comment);
+  if($comment == "")
+    $comment = "No comment.";
+
+  $query = "INSERT INTO libraries VALUES ('', '$owner', '$langs', '$comment')";
+  return $query;
+
+}
+
+// QUERY: list libraries of user
+function query_library_list($user) {
+
+  $owner = encode($user->id);
+
+  $query = "SELECT * FROM libraries WHERE owner = '$owner'";
+  return $query;
+
+}
+
+// QUERY: get details about a library
+function query_library_list($library, $user) {
+
+  $owner = encode($user->id);
+  $libary = encode($library);
+
+  $query = "SELECT * FROM libraries WHERE owner = '$owner' AND id = '$library' LIMIT 1";
+  return $query;
+
+}
+
+// QUERY: update stats of a library
+function query_library_statsupdate($libary, $user, $stats) {
+
+  $owner = encode($user->id);
+  $libary = encode($library);
+  $stats = encode($stats);
+
+  $query = "UPDATE libraries SET stats = '$stats' WHERE owner = '$owner' AND id = '$library'";
   return $query;
 
 }
