@@ -15,13 +15,9 @@ script:
   - ls -l
   - coffee -cb functions/
   - rm functions/*.coffee
+  - ls functions/
   - coffee -cb public/
   - rm public/*.coffee
+  - ls public/
   - firebase --help
   - firebase deploy --token "$FIREBASE_TOKEN"
-  - cd public/
-  - ftp -inv $FTP_HOST.lima-ftp.de  <<END_SCRIPT \
-    user $FTP_USER $FTP_PASSWD \
-    mput * \
-    bye \
-    END_SCRIPT
