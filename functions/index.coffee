@@ -43,9 +43,9 @@ exports.translate = functions.https.onRequest (req, res) ->
     console.log "Translation Result: " + response.body
     translatedJSON = JSON.parse response.body
     translatedText = translatedJSON.data.translations[0]
-    console.log JSON.stringify translatedText
+    translationResult = JSON.stringify translatedText
     #res.send translatedText
-    res.send response.body
+    res.send translationResult
 
 # Natural Language Processing Function
 exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
@@ -117,7 +117,7 @@ exports.analyzeTextSyntax = functions.https.onRequest (req, res) ->
 exports.annotateImage = functions.https.onRequest (req, res) ->
   # Set response headers
   setHeaders res
-  
+
   # Create $_GET equivalent
   _get = req.query
   console.log "Requested annotateImage/" + JSON.stringify _get
