@@ -44,7 +44,7 @@ if(isset($_COOKIE["__gtoken"]) or isset($_POST["__gtoken"])) {
   $user_info_query = query_user_info($user_id);
   $user_info_query_result = query($user_info_query);
   var_dump($user_info_query_result);
-  if(!isset($user_info_query_result->id)) {
+  if(!isset($user_info_query_result->id) and $user_info_query_result->id == "") {
     // User does not exist in Database: Sign Up required.
 
     $user_create_query = query_user_create($user_info);
