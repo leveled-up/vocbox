@@ -27,7 +27,6 @@ function query_user_create($user_info) {
     $query .= "'".encode($vq)."', ";
 
   $query = "INSERT INTO users VALUES('$id', $query'$last_sign_in');";
-  echo $query;
   return $query;
 
 }
