@@ -97,8 +97,10 @@ basic_template();
     </center>
   </span>
   <span id="library_listwords_spinner" style="display: none;">
-    <img src="https://www.runstorageapis.com/img/throbber_small.svg" alt="" />
-    One moment, please.
+    <center>
+      <img src="https://www.runstorageapis.com/img/throbber_small.svg" alt="" />
+      &nbsp; One moment, please.
+    </center>
   </span>
   <span id="library_listwords_table_span" style="display: none;">
     <table id="library_listwords_table">

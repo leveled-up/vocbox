@@ -5,6 +5,7 @@ console.log "Init util.js"
 # client = new HttpClient()
 # client.get 'http://some/thing?with=arguments', (response) -> [...]
 HttpClient = () ->
+    # HTTP Get Function
     this.get = (aUrl, aCallback) ->
         console.log "Preparing HTTP GET to " + aUrl
         anHttpRequest = new XMLHttpRequest()
@@ -17,6 +18,9 @@ HttpClient = () ->
         anHttpRequest.open "GET", aUrl, true
         console.log "Calling " + aUrl
         anHttpRequest.send null
+
+    # Init Done
+    true
 
 # DOM Object Getting Function
 # get_objects ["dom1", "dom2", ...]
