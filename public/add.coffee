@@ -178,9 +178,9 @@ speech_recognition_add = () ->
 
   # Synthesis Question N° 2
   synthesis_questions_2 = [
-    "Correct?",
-    "Is this right?",
-    "ok?"
+    "ok?",
+  #  "Is this right?",
+    "Correct?"
   ]
   synthesis_questions_2_count = synthesis_questions_2.length-1
   synthesis_question_2_id = Math.floor Math.random() * synthesis_questions_2_count
