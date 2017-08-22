@@ -39,12 +39,11 @@ function query_user_update_lastsignin($user_info) {
 
   $query = "UPDATE users SET last_sign_in = '$last_sign_in' WHERE id = '$user_id'";
   return $query;
-  
+
 }
 
 // TABLE "LIBRARIES"
-// [ID] [OWNER] [LANGS] [STATS] [COMMENT]
-// CREATE TABLE `libraries` ( `id` INT NOT NULL AUTO_INCREMENT , `owner` VARCHAR(32) NOT NULL , `langs` VARCHAR(5) NOT NULL , `stats` LONGTEXT NOT NULL , `comment` LONGTEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = MyISAM COMMENT = 'TABLE \"LIBRARIES\" [ID] [OWNER] [LANGS] [STATS] [COMMENT]';
+// [ID] [OWNER] [LANGS] [STATS] [CATEGORIES] [COMMENT] [SETTINGS]
 
 // QUERY: create new library
 function query_library_create($user, $lang, $comment) {
@@ -55,8 +54,8 @@ function query_library_create($user, $lang, $comment) {
   if($comment == "")
     $comment = "No comment.";
 
-  $query = "INSERT INTO libraries VALUES ('', '$owner', '$langs', '{}', '$comment')";
   return $query;
+  $query = "INSERT INTO libraries VALUES ('', '$owner', '$langs', '{}', '1', '$comment', '{}')";
 
 }
 
@@ -89,6 +88,30 @@ function query_library_statsupdate($libary, $user, $stats) {
   $stats = encode($stats);
 
   $query = "UPDATE libraries SET stats = '$stats' WHERE owner = '$owner' AND id = '$library'";
+  return $query;
+
+}
+
+// QUERY: update settings of a library
+function query_library_settingsupdate($libary, $user, $settings) {
+
+  $owner = encode($user->id);
+  $libary = encode($library);
+  $settings = encode($settings);
+
+  $query = "UPDATE libraries SET settings = '$settings' WHERE owner = '$owner' AND id = '$library'";
+  return $query;
+
+}
+
+// QUERY: update categories count of a library
+function query_library_categoriesupdate($libary, $user, $cats) {
+
+  $owner = encode($user->id);
+  $libary = encode($library);
+  $cats = encode($cats);
+
+  $query = "UPDATE libraries SET categories = '$cats' WHERE owner = '$owner' AND id = '$library'";
   return $query;
 
 }
