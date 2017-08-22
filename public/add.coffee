@@ -14,8 +14,12 @@ dom_objects = [
   "add_type",
   "add_type_back",
   "add_type_form",
+  "add_type_form_btn",
   "add_type_word_m",
   "add_type_word_f",
+  "add_type_show_comment",
+  "add_type_comment_btn",
+  "add_type_comment",
   # Objects for Method!Speak
   "add_speak",
   # Objects for Method!Scan
@@ -77,6 +81,50 @@ add_method_scan.addEventListener "click", () ->
 #    evt.preventDefault();
 
 # **** #Method!Type ****
+# Type Form Submit EventListener
+add_type_form.addEventListener "submit", (evt) ->
+
+  # Prevent Form Submit
+  evt.preventDefault()
+
+  # Log Event
+  console.log "Submit add_type_form()."
+
+  # Show Working State
+  add_type_form_btn_original_text = add_type_form_btn.innerHTML
+  add_type_form_btn.innerHTML = "Saving..."
+
+  # Send to DB
+  # send_word_to_db = (word_m, word_f, comment, callback) ->
+  word_m = add_type_word_m.value
+  word_f = add_type_word_f.value
+  comment = add_type_comment.value
+
+  send_word_to_db word_m, word_f, comment, (success) ->
+
+    # Log Event
+    console.log "send_word_to_db() callback fired."
+
+    # Proccess Result
+    if success
+      console.log "Success"
+      add_type_form.reset()
+    else
+      console.warn "Failed"
+      alert "Error 500: We weren't able to save your input"
+
+    # Remove "Saving..."
+    add_type_form_btn.innerHTML = add_type_form_btn_original_text
+  
+# Show Comment Input Box
+add_type_comment_btn.addEventListener "click", () ->
+
+  # Log Event
+  console.log "Requested Comment Input"
+
+  # Show Element
+  hide_object add_type_show_comment
+  show_object add_type_comment
 
 
 # **** #Method!Speak ****

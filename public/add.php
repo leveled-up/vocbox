@@ -119,6 +119,16 @@ basic_template();
     <b>
       <input id="add_type_word_m" class="form-control" placeholder="<?=$mother_lang_text?> Word" />
     </b>
+    <br />
+
+    <span id="add_type_show_comment" style="">
+      <center>
+        <a href="#" id="add_type_comment_btn">Add Comment</a>
+      </center>
+    </span>
+
+    <input id="add_type_comment" style="display: none;" class="form-control" placeholder="Comment" />
+
     <br /> <br />
 
     <center>
