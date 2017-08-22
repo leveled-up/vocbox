@@ -47,6 +47,9 @@ $languages_text = language_pair_to_text($library_info["langs"]);
 $languages_text_array = explode(" - ", $languages_text);
 $forein_lang_text = $languages_text_array[1];
 $mother_lang_text = $languages_text_array[0];
+$languages_array = explode("-", $library_info["langs"]);
+$forein_lang = $languages_array[1];
+$mother_lang = $languages_array[0];
 
 // Prepare & Show Page
 basic_template();
@@ -178,9 +181,11 @@ Scan
 
 <!-- Scripts -->
 <script>
-  // Library ID for add.js
-  var library_id;
+  // Library ID, and Languages for add.js
+  var library_id, forein_lang, mother_lang;
   library_id = <?=$library_info["id"]?>;
+  forein_lang = ["<?=$forein_lang_text?>", "<?=$forein_lang?>"];
+  mother_lang = ["<?=$mother_lang_text?>", "<?=$mother_lang?>"];
 </script>
 <script src="/util.js"></script>
 <script src="/speech.js"></script>

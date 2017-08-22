@@ -118,7 +118,7 @@ add_type_form.addEventListener "submit", (evt) ->
     # Log Event
     console.log "send_word_to_db() callback fired."
 
-    # Proccess Result
+    # process Result
     if success
       console.log "Success"
       add_type_form.reset()
@@ -149,7 +149,143 @@ add_type_back.addEventListener "click", () ->
   window.location.reload()
 
 # **** #Method!Speak ****
+# Speech Recognition Handler Function
+speech_recognition_add = () ->
 
+  # Log Event
+  console.log "speech_recognition_add() requested."
+
+  # Prepare
+  speech_synthesis_lang = "en"
+  speech_recognition_lang = forein_lang[1]
+  translation_trg_lang = mother_lang[1]
+
+  # Synthesis Question N° 1
+  synthesis_questions_1 = [
+    "What's the " + forein_lang[0] + "word?",
+    "Say the " + forein_lang[0] + "word, please?",
+    "The " + forein_lang[0] + "word, please?",
+    "Can you please say the " + forein_lang[0] + "word now?"
+  ]
+  synthesis_questions_1_count = synthesis_questions_1.length-1
+  synthesis_question_1_id = Math.floor Math.random() * synthesis_questions_1_count
+  synthesis_question_1 = synthesis_questions_1[synthesis_question_1_id]
+  console.log "Synthesis Question 1: " + synthesis_question_1
+
+  # Synthesis Question N° 2
+  synthesis_questions_2 = [
+    "Correct?",
+    "Is this right?",
+    "ok?"
+  ]
+  synthesis_questions_2_count = synthesis_questions_2.length-1
+  synthesis_question_2_id = Math.floor Math.random() * synthesis_questions_2_count
+  synthesis_question_2 = synthesis_questions_2[synthesis_question_2_id]
+  console.log "Synthesis Question 2: " + synthesis_question_2
+
+  # Synthesis N°1
+  add_speak_status.innerHTML = synthesis_question_1
+  console.log "Starting Speech Synthesis."
+
+  # Start Speech Synthesis N°1
+  speech_synthesis synthesis_question_1, speech_synthesis_lang, (e) ->
+
+    # Log Event
+    console.log "Synthesis Done. Start Speech Recognition."
+    add_speak_status.innerHTML = "Preparing Speech Recognition..."
+
+    # Start Speech Recognition N°1
+    speech_recognition speech_synthesis_lang, (status, transcript) ->
+
+      # Log Event
+      console.log "Speech Recognition State Changed: " + status
+      console.log "transcript: " + transcript
+
+      # Process Results
+      switch status
+        # Init Complete
+        when 0 then
+          add_speak_status.innerHTML = "Please allow microphone access and start speaking."
+        # New Transcript, not Final
+        when 1 then
+          add_speak_status.innerHTML = transcript
+        # Nothing Recognized
+        when 3 then
+          add_speak_status.innerHTML = "Nothing Recognized."
+        # Error
+        when 4 then
+          add_speak_status.innerHTML = "An error occurred. Please check your browser (Chrome Required) and/or contact us."
+        # New Transcript, isFinal
+        when 2 then
+          add_speak_status.innerHTML = "Translating \"" + transcript + "\""
+          console.log "Translation started."
+
+          translate transcript, speech_recognition_lang, translation_trg_lang, (response) ->
+
+            # Translation Complete
+            if response == false
+              # Log Error
+              console.warn "Error Translating"
+              add_speak_status.innerHTML = "Translation Error"
+
+            else
+              # Success
+              console.log "Translation Success: " + response
+              add_speak_word_m.value = response
+              add_speak_status.innerHTML = "Translation: " + response
+
+              # Speech Synthesis N° 2
+              add_speak_status.innerHTML = synthesis_question_2
+              console.log "Starting Speech Synthesis (2)."
+
+              # Start Speech Synthesis N°2
+              speech_synthesis synthesis_question_2, speech_synthesis_lang, (e) ->
+
+                # Log Event
+                console.log "Synthesis Done. Start Speech Recognition."
+
+                # Start Speech Recognition N°2
+                speech_recognition speech_synthesis_lang, (status, transcript) ->
+
+                  # Log Event
+                  console.log "Speech Recognition State Changed: " + status
+                  console.log "transcript: " + transcript
+
+                  # Check if Result is Yes, Then Submit Form
+                  positive_replies = [
+                    "yes", "yep", "ok", "yeah", "true", "definitely"
+                  ]
+
+                  transcript_ = transcript.replace(/\W/g, '').toLowerCase()
+                  transcript_ispositive = positive_replies.indexOf transcript_
+
+                  if transcript_ispositive >= 0
+                    # Auto Submit
+                    console.log "Auto Submit."
+                    add_speak_form.submit()
+
+                  else
+                    # No Submit
+                    console.log "No Submit."
+
+
+# Speak Form Submit EventListener
+add_speak_form.addEventListener "submit", (evt) ->
+
+  # Prevent Form Submit
+  evt.preventDefault()
+
+  # [.....]
+
+# Show Comment Input Box
+add_speak_comment_btn.addEventListener "click", () ->
+
+  # Log Event
+  console.log "Requested Comment Input"
+
+  # Show Element
+  hide_object add_speak_show_comment
+  show_object add_speak_comment
 
 # **** #Method!Scan ****
 
@@ -159,7 +295,7 @@ send_word_to_db = (word_m, word_f, comment, callback) ->
   # Log Event
   console.log "Requested Saving Word to DB."
 
-  # Proccess Input
+  # process Input
   parameters = [
     word_m,
     word_f

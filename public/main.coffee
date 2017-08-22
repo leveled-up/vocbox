@@ -57,7 +57,7 @@ translate = (text, source_lang, target_lang, callback) ->
   console.log "Calling Cloud Function"
   call_cf "translate", parameters, (response) ->
 
-    # Proccess Result
+    # process Result
     result = JSON.parse response
     if result.translatedText?
       # Success
@@ -87,7 +87,7 @@ annotateImage = (fileName, mode, callback) ->
   # Call Cloud Function
   console.log "Calling Cloud Function"
   call_cf "annotateImage", parameters, (response) ->
-    # Proccess Result
+    # process Result
     result = JSON.parse response
     if result.success
       # Success
@@ -124,7 +124,7 @@ analyzeTextSyntax = (text, callback) ->
   console.log "Calling Cloud Function"
   call_cf "analyzeTextSyntax", parameters, (response) ->
 
-    # Proccess Result
+    # process Result
     console.log "Result: " + response
     result = JSON.parse response
 
