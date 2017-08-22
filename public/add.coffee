@@ -99,7 +99,7 @@ send_word_to_db = (word_m, word_f, comment, callback) ->
 
   # Format Request
   console.log "Preparing Request."
-  db_save_baseurl = "/add?action:insert="
+  db_save_baseurl = "/add/" + library_id + "?action:insert="
   db_save_params = urlencode JSON.stringify parameters
   request_url = db_save_baseurl + db_save_params
   console.log "Request URL: " + request_url
