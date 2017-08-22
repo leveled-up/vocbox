@@ -3,13 +3,12 @@
 include("core/core.inc.php");
 
 // Read Parameter
-$current_libary = $_GET["library"];
-if(!is_numeric($current_libary))
+$current_library = $_GET["library"];
+if(!is_numeric($current_library))
   exit("Error 404: The library ID provided cannot exist.");
 
 // Get Info from Database
 $library_info_query = query_library_info($current_library, $user);
-echo $library_info_query; echo $current_library;
 $library_info = query($library_info_query);
 if(!isset($library_info["id"]))
   exit("Error 404: The library {$current_library} was not found this user.");
