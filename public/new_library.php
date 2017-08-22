@@ -32,7 +32,7 @@ if(isset($_POST["new_library_form_langs_m"])) {
 
   // Database Request
   $library_create_query = query_library_create($user, $lang, $comment);
-  echo $query;
+  echo $library_create_query;
   $library_create = query($library_create_query);
 
   // Redirect to Home Page
