@@ -126,3 +126,55 @@ function query_library_delete($library, $user) {
   return $query;
 
 }
+
+// TABLE "WORDS"
+// [ID] [OWNER] [LIBRARY] [WORD_M] [WORD_F] [CATEGORY] [INFO] (info=JSON)
+
+// QUERY: create word
+function query_words_create($library, $user, $word) {
+
+  $owner = encode($user->id);
+  $library = encode($library);
+  $word_m = encode($word[0]);
+  $word_f = encode($word[1]);
+  if(isset($word[2]))
+    $info = json_encode(array(
+      "comment" => encode($word[2])
+    ));
+  else
+    $info = "{}";
+
+  $query = "INSERT INTO words VALUES ('', '$owner', '$library', '$word_m', '$word_f', '1', '$info')";
+  return $query;
+
+}
+
+// QUERY: get all words of library
+function query_words_list($library, $user) {
+
+  $owner = encode($user->id);
+  $library = encode($library);
+
+  $query = "SELECT * FROM words WHERE owner = '$owner' AND library = '$library' ORDER BY category ASC";
+  return $query;
+
+}
+
+// QUERY: word picking query
+function query_words_get($library, $user, $categories) {
+
+  $owner = encode($user->id);
+  $library = encode($library);
+
+  if(!is_numeric($categories))
+    return false;
+
+  if(rand(1,3) > 1 and $categories > 1)
+    $category = rand(1, $categories);
+  else
+    $category = 1;
+
+  $query = "SELECT * FROM words WHERE library = '$library' AND owner = '$owner' AND category = '$category' AND id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `words` ) ORDER BY id LIMIT 1";
+  return $query;
+
+}

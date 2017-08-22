@@ -105,8 +105,8 @@ basic_template();
   <span id="library_listwords_table_span" style="display: none;">
     <table id="library_listwords_table">
       <thead>
-        <th><?=$languages_text_array[0]?></th>
         <th><?=$languages_text_array[1]?></th>
+        <th><?=$languages_text_array[0]?></th>
         <th>Actions</th>
       </thead>
       <tbody id="library_listwords_table_tbody">
