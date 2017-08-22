@@ -61,6 +61,7 @@ translate = (text, source_lang, target_lang, callback) ->
     result = JSON.parse response
     if result.translatedText?
       # Success
+      response = result.translatedText
       console.log "Translation: " + response
       console.log "Callback()"
 
