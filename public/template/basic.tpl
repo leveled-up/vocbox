@@ -1,5 +1,6 @@
 <!doctype html>
 <head>
+    <!-- VocBox 2.0 - (c) RunStorage Technologies - https://github.com/leveled-up/vocbox -->
     <title>VocBox</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
