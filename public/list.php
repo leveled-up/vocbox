@@ -10,6 +10,15 @@ if(!is_numeric($current_library))
 // Get Words from Database
 $words_list_query = query_words_list($current_library, $user);
 $words_list = query($words_list_query, false);
+
+if(count($words_list) < 1)
+  exit("
+  <tr>
+    <td>No words found.</td>
+    <td></td>
+    <td></td>
+  </tr>");
+
 foreach ($words_list as $word)
   echo "
     <tr>

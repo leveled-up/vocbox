@@ -103,7 +103,7 @@ basic_template();
     </center>
   </span>
   <span id="library_listwords_table_span" style="display: none;">
-    <table id="library_listwords_table">
+    <table id="library_listwords_table" class="table table-striped">
       <thead>
         <th><?=$languages_text_array[1]?></th>
         <th><?=$languages_text_array[0]?></th>
