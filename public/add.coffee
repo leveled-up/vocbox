@@ -318,7 +318,8 @@ add_speak_form_submit_event = () ->
     add_speak_form_btn.innerHTML = add_speak_form_btn_original_text
 
     # Start Next Speech Recognition
-    speech_recognition_add()
+    if success
+      speech_recognition_add()
 
 # Show Comment Input Box
 add_speak_comment_btn.addEventListener "click", () ->
