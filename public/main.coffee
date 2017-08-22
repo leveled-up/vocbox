@@ -18,8 +18,8 @@ call_cf = (function_name, parameters, callback) ->
 
   # Construct request_url
   console.log "Constructing Request URL."
-  parameters.forEach (content, name) ->
-    request_url += name + "=" + urlencode(content) + "&"
+  parameters.forEach (value) ->
+    request_url += value[0] + "=" + urlencode(value[1]) + "&"
   request_url = cf_baseurl + "?" + request_url
   console.log "Request URL: " + request_url
 
@@ -45,11 +45,11 @@ translate = (text, source_lang, target_lang, callback) ->
 
   # Create Parameter Object
   console.log "Constructing Parameters"
-  parameters = {
-    q: text,
-    src: source_lang,
-    trg: target_lang,
-  }
+  parameters = [
+    ["q", text],
+    ["src", source_lang],
+    ["trg", target_lang]
+  ]
   console.log "Parameters: " + JSON.stringify parameters
 
   # Call Cloud Function
