@@ -81,7 +81,7 @@ basic_template();
     <br /> <br />
   </p>
 
-  <input name="new_library_comment" id="new_library_comment" class="form-control" placeholder="No comment." />
+  <input name="new_library_form_comment" id="new_library_form_comment" class="form-control" placeholder="No comment." />
 
   <br /> <br />
   <button name="new_library_submit_btn" id="new_library_submit_btn" class="btn btn-primary">
