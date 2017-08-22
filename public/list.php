@@ -25,7 +25,10 @@ foreach ($words_list as $word)
       <td>".htmlentities($word["word_f"])."</td>
       <td>".htmlentities($word["word_m"])."</td>
       <td>
-        <span id=\"info_{$word[id]}\" style=\"display:none;\">".json_encode(array("category" => $word["category"], "info" => $word["info"]))."</span>
+        <span id=\"info_{$word[id]}\" style=\"display:none;\">".json_encode(array(
+                        "category" => $word["category"],
+                        "info" => json_decode($word["info"]) ))."
+        </span>
         <div class=\"btn-group btn-group-xs\">
           <a href=\"#info_{$word[id]}\" id=\"btn_info_{$word[id]}\" onclick=\"btn_info_word_click('{$word[id]}');\" class=\"btn btn-default\">
             More
