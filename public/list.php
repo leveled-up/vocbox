@@ -17,6 +17,7 @@ if(count($words_list) < 1)
     <td>No words found.</td>
     <td></td>
     <td></td>
+    <td></td>
   </tr>");
 
 foreach ($words_list as $word)
@@ -24,6 +25,7 @@ foreach ($words_list as $word)
     <tr>
       <td>".htmlentities($word["word_f"])."</td>
       <td>".htmlentities($word["word_m"])."</td>
+      <td>{$word[category]}</td>
       <td>
         <span id=\"info_{$word[id]}\" style=\"display:none;\">".json_encode(array(
                         "category" => $word["category"],

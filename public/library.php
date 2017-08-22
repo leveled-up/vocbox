@@ -107,6 +107,7 @@ basic_template();
       <thead>
         <th><?=$languages_text_array[1]?></th>
         <th><?=$languages_text_array[0]?></th>
+        <th>Category</th>
         <th>Actions</th>
       </thead>
       <tbody id="library_listwords_table_tbody">
@@ -114,6 +115,7 @@ basic_template();
           <td>
             <b id="library_listwords_table_error">Unknown Error.</b>
           </td>
+          <td></td>
           <td></td>
           <td></td>
         </tr>
