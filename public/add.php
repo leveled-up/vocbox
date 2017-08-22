@@ -41,20 +41,64 @@ basic_template();
 <h2>Add words</h2>
 
 <!-- Prepared HTML -->
+
+<!-- Add Method!Chooser -->
+<div id="add_method_chooser" style="">
+  <!-- Method:Type -->
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <a href="#" id="add_method_type">
+            <h3>Type</h3>
+            <span>You can add words the good old way, just by typing.</span>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
+  <!-- Method:Speak -->
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <a href="#" id="add_method_speak">
+            <h3>Speak</h3>
+            <span>You can speak the <?=$forein_lang_text?> word, we'll auto-complete the <?=$mother_lang_text?> word.</span>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
+  <!-- Method:Scan -->
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <a href="#" id="add_method_scan">
+            <h3>Scan</h3>
+            <span>You can scan the <?=$forein_lang_text?> words with your camera, we'll auto-complete the <?=$mother_lang_text?> words.</span>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Method!Type -->
 <div id="add_" style="display: none;">
 
 </div>
 
-<!--<div class=\"col-sm-3\">
-  <div class=\"panel panel-default\">
-    <div class=\"panel-body\">
-      <center>
-        <h3>$info</h3>
-        <span>$label</span>
-      </center>
-    </div>
-  </div>
-</div>-->
+<!-- Add Method!Speak -->
+<div id="add_" style="display: none;">
+
+</div>
+
+<!-- Add Method!Scan -->
+<div id="add_" style="display: none;">
+
+</div>
 
 <!-- Scripts -->
 <script>
@@ -63,4 +107,5 @@ basic_template();
   library_id = <?=$library_info["id"]?>;
 </script>
 <script src="/util.js"></script>
+<script src="/speech.js"></script>
 <script src="/add.js"></script>
