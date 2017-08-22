@@ -71,8 +71,42 @@ translate = (text, source_lang, target_lang, callback) ->
       console.warn "Failed. Callback(false)"
       callback false
 
-annotateImage = (fileName, callback) ->
+annotateImage = (fileName, mode, callback) ->
 
+  # Log Event
+  console.log "Requested " + mode + " (Vision) of " + fileName
+
+  # Create Parameter Object
+  console.log "Constructing Parameters"
+  parameters = [
+    ["q", fileName],
+    ["mode", mode]
+  ]
+  console.log "Parameters: " + JSON.stringify parameters
+
+  # Call Cloud Function
+  console.log "Calling Cloud Function"
+  call_cf "annotateImage", parameters, (response) ->
+    # Proccess Result
+    result = JSON.parse response
+    if result.success
+      # Success
+      if mode == "labelDetection"
+        response = result.labels
+      else if mode == "textDetection"
+        response = [ result.description ]
+      else
+        console.warn "Invalid mode. Callback(False)"
+        response = false
+
+      console.log "Detected: " + JSON.stringify response
+      console.log "Callback()"
+
+      callback response
+    else
+      # Failed
+      console.warn "Failed. Callback(false)"
+      callback false
 
 analyzeTextSyntax = () ->
   # Object.keys(obj).forEach(function(key) {
