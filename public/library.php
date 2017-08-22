@@ -4,6 +4,7 @@ include("core/core.inc.php");
 
 // Read Parameter
 $current_libary = $_GET["library"];
+echo $current_libary;
 if(!is_numeric($current_libary))
   exit("Error 404: The library ID provided cannot exist.");
 
