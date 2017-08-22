@@ -70,11 +70,13 @@ btn_info_word_click = (word_id) ->
   # Spawn Alert
   alert alert_text
 
+  # Return false (prevent a.href)
+  false
+
 btn_delete_word_click = (word_id) ->
 
   # Create Confirm Text
   confirm_text = "You are about to permanently delete this word. It can't be restored."
 
   # Spawn Confirm
-  return confirm confirm_text
-  
+  confirm confirm_text

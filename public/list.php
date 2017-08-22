@@ -30,10 +30,10 @@ foreach ($words_list as $word)
                         "info" => json_decode($word["info"]) ))."
         </span>
         <div class=\"btn-group btn-group-xs\">
-          <a href=\"#info_{$word[id]}\" id=\"btn_info_{$word[id]}\" onclick=\"btn_info_word_click('{$word[id]}');\" class=\"btn btn-default\">
+          <a href=\"#info_{$word[id]}\" id=\"btn_info_{$word[id]}\" onclick=\"return btn_info_word_click('{$word[id]}');\" class=\"btn btn-default\">
             More
           </a>
-          <a href=\"/delete_word?word={$word[id]}\" id=\"btn_delete_word_{$word[id]}\" onclick=\"btn_delete_word_click('{$word[id]}');\" class=\"btn btn-danger\">
+          <a href=\"/delete_word?word={$word[id]}\" id=\"btn_delete_word_{$word[id]}\" onclick=\"return btn_delete_word_click('{$word[id]}');\" class=\"btn btn-danger\">
             <i class=\"fa fa-times\"></i>
           </a>
         </div>
