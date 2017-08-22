@@ -204,19 +204,19 @@ speech_recognition_add = () ->
       # Process Results
       switch status
         # Init Complete
-        when 0 then
+        when 0
           add_speak_status.innerHTML = "Please allow microphone access and start speaking."
         # New Transcript, not Final
-        when 1 then
+        when 1
           add_speak_status.innerHTML = transcript
         # Nothing Recognized
-        when 3 then
+        when 3
           add_speak_status.innerHTML = "Nothing Recognized."
         # Error
-        when 4 then
+        when 4
           add_speak_status.innerHTML = "An error occurred. Please check your browser (Chrome Required) and/or contact us."
         # New Transcript, isFinal
-        when 2 then
+        when 2
           add_speak_status.innerHTML = "Translating \"" + transcript + "\""
           console.log "Translation started."
 
