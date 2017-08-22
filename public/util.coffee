@@ -52,3 +52,7 @@ hide_object = (dom_object) ->
 show_object = (dom_object) ->
   console.log "Requested show_object() for " + dom_object.id
   dom_object.style = ""
+
+# Alias for encodeURIComponent
+urlencode = (string) ->
+  encodeURIComponent string

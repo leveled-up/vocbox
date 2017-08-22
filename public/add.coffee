@@ -6,7 +6,7 @@ console.warn "This script may not be compatible entirely with all browsers."
 # Get objects from DOM
 dom_objects = [
   # Objects for Method!Chooser
-  "add_method_cooser",
+  "add_method_chooser",
   "add_method_type",
   "add_method_speak",
   "add_method_scan",
@@ -29,7 +29,7 @@ add_method_type.addEventListener "click", () ->
   console.log "User selected Method:Type"
 
   # Hide Method!Chooser
-  hide_object add_method_cooser
+  hide_object add_method_chooser
 
   # Init Type
   console.log "Init Method!Type"
@@ -44,7 +44,7 @@ add_method_speak.addEventListener "click", () ->
   console.log "User selected Method:Speak"
 
   # Hide Method!Chooser
-  hide_object add_method_cooser
+  hide_object add_method_chooser
 
   # Init Speak
   console.log "Init Method!Speak"
@@ -60,7 +60,7 @@ add_method_scan.addEventListener "click", () ->
   console.log "User selected Method:Scan"
 
   # Hide Method!Chooser
-  hide_object add_method_cooser
+  hide_object add_method_chooser
 
   # Init Scan
   console.log "Init Method!Scan"

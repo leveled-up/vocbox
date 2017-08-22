@@ -58,4 +58,4 @@ basic_template();
 </table>
 
 <!-- Scripts -->
-<script src="/main.js"></script>
+<script src="/index.js"></script>
