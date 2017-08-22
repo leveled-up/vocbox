@@ -218,7 +218,7 @@ speech_recognition_add = () ->
           add_speak_status.innerHTML = "Nothing Recognized."
         # Error
         when 4
-          add_speak_status.innerHTML = "An error occurred. Please check your browser (Chrome Required) and/or contact us."
+          add_speak_status.innerHTML = "Nothing Recognized."
         # New Transcript, isFinal
         when 2
           # Insert into Form
@@ -301,6 +301,7 @@ add_speak_form_submit_event = () ->
   word_f = add_speak_word_f.value
   comment = add_speak_comment.value
 
+# up.. in function if empty transcript return
   if word_m == "" or word_f == ""
     console.warn "Empty value."
     add_speak_form_btn.innerHTML = add_speak_form_btn_original_text
