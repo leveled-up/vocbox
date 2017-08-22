@@ -247,7 +247,7 @@ speech_recognition_add = () ->
               console.log "Starting Speech Synthesis (2)."
 
               # Start Speech Synthesis N°2
-              speech_synthesis synthesis_question_2, speech_synthesis_lang, (e) ->
+              speech_synthesis synthesis_question_2, speech_synthesis_lang, (e_) ->
 
                 # Log Event
                 console.log "Synthesis Done. Start Speech Recognition."
