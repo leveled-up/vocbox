@@ -221,6 +221,10 @@ speech_recognition_add = () ->
           add_speak_status.innerHTML = "An error occurred. Please check your browser (Chrome Required) and/or contact us."
         # New Transcript, isFinal
         when 2
+          # Insert into Form
+          add_speak_word_f.value = transcript
+
+          # Translation
           add_speak_status.innerHTML = "Translating \"" + transcript + "\""
           console.log "Translation started."
 
