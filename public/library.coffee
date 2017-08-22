@@ -47,3 +47,34 @@ library_listwords_btn.addEventListener "click", () ->
 
     # Done.
     console.log "Done showing List of Words."
+
+# Functions for List Words
+get_info_data_from_word_id = (word_id) ->
+
+  # Read Info Data From <span>
+  info_data_object_id = "info_" + word_id
+  get_objects [ info_data_object_id ]
+  info_data = window[info_data_object_id].innerHTML
+
+  # Return Info Data as object
+  JSON.parse info_data
+
+btn_info_word_click = (word_id) ->
+
+  # Create Info Alert Text
+  info = get_info_data_from_word_id word_id
+  alert_text = "The word selected is in category " + info.category + "."
+  if info.info.comment?
+    alert_text += " Comment: " + info.info.comment
+
+  # Spawn Alert
+  alert alert_text
+
+btn_delete_word_click = (word_id) ->
+
+  # Create Confirm Text
+  confirm_text = "You are about to permanently delete this word. It can't be restored."
+
+  # Spawn Confirm
+  return confirm confirm_text
+  

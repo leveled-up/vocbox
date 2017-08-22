@@ -90,7 +90,7 @@ basic_template();
 <div id="library_listwords">
   <span id="library_listwords_btn_span" style="">
     <center>
-      <a href="#" id="library_listwords_btn">
+      <a href="#library_listwords" id="library_listwords_btn">
         <i class="fa fa-arrow-down"></i>
         List of Words
       </a>
