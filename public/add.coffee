@@ -67,3 +67,6 @@ add_method_scan.addEventListener "click", () ->
 
   # Show Method!Type
   show_object add_scan
+
+# addEventListener('submit', function(evt){
+#    evt.preventDefault();

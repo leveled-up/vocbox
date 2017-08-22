@@ -144,6 +144,8 @@ analyzeTextSyntax = (text, callback) ->
       console.warn "Failed. Callback(false)"
       callback false
 
-  # Object.keys(obj).forEach(function(key) {
-  #        console.log(key);
-  #    });
+# NOTE: this code is not required and will probably be deleted soon.
+# Object.keys(obj).forEach(function(key) {
+#        console.log(key);
+#    });
+# analyzeTextSyntax("are you pooping right now?",function(text){console.log(JSON.stringify(text));});

@@ -31,6 +31,8 @@ if(isset($_GET["action:insert"])) {
   $insert_query = query_words_create($library_info["id"], $user, $insert);
   $insert_result = query($insert_query);
 
+  // Update stats... Words Added +1
+
   // exit
   exit("0");
 }
@@ -98,7 +100,20 @@ basic_template();
 
 <!-- Add Method!Type -->
 <div id="add_type" style="display: none;">
-Type
+  <p>
+    Below you can type your words the old-fashioned way. If you'd like to use a more modern way to add words, please <a href="#" id="add_type_back">click here</a>.
+    <br /> <br />
+  </p>
+
+  <form action="#" method="" id="add_type_form">
+    <input id="add_type_word_f" class="form-control" placeholder="<?=$forein_lang_text?> Word" />
+    <br /> <br />
+
+    <input id="add_type_word_m" class="form-control" placeholder="<?=$mother_lang_text?> Word" />
+    <br /> <br />
+
+    <button type="submit" id="add_type_form_btn" class="btn btn-success">Submit</button>
+  </form>
 </div>
 
 <!-- Add Method!Speak -->
