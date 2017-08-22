@@ -18,9 +18,10 @@ call_cf = (function_name, parameters, callback) ->
 
   # Construct request_url
   console.log "Constructing Request URL."
+  request_url = "?"
   parameters.forEach (value) ->
     request_url += value[0] + "=" + urlencode(value[1]) + "&"
-  request_url = cf_baseurl + function_name + "?" + request_url
+  request_url = cf_baseurl + function_name + request_url
   console.log "Request URL: " + request_url
 
 
