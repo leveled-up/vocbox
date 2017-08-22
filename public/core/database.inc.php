@@ -55,7 +55,6 @@ function query_library_create($user, $lang, $comment) {
     $comment = "No comment.";
 
   return $query;
-  echo $query;
   $query = "INSERT INTO libraries VALUES ('', '$owner', '$langs', '{}', '1', '$comment', '{}')";
 
 }
