@@ -31,6 +31,16 @@ function query_user_create($user_info) {
 
 }
 
+// QUERY: Update last sign in
+function query_user_update_lastsignin($user_info) {
+
+  $last_sign_in = time();
+  $user_id = get_user_id_from_mail($user_info->email);
+
+  $query = "UPDATE users SET last_sign_in = '$last_sign_in' WHERE id = '$user_id'";
+  return $query;
+  
+}
 
 // TABLE "LIBRARIES"
 // [ID] [OWNER] [LANGS] [STATS] [COMMENT]
