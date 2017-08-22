@@ -1,0 +1,11 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+
+RewriteRule ^(.*)$ $1.php
+
+Options -Indexes
+ErrorDocument 404 "<h1>404 Not Found</h1>"
+ErrorDocument 403 "<h1>403 Forbidden</h1>"
