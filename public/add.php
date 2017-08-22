@@ -35,6 +35,7 @@ if(isset($_GET["action:insert"])) {
   $stats = json_decode($library_info["stats"], true);
   $stats["words_added"]++;
   $stats = json_encode($stats);
+  echo $stats;
   $stats_udate_query = query_library_statsupdate($library_info["id"], $user, $stats);
   echo $stats_update_query;
   $stats_update_result = query($stats_update_query);
