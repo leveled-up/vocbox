@@ -20,7 +20,7 @@ call_cf = (function_name, parameters, callback) ->
   console.log "Constructing Request URL."
   parameters.forEach (value) ->
     request_url += value[0] + "=" + urlencode(value[1]) + "&"
-  request_url = cf_baseurl + "?" + request_url
+  request_url = cf_baseurl + function_name + "?" + request_url
   console.log "Request URL: " + request_url
 
 
@@ -68,3 +68,11 @@ translate = (text, source_lang, target_lang, callback) ->
       # Failed
       console.warn "Failed. Callback(false)"
       callback false
+
+annotateImage = (fileName, callback) ->
+
+
+analyzeTextSyntax = () ->
+  # Object.keys(obj).forEach(function(key) {
+  #        console.log(key);
+  #    });
