@@ -97,18 +97,18 @@ basic_template();
 </div>
 
 <!-- Add Method!Type -->
-<div id="add_" style="display: none;">
-
+<div id="add_type" style="display: none;">
+Type
 </div>
 
 <!-- Add Method!Speak -->
-<div id="add_" style="display: none;">
-
+<div id="add_speak" style="display: none;">
+Speak
 </div>
 
 <!-- Add Method!Scan -->
-<div id="add_" style="display: none;">
-
+<div id="add_scan" style="display: none;">
+Scan
 </div>
 
 <!-- Scripts -->
