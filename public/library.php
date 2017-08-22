@@ -69,11 +69,13 @@ basic_template();
   </a>
   <a href="/train/<?=$library_info["id"]?>" id="library_btn_train" class="btn btn-default">
     <i class="fa fa-arrow-up"></i>
-    Train
+    Training
   </a>
 </div>
 
 <div class="row">
+  <br /> <br />
+  
   <?=$stats_echo?>
 </div>
 
