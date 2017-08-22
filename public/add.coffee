@@ -166,10 +166,10 @@ speech_recognition_add = () ->
 
   # Synthesis Question N° 1
   synthesis_questions_1 = [
-    "What's the " + forein_lang[0] + "word?",
-    "Say the " + forein_lang[0] + "word, please?",
-    "The " + forein_lang[0] + "word, please?",
-    "Can you please say the " + forein_lang[0] + "word now?"
+    "What's the " + forein_lang[0] + " word?",
+    "Say the " + forein_lang[0] + " word, please?",
+    "The " + forein_lang[0] + " word, please?",
+    "Can you please say the " + forein_lang[0] + " word now?"
   ]
   synthesis_questions_1_count = synthesis_questions_1.length-1
   synthesis_question_1_id = Math.floor Math.random() * synthesis_questions_1_count
