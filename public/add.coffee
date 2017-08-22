@@ -70,6 +70,10 @@ add_method_speak.addEventListener "click", () ->
 
   # Show Method!Speak
   show_object add_speak
+
+  # Speech Recognition
+  speech_recognition_add()
+
   # Return false to prevent a.href
   false
 
