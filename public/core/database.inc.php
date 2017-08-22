@@ -178,3 +178,15 @@ function query_words_get($library, $user, $categories) {
   return $query;
 
 }
+
+// QUERY: delete word
+function query_words_delete($library, $user, $word_id) {
+
+  $owner = encode($user->id);
+  $library = encode($library);
+  $word_id = encode($word_id);
+
+  $query = "DELETE FROM words WHERE owner = '$owner' AND library = '$library' AND id = '$word_id'";
+  return $query;
+
+}
