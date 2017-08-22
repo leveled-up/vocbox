@@ -178,7 +178,7 @@ speech_recognition_add = () ->
 
   # Synthesis Question N° 2
   synthesis_questions_2 = [
-    "ok?",
+  #  "ok?",
   #  "Is this right?",
     "Correct?"
   ]
