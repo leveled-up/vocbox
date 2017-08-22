@@ -58,12 +58,14 @@ basic_template();
 
 <p>
   This is your <b><?=$languages_text?></b> library. All words can be found by clicking <i>List of Words</i> below the stats.
+
+  <br /> <br />
 </p>
 
 <div class="btn-group">
   <a href="/add/<?=$library_info["id"]?>" id="library_btn_add" class="btn btn-default">
     <i class="fa fa-plus"></i>
-    Add
+    Add Words
   </a>
   <a href="/train/<?=$library_info["id"]?>" id="library_btn_train" class="btn btn-default">
     <i class="fa fa-arrow-up"></i>
