@@ -44,6 +44,11 @@ basic_template();
 
 <!-- Add Method!Chooser -->
 <div id="add_method_chooser" style="">
+
+  <p>
+    Please choose the method you'd like to use to add words below.
+    <br /> <br />
+  </p>
   <!-- Method:Type -->
   <div class="col-sm-3">
     <div class="panel panel-default">
