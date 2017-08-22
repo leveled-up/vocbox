@@ -45,6 +45,9 @@ add_method_type.addEventListener "click", () ->
   # Show Method!Type
   show_object add_type
 
+  # Return false to prevent a.href
+  false
+
 # Method:Speak
 add_method_speak.addEventListener "click", () ->
 
@@ -59,6 +62,9 @@ add_method_speak.addEventListener "click", () ->
 
   # Show Method!Speak
   show_object add_speak
+
+  # Return false to prevent a.href
+  false
 
 
 # Method:Scan
@@ -76,9 +82,8 @@ add_method_scan.addEventListener "click", () ->
   # Show Method!Type
   show_object add_scan
 
-# NOTE: old code not needed anymore
-# addEventListener('submit', function(evt){
-#    evt.preventDefault();
+  # Return false to prevent a.href
+  false
 
 # **** #Method!Type ****
 # Type Form Submit EventListener
@@ -115,7 +120,7 @@ add_type_form.addEventListener "submit", (evt) ->
 
     # Remove "Saving..."
     add_type_form_btn.innerHTML = add_type_form_btn_original_text
-  
+
 # Show Comment Input Box
 add_type_comment_btn.addEventListener "click", () ->
 
