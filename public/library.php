@@ -16,17 +16,19 @@ if(!isset($library_info["id"]))
 // Prepare Stats
 function library_make_info_panel($info, $label) {
     return "
-    <div class=\"col-sm-6\">
+    <div class=\"col-sm-3\">
       <div class=\"panel panel-default\">
         <div class=\"panel-body\">
-          <h3>$info</h3>
-          <span>$label</span>
+          <center>
+            <h3>$info</h3>
+            <span>$label</span>
+          </center>
         </div>
       </div>
     </div>";
 }
 
-// Stats: {words_added: int, words_trained: int, words_trained_correct: int}
+// Stats: {words_added: int, words_trained: int, words_trained_correct: int, last_training_time: int}
 $stats = json_decode($library_info["stats"], true);
 $stats_possible_values = array(
   "words_added" => "words added",
@@ -75,7 +77,7 @@ basic_template();
 
 <div class="row">
   <br /> <br />
-  
+
   <?=$stats_echo?>
 </div>
 
