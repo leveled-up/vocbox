@@ -17,10 +17,12 @@ if(!isset($library_info["id"]))
 function library_make_info_panel($info, $label) {
     return "
     <div class=\"col-sm-6\">
-      <center>
-        <h3>$info</h3>
-        <span>$label</span>
-      </center>
+      <div class=\"panel panel-default\">
+        <div class=\"panel-body\">
+          <h3>$info</h3>
+          <span>$label</span>
+        </div>
+      </div>
     </div>";
 }
 
@@ -54,6 +56,28 @@ basic_template();
 ?>
 <h2><?=$languages_text?> (#<?=$library_info["id"]?>)</h2>
 
+<p>
+  This is your <b><?=$languages_text?></b> library. All words can be found by clicking <i>List of Words</i> below the stats.
+</p>
+
+<div class="btn-group">
+  <a href="/add/<?=$library_info["id"]?>" id="library_btn_add" class="btn btn-default">
+    <i class="fa fa-plus"></i>
+    Add
+  </a>
+  <a href="/train/<?=$library_info["id"]?>" id="library_btn_train" class="btn btn-default">
+    <i class="fa fa-arrow-up"></i>
+    Train
+  </a>
+</div>
+
 <div class="row">
   <?=$stats_echo?>
 </div>
+
+<center>
+  <a href="#" id="library_btn_listwords">
+    <i class="fa fa-arrow-down"></i>
+    List of Words
+  </a>
+</center>
