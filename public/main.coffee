@@ -108,7 +108,42 @@ annotateImage = (fileName, mode, callback) ->
       console.warn "Failed. Callback(false)"
       callback false
 
-analyzeTextSyntax = () ->
+analyzeTextSyntax = (text, callback) ->
+
+  # Log Event
+  console.log "Requested analyzeTextSyntax of " + text
+
+  # Create Parameter Object
+  console.log "Constructing Parameters"
+  parameters = [
+    ["q", text]
+  ]
+  console.log "Parameters: " + JSON.stringify parameters
+
+  # Call Cloud Function
+  console.log "Calling Cloud Function"
+  call_cf "analyzeTextSyntax", parameters, (response) ->
+
+    # Proccess Result
+    console.log "Result: " + response
+    result = JSON.parse response
+
+    if result.success
+      # Success
+      result_ = result.result
+      response_ = []
+      result_.forEach (item) ->
+        response_.push item.partOfSpeech.tag
+
+      console.log "Extracted Response: " + JSON.stringify response_
+      console.log "Callback()"
+
+      callback response_
+    else
+      # Failed
+      console.warn "Failed. Callback(false)"
+      callback false
+
   # Object.keys(obj).forEach(function(key) {
   #        console.log(key);
   #    });
