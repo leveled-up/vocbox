@@ -47,8 +47,8 @@ foreach($stats_possible_values as $stats_key => $stats_label)
 if(!isset($stats_echo))
   $stats_echo = "
   <center>
+  This library is so brand new, we don't have any stats. <a href=\"/add/{$library_info[id]}\">Get Started</a>
     <b>
-      This library is so brand new, we don't have any stats. <a href=\"/add_words/{$library_info[id]}\">Get Started</a>
     </b>
   </center>";
 
