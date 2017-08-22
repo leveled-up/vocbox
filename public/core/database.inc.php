@@ -73,7 +73,7 @@ function query_library_list($user) {
 function query_library_info($library, $user) {
 
   $owner = encode($user->id);
-  $libary = encode($library);
+  $library = encode($library);
 
   $query = "SELECT * FROM libraries WHERE owner = '$owner' AND id = '$library' LIMIT 1";
   return $query;
@@ -84,7 +84,7 @@ function query_library_info($library, $user) {
 function query_library_statsupdate($libary, $user, $stats) {
 
   $owner = encode($user->id);
-  $libary = encode($library);
+  $library = encode($library);
   $stats = encode($stats);
 
   $query = "UPDATE libraries SET stats = '$stats' WHERE owner = '$owner' AND id = '$library'";
@@ -96,7 +96,7 @@ function query_library_statsupdate($libary, $user, $stats) {
 function query_library_settingsupdate($libary, $user, $settings) {
 
   $owner = encode($user->id);
-  $libary = encode($library);
+  $library = encode($library);
   $settings = encode($settings);
 
   $query = "UPDATE libraries SET settings = '$settings' WHERE owner = '$owner' AND id = '$library'";
@@ -108,7 +108,7 @@ function query_library_settingsupdate($libary, $user, $settings) {
 function query_library_categoriesupdate($libary, $user, $cats) {
 
   $owner = encode($user->id);
-  $libary = encode($library);
+  $library = encode($library);
   $cats = encode($cats);
 
   $query = "UPDATE libraries SET categories = '$cats' WHERE owner = '$owner' AND id = '$library'";
@@ -120,7 +120,7 @@ function query_library_categoriesupdate($libary, $user, $cats) {
 function query_library_delete($library, $user) {
 
   $owner = encode($user->id);
-  $libary = encode($library);
+  $library = encode($library);
 
   $query = "DELETE FROM libraries WHERE owner = '$owner' AND id = '$library'";
   return $query;

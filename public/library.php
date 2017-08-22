@@ -10,7 +10,6 @@ if(!is_numeric($current_libary))
 // Get Info from Database
 $library_info_query = query_library_info($current_library, $user);
 $library_info = query($library_info_query);
-echo $library_info_query; var_dump($libary_info);
 if(!isset($library_info["id"]))
   exit("Error 404: The library {$current_library} was not found this user.");
 
