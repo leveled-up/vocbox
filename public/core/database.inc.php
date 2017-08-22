@@ -81,7 +81,7 @@ function query_library_info($library, $user) {
 }
 
 // QUERY: update stats of a library
-function query_library_statsupdate($libary, $user, $stats) {
+function query_library_statsupdate($library, $user, $stats) {
 
   $owner = encode($user->id);
   $library = encode($library);
@@ -93,7 +93,7 @@ function query_library_statsupdate($libary, $user, $stats) {
 }
 
 // QUERY: update settings of a library
-function query_library_settingsupdate($libary, $user, $settings) {
+function query_library_settingsupdate($library, $user, $settings) {
 
   $owner = encode($user->id);
   $library = encode($library);
@@ -105,7 +105,7 @@ function query_library_settingsupdate($libary, $user, $settings) {
 }
 
 // QUERY: update categories count of a library
-function query_library_categoriesupdate($libary, $user, $cats) {
+function query_library_categoriesupdate($library, $user, $cats) {
 
   $owner = encode($user->id);
   $library = encode($library);
