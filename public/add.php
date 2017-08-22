@@ -21,7 +21,7 @@ if(isset($_GET["action:insert"])) {
   if($insert[0] == "" or $insert[1] == "")
     exit("1");
 
-  if(count($insert) > 3 or count($inser) < 2)
+  if(count($insert) > 3 or count($insert) < 2)
     exit("2");
 
   if(isset($insert[2]))
