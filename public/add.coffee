@@ -275,6 +275,8 @@ add_speak_form.addEventListener "submit", (evt) ->
   # Prevent Form Submit
   evt.preventDefault()
 
+  console.log "TEST"
+
   # [.....]
 
 # Show Comment Input Box
