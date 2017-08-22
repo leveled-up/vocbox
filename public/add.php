@@ -106,13 +106,19 @@ basic_template();
   </p>
 
   <form action="#" method="" id="add_type_form">
-    <input id="add_type_word_f" class="form-control" placeholder="<?=$forein_lang_text?> Word" />
+    <b>
+      <input id="add_type_word_f" class="form-control" placeholder="<?=$forein_lang_text?> Word" />
+    </b>
+    <br />
+
+    <b>
+      <input id="add_type_word_m" class="form-control" placeholder="<?=$mother_lang_text?> Word" />
+    </b>
     <br /> <br />
 
-    <input id="add_type_word_m" class="form-control" placeholder="<?=$mother_lang_text?> Word" />
-    <br /> <br />
-
-    <button type="submit" id="add_type_form_btn" class="btn btn-success">Submit</button>
+    <center>
+      <button type="submit" id="add_type_form_btn" class="btn btn-success">Submit</button>
+    </center>
   </form>
 </div>
 
