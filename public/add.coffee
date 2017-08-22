@@ -270,7 +270,7 @@ speech_recognition_add = () ->
                   if transcript_ispositive >= 0
                     # Auto Submit
                     console.log "Auto Submit."
-                    add_speak_form.submit()
+                    add_speak_form_submit_event()
 
                   else
                     # No Submit
@@ -283,9 +283,42 @@ add_speak_form.addEventListener "submit", (evt) ->
   # Prevent Form Submit
   evt.preventDefault()
 
-  console.log "TEST"
+  add_speak_form_submit_event()
 
-  # [.....]
+# Submit Function
+add_speak_form_submit_event = () ->
+
+  # Log Event
+  console.log "Form Submit"
+
+  # Show Working State
+  add_speak_form_btn_original_text = add_speak_form_btn.innerHTML
+  add_speak_form_btn.innerHTML = "Saving..."
+
+  # Send to DB
+  # send_word_to_db = (word_m, word_f, comment, callback) ->
+  word_m = add_speak_word_m.value
+  word_f = add_speak_word_f.value
+  comment = add_speak_comment.value
+
+  send_word_to_db word_m, word_f, comment, (success) ->
+
+    # Log Event
+    console.log "send_word_to_db() callback fired."
+
+    # process Result
+    if success
+      console.log "Success"
+      add_speak_form.reset()
+    else
+      console.warn "Failed"
+      alert "Error 500: We weren't able to save your input"
+
+    # Remove "Saving..."
+    add_speak_form_btn.innerHTML = add_speak_form_btn_original_text
+
+    # Start Next Speech Recognition
+    speech_recognition_add()
 
 # Show Comment Input Box
 add_speak_comment_btn.addEventListener "click", () ->
