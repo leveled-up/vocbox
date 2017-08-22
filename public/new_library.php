@@ -31,7 +31,9 @@ if(isset($_POST["new_library_form_langs_m"])) {
   $comment = $postvalues[2];
 
   // Database Request
+  echo "Test";
   $library_create_query = query_library_create($user, $lang, $comment);
+  echo "test 22 $library_create_query";
   echo $library_create_query;
   $library_create = query($library_create_query);
 
