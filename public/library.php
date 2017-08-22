@@ -54,6 +54,7 @@ if(!isset($stats_echo))
 
 // Prepare & Print Page
 $languages_text = language_pair_to_text($library_info["langs"]);
+$languages_text_array = explode(" - ", $languages_text);
 basic_template();
 ?>
 <h2><?=$languages_text?> (#<?=$library_info["id"]?>)</h2>
@@ -64,6 +65,7 @@ basic_template();
   <br /> <br />
 </p>
 
+<!-- Main Navigation -->
 <div class="btn-group">
   <a href="/add/<?=$library_info["id"]?>" id="library_btn_add" class="btn btn-default">
     <i class="fa fa-plus"></i>
@@ -75,15 +77,54 @@ basic_template();
   </a>
 </div>
 
+<!-- Library Stats -->
 <div class="row">
   <br /> <br />
 
   <?=$stats_echo?>
+
+  <br /> <br />
 </div>
 
-<center>
-  <a href="#" id="library_btn_listwords">
-    <i class="fa fa-arrow-down"></i>
-    List of Words
-  </a>
-</center>
+<!-- List of Words -->
+<div id="library_listwords">
+  <span id="library_listwords_btn_span" style="">
+    <center>
+      <a href="#" id="library_listwords_btn">
+        <i class="fa fa-arrow-down"></i>
+        List of Words
+      </a>
+    </center>
+  </span>
+  <span id="library_listwords_spinner" style="display: none;">
+    <img src="https://www.runstorageapis.com/img/throbber_small.svg" alt="" />
+    One moment, please.
+  </span>
+  <span id="library_listwords_table_span" style="display: none;">
+    <table id="library_listwords_table">
+      <thead>
+        <th><?=$languages_text_array[0]?></th>
+        <th><?=$languages_text_array[1]?></th>
+        <th>Actions</th>
+      </thead>
+      <tbody id="library_listwords_table_tbody">
+        <tr>
+          <td>
+            <b id="library_listwords_table_error">Unknown Error.</b>
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </span>
+</div>
+
+<!-- Scripts -->
+<script>
+  // Library ID for library.js
+  var library_id;
+  library_id = <?=$library_info["id"]?>;
+</script>
+<script src="/util.js"></script>
+<script src="/library.js"></script>

@@ -32,7 +32,19 @@ get_objects = (dom_objects) ->
 getCookie = (name) ->
   console.log "Requested getting contents of " + name + " cookie."
   console.log "Current Cookies: " + document.cookie
-  
+
   value = "; " + document.cookie
   parts = value.split "; " + name + "="
   return parts.pop().split(";").shift() if parts.length == 2
+
+# Hide DOM object using CSS
+# (!) This may delete other CSS
+hide_object = (dom_object) ->
+  console.log "Requested hide_object() for " + dom_object.id
+  dom_object.style = "display: none;"
+
+# Show DOM object using CSS
+# (!) This may delete other CSS
+show_object = (dom_object) ->
+  console.log "Requested show_object() for " + dom_object.id
+  dom_object.style = ""
