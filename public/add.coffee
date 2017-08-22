@@ -22,6 +22,14 @@ dom_objects = [
   "add_type_comment",
   # Objects for Method!Speak
   "add_speak",
+  "add_speak_status",
+  "add_speak_form",
+  "add_speak_form_btn",
+  "add_speak_word_m",
+  "add_speak_word_f",
+  "add_speak_show_comment",
+  "add_speak_comment_btn",
+  "add_speak_comment",
   # Objects for Method!Scan
   "add_scan"
 ]
@@ -62,7 +70,6 @@ add_method_speak.addEventListener "click", () ->
 
   # Show Method!Speak
   show_object add_speak
-
   # Return false to prevent a.href
   false
 
@@ -71,6 +78,7 @@ add_method_speak.addEventListener "click", () ->
 add_method_scan.addEventListener "click", () ->
 
   # Log to Console
+
   console.log "User selected Method:Scan"
 
   # Hide Method!Chooser
@@ -131,8 +139,17 @@ add_type_comment_btn.addEventListener "click", () ->
   hide_object add_type_show_comment
   show_object add_type_comment
 
+# Return To Method Selection Button
+add_type_back.addEventListener "click", () ->
+
+  # Log Event
+  console.log "Requested add_type_back()."
+
+  # Reload Page
+  window.location.reload()
 
 # **** #Method!Speak ****
+
 
 # **** #Method!Scan ****
 

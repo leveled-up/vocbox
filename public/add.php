@@ -139,7 +139,36 @@ basic_template();
 
 <!-- Add Method!Speak -->
 <div id="add_speak" style="display: none;">
-Speak
+  <p>
+    <span id="add_speak_status" style="color: grey;">Loading...</span>
+    <br /> <br />
+  </p>
+
+  <form action="#" method="" id="add_speak_form">
+    <b>
+      <input id="add_speak_word_f" class="form-control" placeholder="<?=$forein_lang_text?> Word" />
+    </b>
+    <br />
+
+    <b>
+      <input id="add_speak_word_m" class="form-control" placeholder="<?=$mother_lang_text?> Word (auto)" />
+    </b>
+    <br />
+
+    <span id="add_speak_show_comment" style="">
+      <center>
+        <a href="#" id="add_speak_comment_btn">Add Comment</a>
+      </center>
+    </span>
+
+    <input id="add_speak_comment" style="display: none;" class="form-control" placeholder="Comment" />
+
+    <br /> <br />
+
+    <center>
+      <button speak="submit" id="add_speak_form_btn" class="btn btn-success">Submit</button>
+    </center>
+  </form>
 </div>
 
 <!-- Add Method!Scan -->
