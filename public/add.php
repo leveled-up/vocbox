@@ -31,7 +31,12 @@ if(isset($_GET["action:insert"])) {
   $insert_query = query_words_create($library_info["id"], $user, $insert);
   $insert_result = query($insert_query);
 
-  // Update stats... Words Added +1
+  // Update stats
+  $stats = json_decode($library_info["stats"], true);
+  $stats["words_added"]++;
+  $stats = json_encode($stats);
+  $stats_udate_query = query_library_statsupdate($library_info["id"], $user, $stats);
+  $stats_update_result = query($stats_update_query);
 
   // exit
   exit("0");
