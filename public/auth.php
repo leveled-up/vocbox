@@ -58,8 +58,7 @@ if(isset($_COOKIE["__gtoken"]) or isset($_POST["__gtoken"])) {
   }
 
   // Update Last Sign In
-  $user_update_lastsignin_query = query_user_update_lastsignin($user_info_query_result);
-  echo $user_update_lastsignin_query; var_dump($user_info_query_result);
+  $user_update_lastsignin_query = query_user_update_lastsignin((object)$user_info_query_result);
   $user_update_lastsignin = query($user_update_lastsignin_query);
 
   // Set Session Variables
