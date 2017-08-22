@@ -303,6 +303,7 @@ add_speak_form_submit_event = () ->
 
   if word_m == "" or word_f == ""
     console.warn "Empty value."
+    add_speak_form_btn.innerHTML = add_speak_form_btn_original_text
     return
 
   send_word_to_db word_m, word_f, comment, (success) ->
