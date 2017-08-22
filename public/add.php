@@ -35,7 +35,13 @@ if(isset($_GET["action:insert"])) {
   exit("0");
 }
 
-// Show Page
+// Languages
+$languages_text = language_pair_to_text($library_info["langs"]);
+$languages_text_array = explode(" - ", $languages_text);
+$forein_lang_text = $languages_text_array[1];
+$mother_lang_text = $languages_text_array[0];
+
+// Prepare & Show Page
 basic_template();
 ?>
 <h2>Add words</h2>
@@ -44,7 +50,7 @@ basic_template();
 
 <!-- Add Method!Chooser -->
 <div id="add_method_chooser" style="">
-
+  <!-- Method Info -->
   <p>
     Please choose the method you'd like to use to add words below.
     <br /> <br />
@@ -69,7 +75,7 @@ basic_template();
         <center>
           <a href="#" id="add_method_speak">
             <h3>Speak</h3>
-            <span>You can speak the <?=$forein_lang_text?> word, we'll auto-complete the <?=$mother_lang_text?> word.</span>
+            <span>You can speak the <?=$forein_lang_text?> words, we'll auto-complete the <?=$mother_lang_text?> words.</span>
           </a>
         </center>
       </div>
