@@ -301,6 +301,10 @@ add_speak_form_submit_event = () ->
   word_f = add_speak_word_f.value
   comment = add_speak_comment.value
 
+  if word_m == "" or word_f == ""
+    console.warn "Empty value."
+    return
+
   send_word_to_db word_m, word_f, comment, (success) ->
 
     # Log Event
