@@ -131,6 +131,7 @@ train_method_type.addEventListener "click", () ->
 
   # Init Type
   console.log "Init Method!Type"
+  train_type_new_word()
 
   # Show Method!Type
   show_object train_type

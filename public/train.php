@@ -173,7 +173,7 @@ basic_template();
     If you're looking for a more modern way to train vocabulary, please <a href="?">click here</a>.
 
     <br />
-    <span id="train_type_question">
+    <span id="train_type_question" style="">
       <center>
         What's
         <b>
@@ -194,7 +194,7 @@ basic_template();
         </center>
       </form>
     </span>
-    <span id="train_type_result">
+    <span id="train_type_result" style="display: none;">
       <div id="train_type_result_alert" class="alert alert-success">
         <b>
           <span id="train_type_result_correct">Exactly/Nope</span>!
