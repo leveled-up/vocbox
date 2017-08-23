@@ -259,8 +259,8 @@ train_type_answer_submit = () ->
 
     hide_object train_type_question
     console.log train_type_form_btn_original_text
-    console.log train_type_form_btn.innerHTML
-    train_type_form_btn.innerHTML = train_type_form_btn_original_text
+    train_type_form_btn.innerHTML = "TEST!!!!!!!!"
+    #train_type_form_btn.innerHTML = train_type_form_btn_original_text
     show_object train_type_result
 
     if not success
