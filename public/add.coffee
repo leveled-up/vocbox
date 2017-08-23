@@ -428,7 +428,9 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
   add_scan_status.innerHTML = throbber_small + "Processing image with OCR..."
 
   # Prepare storageFilename
+  console.log "Preparing Storage Filename... Old: " + storageFilename
   storageFilename_ = storageFilename.replace "vision_images/", ""
+  console.log "New: " + storageFilename_
 
   # Scan Image
   annotateImage storageFilename_, "textDetection", (response) ->
