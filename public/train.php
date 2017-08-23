@@ -200,15 +200,14 @@ basic_template();
       <b>
         <span id="train_type_result_correct">Exactly/Nope</span>!
       </b>
-      The correct answer is:
+      The correct answer is: The <?=$forein_lang_text?> 
       <b>
         <span id="train_type_result_word_f">train_type_result_positive_word_f</span>
       </b>
       means
       <b>
         <span id="train_type_result_word_m">train_type_result_word_m</span>
-      </b>
-      in <?=$forein_lang_text?>.
+      </b>.
     </div>
     <br />
 
