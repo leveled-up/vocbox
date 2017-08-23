@@ -483,7 +483,7 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
             console.log "Translation Success: " + response_
             translation_result = {
               word_m: response_,
-              word_f: text
+              word_f: text_
             }
             result_.push translation_result
 
