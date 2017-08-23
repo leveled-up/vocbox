@@ -90,7 +90,7 @@ basic_template();
         <center>
           <a href="#" id="train_method_speak">
             <h3>Speak</h3>
-            <span>We'll play the <?=$mother_lang_text?> words ,then you can speak the <?=$forein_lang_text?> words.</span>
+            <span>We'll play the <?=$mother_lang_text?> words, then you can speak the <?=$forein_lang_text?> words.</span>
           </a>
         </center>
       </div>
@@ -102,7 +102,7 @@ basic_template();
       <div class="panel-body">
         <center>
           <a href="#" id="train_method_libs">
-            <h3>Voc Libs</h3>
+            <h3>VocLibs</h3>
             <span>We'll play a game. We ask you to tell us some sentences in <?=$forein_lang_text?> and we'll create a nice text.</span>
           </a>
         </center>
