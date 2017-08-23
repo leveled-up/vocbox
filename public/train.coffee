@@ -227,7 +227,7 @@ train_type_answer_submit = () ->
   console.log "train_type_answer_submit()"
 
   # Validate Correctness of Input
-  train_type_form_btn_original_text = train_type_form_btn.innerHTML
+  window.train_type_form_btn_original_text = train_type_form_btn.innerHTML
   train_type_form_btn.innerHTML = "Submitting..."
   word_f = train_type_form_word_f.value.toLowerCase()
   console.log "input.word_f: " + word_f
@@ -260,7 +260,7 @@ train_type_answer_submit = () ->
     hide_object train_type_question
     console.log train_type_form_btn_original_text
     train_type_form_btn.innerHTML = "TEST!!!!!!!!"
-    #train_type_form_btn.innerHTML = train_type_form_btn_original_text
+    train_type_form_btn.innerHTML = train_type_form_btn_original_text
     show_object train_type_result
 
     if not success
