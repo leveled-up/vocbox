@@ -373,8 +373,8 @@ add_scan_file_button.addEventListener "change", (e) ->
     add_scan_status.innerHTML = throbber_small + "Preparing upload of " + add_scan_upload_filename + "..."
 
     # Create a storage ref
-    storageFilename = getStorageFilename add_scan_file.name, "vision_images"
     alert "test1"
+    storageFilename = getStorageFilename add_scan_file.name, "vision_images"
     storageRef = firebase.storage().ref storageFilename
     alert "Test 2"
 
