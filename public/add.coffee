@@ -369,15 +369,17 @@ add_scan_file_button.addEventListener "change", (e) ->
       return false
 
     # Show Progress Div
+    hide_object add_scan_upload_select_span
     add_scan_status.innerHTML = throbber_small + "Preparing upload of " + add_scan_upload_filename + "..."
 
     # Create a storage ref
     storageFilename = getStorageFilename add_scan_file.name, "vision_images"
+    alert "test1"
     storageRef = firebase.storage().ref storageFilename
+    alert "Test 2"
 
     # Upload file
     add_scan_update_progress 0
-    hide_object add_scan_upload_select_span
     window.add_scan_upload_start_time = Date.now() / 1000
     task = storageRef.put add_scan_file
 
@@ -393,6 +395,7 @@ add_scan_file_button.addEventListener "change", (e) ->
 add_scan_update_progress = (percent, bytesTransferred, totalBytes, upload_start_time) ->
    # Calculate Upload Speed
    time_now = Date.now() / 1000
+   alert bytesTransferred
    upload_speed_ = bytesTransferred / ( time_now - upload_start_time )
    upload_speed = formatFilesize upload_speed_
 
