@@ -40,7 +40,7 @@ $stats_possible_values = array(
 foreach($stats_possible_values as $stats_key => $stats_label)
   if(isset($stats[$stats_key])) {
       if($stats_key == "last_training_time")
-        $stats[$stats_key] = date("m/d/Y", $stats[$stats_key]);
+        $stats[$stats_key] = date("d/m/Y", $stats[$stats_key]);
       $stats_echo .= library_make_info_panel($stats[$stats_key], $stats_label);
     }
 
@@ -60,7 +60,7 @@ basic_template();
 <h2><?=$languages_text?> (#<?=$library_info["id"]?>)</h2>
 
 <p>
-  This is your <b><?=$languages_text?></b> library. All words can be found by clicking <i>List of Words</i> below the stats.
+  This is your <b><?=$languages_text?></b> library. All words can be found by clicking <i>List of Words</i> below the stats. If this is not the library you ment to open, get back by <a href="/">clicking here</a>.
 
   <br /> <br />
 </p>
