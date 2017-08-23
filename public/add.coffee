@@ -372,7 +372,7 @@ add_scan_file_button.addEventListener "change", (e) ->
     storageRef = firebase.storage().ref storageFilename
 
     # Upload file
-    update_progress 0
+    add_scan_update_progress 0
     window.add_scan_upload_start_time = Date.now() / 1000
     task = storageRef.put file
 
