@@ -138,7 +138,7 @@ basic_template();
     <br />
 
     <center>
-      <button type="submit" id="add_type_form_btn" class="btn btn-success btn-lg">Submit</button>
+      <button type="submit" id="add_type_form_btn" class="btn btn-success">Submit</button>
     </center>
   </form>
 </div>
@@ -175,7 +175,7 @@ basic_template();
     <br />
 
     <center>
-      <button speak="submit" id="add_speak_form_btn" class="btn btn-success">Submit</button>
+      <button speak="submit" id="add_speak_form_btn" class="btn btn-success btn-lg">Submit</button>
     </center>
   </form>
 </div>
