@@ -352,6 +352,10 @@ add_speak_back.addEventListener "click", () ->
   window.location.reload()
 
 # **** #Method!Scan ****
+# Android Workaround. Hopefully working
+add_scan_file_button.addEventListener "click", () ->
+  this.value = null
+
 # File Upload: Listen for file selection
 add_scan_file_button.addEventListener "change", (e) ->
 
