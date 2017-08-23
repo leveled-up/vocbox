@@ -260,7 +260,7 @@ train_type_answer_submit = () ->
     console.log "TEST1"
     hide_object train_type_question
     console.log "TEST2"
-    train_type_form_btn.innerHTML = train_type_form_btn_originaltext
+    train_type_form_btn.innerHTML = train_type_form_btn_original_text
     show_object train_type_result
     console.log "TEST3"
 
