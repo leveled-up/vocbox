@@ -62,7 +62,7 @@ basic_template();
 <div id="add_method_chooser" style="">
   <!-- Method Info -->
   <p>
-    Please choose the method you'd like to use to add words below.
+    Please choose the method you'd like to use to add words below. If you don't want to add words, you can get back to your library by <a href="/library/<?$library_info["id"]?>">clicking here</a>.
     <br /> <br />
   </p>
   <!-- Method:Type -->
