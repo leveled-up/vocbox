@@ -60,8 +60,8 @@ elseif(isset($_GET["action:results"])) {
 
   if($correct == "1") {
 
-    $cats = $result["category"]++;
-    echo $cats;
+    $cats = $result["category"]+1;
+    echo $cats; var_dump($result);
     if($result["category"] >= $library_info["categories"]) {
       // new category
       $query_cat_update = query_library_categoriesupdate($library_info["id"], $user, $cats);
