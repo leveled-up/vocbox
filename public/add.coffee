@@ -365,7 +365,7 @@ add_scan_file_button.addEventListener "change", (e) ->
       return false
 
     # Show Progress Div
-    add_scan_status.innerHTML = "Preparing upload of " + add_scan_upload_filename + "..."
+    add_scan_status.innerHTML = throbber_small + "Preparing upload of " + add_scan_upload_filename + "..."
 
     # Create a storage ref
     storageFilename = getStorageFilename add_scan_file.name, "vision_images"
@@ -373,6 +373,7 @@ add_scan_file_button.addEventListener "change", (e) ->
 
     # Upload file
     add_scan_update_progress 0
+    hide_object add_scan_upload_select_span
     window.add_scan_upload_start_time = Date.now() / 1000
     task = storageRef.put add_scan_file
 
@@ -424,7 +425,7 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
   console.log upload_filename + " (" + upload_size + "B) uploaded as " + storageFilename
 
   # Continue Processing
-  add_scan_status.innerHTML = "Upload successfully completed."
+  add_scan_status.innerHTML = throbber_small + "Upload successfully completed."
   add_scan_status.innerHTML = throbber_small + "Processing image with OCR..."
 
   # Prepare storageFilename
@@ -442,7 +443,7 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
     else
       # Success
       console.log "Scanning Succeeded."
-      add_scan_status.innerHTML = "The image was analyzed successfully."
+      add_scan_status.innerHTML = throbber_small + "The image was analyzed successfully."
 
       # Take a look at result.
       text = response[0]
@@ -496,7 +497,6 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
             if result_.length == lines_array_.length
               add_scan_status.innerHTML = "Please confirm the scan by clicking below."
               add_scan_confirm_pre.innerHTML = result_pre
-              hide_object add_scan_upload_select_span
               show_object add_scan_confirm_span
             else
               add_scan_status.innerHTML = throbber_small + "Translation in progress..."
