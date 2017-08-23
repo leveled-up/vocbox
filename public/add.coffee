@@ -163,6 +163,12 @@ add_type_form.addEventListener "submit", (evt) ->
   word_f = add_type_word_f.value
   comment = add_type_comment.value
 
+  # Check for Empty Values
+  if word_m == "" or word_f == ""
+    console.log "Empty value detected."
+    alert "You must fill both fields in typing mode."
+    return
+
   send_word_to_db word_m, word_f, comment, (success) ->
 
     # Log Event
