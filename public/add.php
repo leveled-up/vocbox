@@ -146,7 +146,7 @@ basic_template();
 <!-- Add Method!Speak -->
 <div id="add_speak" style="display: none;">
   <p>
-    <span id="add_speak_status" style="color: grey;">Loading...</span>
+    <span id="add_speak_status" style="color: grey;">Not the method you wanted? To get back, <a href="#" id="add_type_back">click here</a>.</span>
     <br /> <br />
   </p>
 

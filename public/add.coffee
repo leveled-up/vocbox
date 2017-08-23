@@ -23,6 +23,7 @@ dom_objects = [
   "add_type_comment_span",
   # Objects for Method!Speak
   "add_speak",
+  "add_speak_back",
   "add_speak_status",
   "add_speak_form",
   "add_speak_form_btn",
@@ -53,6 +54,9 @@ add_method_type.addEventListener "click", () ->
 
   # Show Method!Type
   show_object add_type
+
+  # Focus Field
+  add_type_word_f.focus()
 
   # Return false to prevent a.href
   false
@@ -166,133 +170,61 @@ speech_recognition_add = () ->
   console.log "speech_recognition_add() requested."
 
   # Prepare
-  speech_synthesis_lang = "en"
   speech_recognition_lang = forein_lang[1]
   translation_trg_lang = mother_lang[1]
 
-  # Synthesis Question N° 1
-  synthesis_questions_1 = [
-    "What's the " + forein_lang[0] + " word?",
-  #  "Say the " + forein_lang[0] + " word, please?",
-    "The " + forein_lang[0] + " word, please?",
-  #  "Can you please say the " + forein_lang[0] + " word now?"
-  ]
-  synthesis_questions_1_count = synthesis_questions_1.length-1
-  synthesis_question_1_id = Math.floor Math.random() * synthesis_questions_1_count
-  synthesis_question_1 = synthesis_questions_1[synthesis_question_1_id]
-  console.log "Synthesis Question 1: " + synthesis_question_1
+  add_speak_status.innerHTML = "Preparing Speech Recognition..."
 
-  # Synthesis Question N° 2
-  synthesis_questions_2 = [
-  #  "ok?",
-  #  "Is this right?",
-    "Correct?"
-  ]
-  synthesis_questions_2_count = synthesis_questions_2.length-1
-  synthesis_question_2_id = Math.floor Math.random() * synthesis_questions_2_count
-  synthesis_question_2 = synthesis_questions_2[synthesis_question_2_id]
-  console.log "Synthesis Question 2: " + synthesis_question_2
-
-  # Synthesis N°1
-  add_speak_status.innerHTML = synthesis_question_1
-  console.log "Starting Speech Synthesis."
-
-  # Start Speech Synthesis N°1
-  speech_synthesis synthesis_question_1, speech_synthesis_lang, (e) ->
+  # Start Speech Recognition
+  speech_recognition speech_synthesis_lang, (status, transcript) ->
 
     # Log Event
-    console.log "Synthesis Done. Start Speech Recognition."
-    add_speak_status.innerHTML = "Preparing Speech Recognition..."
+    console.log "Speech Recognition State Changed: " + status
+    console.log "transcript: " + transcript
 
-    # Start Speech Recognition N°1
-    speech_recognition speech_synthesis_lang, (status, transcript) ->
+    # Process Results
+    switch status
+      # Init Complete
+      when 0
+        add_speak_status.innerHTML = "Please allow microphone access and start speaking."
+      # New Transcript, not Final
+      when 1
+        add_speak_status.innerHTML = transcript
+      # Nothing Recognized
+      when 3
+        add_speak_status.innerHTML = "Nothing Recognized."
+      # Error
+      when 4
+        add_speak_status.innerHTML = "Nothing Recognized."
+      # New Transcript, isFinal
+      when 2
+        # Insert into Form
+        add_speak_word_f.value = transcript
 
-      # Log Event
-      console.log "Speech Recognition State Changed: " + status
-      console.log "transcript: " + transcript
+        # Translation
+        add_speak_status.innerHTML = "Translating \"" + transcript + "\""
+        console.log "Translation started."
 
-      # Process Results
-      switch status
-        # Init Complete
-        when 0
-          add_speak_status.innerHTML = "Please allow microphone access and start speaking."
-        # New Transcript, not Final
-        when 1
-          add_speak_status.innerHTML = transcript
-        # Nothing Recognized
-        when 3
-          add_speak_status.innerHTML = "Nothing Recognized."
-        # Error
-        when 4
-          add_speak_status.innerHTML = "Nothing Recognized."
-        # New Transcript, isFinal
-        when 2
-          # Insert into Form
-          add_speak_word_f.value = transcript
+        translate transcript, speech_recognition_lang, translation_trg_lang, (response) ->
 
-          # Translation
-          add_speak_status.innerHTML = "Translating \"" + transcript + "\""
-          console.log "Translation started."
+          # Translation Complete
+          if response == false
+            # Log Error
+            console.warn "Error Translating"
+            add_speak_status.innerHTML = "Translation Error. Please contact us."
 
-          translate transcript, speech_recognition_lang, translation_trg_lang, (response) ->
-
-            # Translation Complete
-            if response == false
-              # Log Error
-              console.warn "Error Translating"
-              add_speak_status.innerHTML = "Translation Error"
-
-            else
-              # Success
-              console.log "Translation Success: " + response
-              add_speak_word_m.value = response
-              add_speak_status.innerHTML = "Translation: " + response
-
-              # Speech Synthesis N° 2
-              add_speak_status.innerHTML = synthesis_question_2
-              console.log "Starting Speech Synthesis (2)."
-
-              # Start Speech Synthesis N°2
-              speech_synthesis synthesis_question_2, speech_synthesis_lang, (e_) ->
-
-                # Log Event
-                console.log "Synthesis Done. Start Speech Recognition."
-
-                # Start Speech Recognition N°2
-                speech_recognition speech_synthesis_lang, (status, transcript) ->
-
-                  # Log Event
-                  console.log "Speech Recognition State Changed: " + status
-                  console.log "transcript: " + transcript
-
-                  # Check if Result is Yes, Then Submit Form
-                  positive_replies = [
-                    "yes", "yep", "ok", "yeah", "true", "definitely"
-                  ]
-
-                  transcript_ = transcript.replace(/\W/g, '').toLowerCase()
-                  transcript_ispositive = positive_replies.indexOf transcript_
-
-                  if transcript_ispositive >= 0
-                    # Auto Submit
-                    console.log "Auto Submit."
-                    add_speak_form_submit_event()
-
-                  else
-                    # No Submit
-                    console.log "No Submit."
-
+          else
+            # Success
+            console.log "Translation Success: " + response
+            add_speak_word_m.value = response
+            add_speak_status.innerHTML = "Translation: " + response
+            add_speak_status.innerHTML = "Correct?"
 
 # Speak Form Submit EventListener
 add_speak_form.addEventListener "submit", (evt) ->
 
   # Prevent Form Submit
   evt.preventDefault()
-
-  add_speak_form_submit_event()
-
-# Submit Function
-add_speak_form_submit_event = () ->
 
   # Log Event
   console.log "Form Submit"
@@ -342,6 +274,15 @@ add_speak_comment_btn.addEventListener "click", () ->
   # Show Element
   hide_object add_speak_show_comment
   show_object add_speak_comment
+
+# Return To Method Selection Button
+add_speak_back.addEventListener "click", () ->
+
+  # Log Event
+  console.log "Requested add_speak_back()."
+
+  # Reload Page
+  window.location.reload()
 
 # **** #Method!Scan ****
 
