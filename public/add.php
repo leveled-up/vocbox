@@ -190,7 +190,7 @@ basic_template();
   <span id="add_scan_upload_select_span" style="">
     <div id="add_scan_upload_div">
       <label class="btn btn-default btn-file">
-          Select Photo <input type="file" value="upload" id="add_scan_file_button" class="form-control" style="display:none;" />
+          <input type="file" value="upload" id="add_scan_file_button" class="form-control" />
       </label>
     </div>
   </span>
