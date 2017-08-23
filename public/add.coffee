@@ -486,19 +486,19 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
             }
             result_.push translation_result
 
-            if result_.length == lines_array_.length
-              result_pre = ""
-              result_.forEach (item) ->
-                result_pre += item.word_f + " - " + word_m + "\n"
+            # if result_.length == lines_array_.length
+            result_pre = ""
+            result_.forEach (item) ->
+            result_pre += item.word_f + " - " + item.word_m + "\n"
 
-              # Show objects
-              add_scan_status.innerHTML = "Please confirm the scan by clicking below once the translation is done."
-              add_scan_confirm_pre.innerHTML = result_pre
-              hide_object add_scan_upload_select_span
-              show_object add_scan_confirm_span
+            # Show objects
+            add_scan_status.innerHTML = "Please confirm the scan by clicking below once the translation is done."
+            add_scan_confirm_pre.innerHTML = result_pre
+            hide_object add_scan_upload_select_span
+            show_object add_scan_confirm_span
 
-              # Make result_ public
-              window.add_span_result_ = result_
+            # Make result_ public
+            window.add_span_result_ = result_
 
         # Translation Done
       # forEach Done
