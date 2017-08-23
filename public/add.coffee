@@ -37,6 +37,46 @@ dom_objects = [
 ]
 get_objects dom_objects
 
+# **** Save Word ****
+send_word_to_db = (word_m, word_f, comment, callback) ->
+
+  # Log Event
+  console.log "Requested Saving Word to DB."
+
+  # process Input
+  parameters = [
+    word_m,
+    word_f
+  ]
+  if comment != "" and comment?
+    parameters.push comment
+
+  # Format Request
+  console.log "Preparing Request."
+  db_save_baseurl = "/add/" + library_id + "?action:insert="
+  db_save_params = urlencode JSON.stringify parameters
+  request_url = db_save_baseurl + db_save_params
+  console.log "Request URL: " + request_url
+
+  # Send Request
+  console.log "Init HttpClient()."
+  client = new HttpClient()
+  console.log "Creating Request."
+  client.get request_url, (response) ->
+
+    # Log Event
+    console.log "Request Done. Response: " + response
+
+    # Check if Successful
+    if response == "0"
+      # Success
+      console.log "Success DB Insert"
+      callback true
+    else
+      # Failed
+      console.warn "DB Insert Failed"
+      callback false
+
 # **** #Method!Chooser ****
 # Add EventListeners for Method!Chooser
 
@@ -288,43 +328,3 @@ add_speak_back.addEventListener "click", () ->
   window.location.reload()
 
 # **** #Method!Scan ****
-
-# **** Save Word ****
-send_word_to_db = (word_m, word_f, comment, callback) ->
-
-  # Log Event
-  console.log "Requested Saving Word to DB."
-
-  # process Input
-  parameters = [
-    word_m,
-    word_f
-  ]
-  if comment != "" and comment?
-    parameters.push comment
-
-  # Format Request
-  console.log "Preparing Request."
-  db_save_baseurl = "/add/" + library_id + "?action:insert="
-  db_save_params = urlencode JSON.stringify parameters
-  request_url = db_save_baseurl + db_save_params
-  console.log "Request URL: " + request_url
-
-  # Send Request
-  console.log "Init HttpClient()."
-  client = new HttpClient()
-  console.log "Creating Request."
-  client.get request_url, (response) ->
-
-    # Log Event
-    console.log "Request Done. Response: " + response
-
-    # Check if Successful
-    if response == "0"
-      # Success
-      console.log "Success DB Insert"
-      callback true
-    else
-      # Failed
-      console.warn "DB Insert Failed"
-      callback false
