@@ -128,7 +128,7 @@ function query_library_delete($library, $user) {
 }
 
 // TABLE "WORDS"
-// [ID] [OWNER] [LIBRARY] [WORD_M] [WORD_F] [CATEGORY] [INFO] (info=JSON)
+// [ID] [OWNER] [LIBRARY] [WORD_M] [WORD_F] [CATEGORY] [INFO] (info=JSON) [RAND_ID]
 
 // QUERY: create word
 function query_words_create($library, $user, $word) {
@@ -144,7 +144,8 @@ function query_words_create($library, $user, $word) {
   else
     $info = "{}";
 
-  $query = "INSERT INTO words VALUES ('', '$owner', '$library', '$word_m', '$word_f', '1', '$info')";
+  $rand = rand();
+  $query = "INSERT INTO words VALUES ('', '$owner', '$library', '$word_m', '$word_f', '1', '$info', '$rand')";
   return $query;
 
 }
@@ -186,8 +187,10 @@ function query_words_get($library, $user, $categories) {
   else
     $category = 1;
 
+  $newrand = rand();
+
   // NOTE:  AND category = '$category'  has been removed, due to it causing bugs when empty categories exist
-  $query = "SELECT * FROM words WHERE library = '$library' AND owner = '$owner' AND id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `words` ) ORDER BY id LIMIT 1";
+  $query = "SELECT * FROM words WHERE library = '$library' AND owner = '$owner' ORDER BY rand_id LIMIT 1; UPDATE words SET rand_id = '$newrand' WHERE library = '$library' AND owner = '$owner' ORDER BY rand_id LIMIT 1";
   return $query;
 
 }
