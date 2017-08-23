@@ -450,7 +450,7 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
       add_scan_status.innerHTML = "The image was analyzed successfully."
 
       # Take a look at result.
-      text = result.description
+      text = result.description[0]
       console.log "Text detected: " + text
       lines_array = text.split "\n"
       if lines_array.length < 1
