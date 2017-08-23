@@ -32,6 +32,7 @@ dom_objects = [
   "add_speak_show_comment",
   "add_speak_comment_btn",
   "add_speak_comment",
+  "add_speak_comment_span"
   # Objects for Method!Scan
   "add_scan"
 ]
@@ -293,7 +294,11 @@ add_speak_form.addEventListener "submit", (evt) ->
     # process Result
     if success
       console.log "Success"
+
+      # Reset Form
       add_speak_form.reset()
+      show_object add_speak_show_comment
+      hide_object add_speak_comment_span
     else
       console.warn "Failed"
       alert "Error 500: We weren't able to save your input"
@@ -316,7 +321,7 @@ add_speak_comment_btn.addEventListener "click", () ->
 
   # Show Element
   hide_object add_speak_show_comment
-  show_object add_speak_comment
+  show_object add_speak_comment_span
 
 # Return To Method Selection Button
 add_speak_back.addEventListener "click", () ->
