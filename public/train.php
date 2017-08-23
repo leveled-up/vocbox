@@ -80,9 +80,9 @@ elseif(isset($_GET["action:results"])) {
   // Update stats
   // Stats: {words_added: int, words_trained: int, words_trained_correct: int, last_training_time: int}
   $stats = json_decode($library_info["stats"], true);
-  $stats["words_trained"]++;
+  $stats["words_trained"]+1;
   if($correct == "1")
-    $stats["words_trained_correct"]++;
+    $stats["words_trained_correct"]+1;
   else
     if(!isset($stats["words_trained_correct"]))
       $stats["words_trained_correct"] = 0;
