@@ -13,6 +13,17 @@ dom_objects = [
   "add_method_image",
   # Objects for Method!Type
   "add_type",
+  "train_type_question",
+  "train_type_word_m",
+  "train_type_form",
+  "train_type_form_word_f",
+  "train_type_form_btn",
+  "train_type_result",
+  "train_type_result_alert",
+  "train_type_result_correct",
+  "train_type_result_word_f",
+  "train_type_result_word_m",
+  "train_type_result_confirm",
   # Objects for Method!Speak
   "add_speak",
   # Objects for Method!Libs
@@ -33,7 +44,7 @@ db_actions = {
 db_client = new HttpClient()
 
 # **** #DB: get next word ****
-get_next_word = () ->
+get_next_word = (callback) ->
 
   # Log Event
   console.log "get_next_word(). Prepraring request to ?actions:get_next_word"
@@ -55,17 +66,18 @@ get_next_word = () ->
     if not result.success
       console.warn "Failed."
       alert "Error 500: Loading word failed."
-      return false
+      callback false
+      return
 
     # Log & Return
     console.log "Success. returning {result.word}"
-    return word
+    callback word
 
   # Init Done.
   true
 
 # **** #DB: register results ****
-register_results = (word_id, correct) ->
+register_results = (word_id, correct, callback) ->
 
   # Log Event
   console.log "register_results() for " + word_id + " as correct=" + correct
@@ -95,9 +107,11 @@ register_results = (word_id, correct) ->
     if not result.success
       console.warn "register_results() failed."
       alert "Error 500: Saving information failed."
+      callback false
       return false
     else
       console.log "Success."
+      callback true
       return true
 
   # Init Done.
@@ -177,3 +191,97 @@ train_method_image.addEventListener "click", () ->
 
   # Return false to prevent a.href
   false
+
+
+# **** #Method!Type ****
+# New Word Function
+train_type_new_word = () ->
+
+  # Log Event
+  console.log "train_type_new_word()"
+
+  # Get New Word
+  get_next_word (word) ->
+
+    # Log Event
+    console.log "Loaded Word: " + JSON.stringify word
+
+    # Continue
+    window.train_type_word = word
+    show_object train_type_question
+    hide_object train_type_result
+    train_type_word_m.innerHTML = word.word_m
+
+    # Focus Input
+    train_type_form.reset()
+    train_type_form_word_f.focus()
+
+# Question, On Answer Submit
+train_type_answer_submit = () ->
+
+  # Log Event
+  console.log "train_type_answer_submit()"
+
+  # Validate Correctness of Input
+  train_type_form_btn_original_text = train_type_form_btn.innerHTML
+  train_type_form_btn.innerHTML = "Submitting..."
+  word_f = train_type_form_word_f.value.toLowerCase()
+  console.log "input.word_f: " + word_f
+
+  if train_type_word.word_f.toLowerCase() == word_f
+    # Log Event & Set Info for DB
+    console.log "Word answered correctly."
+    correct = true
+
+    # Set Result GUI
+    train_type_result_alert.className = "alert alert-success"
+    train_type_result_correct.innerHTML = "Exactly"
+
+  else
+    # Log Event & Set Info for DB
+    console.warn "Word answered incorrectly."
+    correct = false
+
+  # Set Result GUI
+  train_type_result_alert.className = "alert alert-danger"
+  train_type_result_correct.innerHTML = "Nope"
+
+  # Set Result GUI words
+  train_type_result_word_f.innerHTML = train_type_word.word_f
+  train_type_result_word_m.innerHTML = train_type_word.word_m
+
+  # Send Results to DB
+  register_results train_type_word.id, correct, (success) ->
+
+    if not success
+      console.warn "register_results() failed."
+      alert "Error 500: Sending data to Server failed."
+      return false
+    else
+      console.log "Success."
+      train_type_form_btn.innerHTML = train_type_form_btn_original_text
+      hide_object train_type_question
+      show_object train_type_result
+      return true
+
+# Form Event Listener to Call Answer Submit
+train_type_form.addEventListener "submit", (evt) ->
+
+  # Prevent action=X
+  evt.preventDefault()
+
+  # Call answer submit function
+  train_type_answer_submit()
+
+# Form Btn Event Listener to Submit Form
+train_type_form_btn.addEventListener "click", () ->
+
+  # Call answer submit function
+  train_type_answer_submit()
+
+
+# Confirm Btn to Activate new Session
+train_type_result_confirm.addEventListener "click", () ->
+
+  # Call Init function
+  train_type_new_word()

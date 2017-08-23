@@ -181,9 +181,39 @@ basic_template();
         </b>
         in <?=$forein_lang_text?>?
       </center>
+      <br /> <br />
+
+      <form action="#" method="" id="train_type_form">
+        <b>
+          <input id="train_type_form_word_f" class="form-control" placeholder="<?=$forein_lang_text?> Word" />
+        </b>
+        <br />
+
+        <center>
+          <button type="submit" id="train_type_form_btn" class="btn btn-success">Submit</button>
+        </center>
+      </form>
     </span>
     <span id="train_type_result">
-      
+      <div id="train_type_result_alert" class="alert alert-success">
+        <b>
+          <span id="train_type_result_correct">Exactly/Nope</span>!
+        </b>
+        The correct answer is:
+        <b>
+          <span id="train_type_result_word_f">train_type_result_positive_word_f</span>
+        </b>
+        means
+        <b>
+          <span id="train_type_result_word_m">train_type_result_word_m</span>
+        </b>
+        in <?=$forein_lang_text?>.
+      </div>
+      <br /> <br />
+
+      <center>
+        <a href="#" id="train_type_result_confirm" class="btn btn-success">Confirm</a>
+      </center>
     </span>
   </p>
 </div>
