@@ -427,8 +427,11 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
   add_scan_status.innerHTML = "Upload successfully completed."
   add_scan_status.innerHTML = throbber_small + "Processing image with OCR..."
 
+  # Prepare storageFilename
+  storageFilename_ = storageFilename.replace "vision_images/", ""
+
   # Scan Image
-  annotateImage storageFilename, "textDetection", (response) ->
+  annotateImage storageFilename_, "textDetection", (response) ->
 
     if response != false
       result = JSON.parse response
