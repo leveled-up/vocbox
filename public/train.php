@@ -210,7 +210,7 @@ basic_template();
       </b>
       in <?=$forein_lang_text?>.
     </div>
-    <br /> <br />
+    <br />
 
     <center>
       <a href="#" id="train_type_result_confirm" class="btn btn-success">Confirm</a>

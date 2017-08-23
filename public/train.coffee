@@ -257,12 +257,11 @@ train_type_answer_submit = () ->
   # Send Results to DB
   register_results train_type_word.id, correct, (success) ->
 
-    console.log "TEST1"
     hide_object train_type_question
-    console.log "TEST2"
+    console.log train_type_form_btn_original_text
+    console.log train_type_form_btn.innerHTML
     train_type_form_btn.innerHTML = train_type_form_btn_original_text
     show_object train_type_result
-    console.log "TEST3"
 
     if not success
       console.warn "register_results() failed."
