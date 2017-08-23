@@ -44,7 +44,7 @@ basic_template();
           if($last_training == "")
             $last_training = "Never";
           else
-            $last_training = date("d/m/Y", $last_training);
+            $last_training = date("d/m", $last_training);
 
           echo "
           <tr>
