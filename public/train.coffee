@@ -195,6 +195,9 @@ train_method_image.addEventListener "click", () ->
 
 
 # **** #Method!Type ****
+# Variables
+train_type_form_btn_original_text = train_type_form_btn.innerHTML
+
 # New Word Function
 train_type_new_word = () ->
 
@@ -227,7 +230,6 @@ train_type_answer_submit = () ->
   console.log "train_type_answer_submit()"
 
   # Validate Correctness of Input
-  window.train_type_form_btn_original_text = train_type_form_btn.innerHTML
   train_type_form_btn.innerHTML = "Submitting..."
   word_f = train_type_form_word_f.value.toLowerCase()
   console.log "input.word_f: " + word_f
