@@ -374,7 +374,7 @@ add_scan_file_button.addEventListener "change", (e) ->
     # Upload file
     add_scan_update_progress 0
     window.add_scan_upload_start_time = Date.now() / 1000
-    task = storageRef.put file
+    task = storageRef.put add_scan_file
 
     # Update progress bar
     task.on "state_changed", (snapshot) =>
