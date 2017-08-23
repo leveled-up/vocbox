@@ -217,6 +217,9 @@ train_type_new_word = () ->
     train_type_form.reset()
     train_type_form_word_f.focus()
 
+  # Init Done
+  true
+
 # Question, On Answer Submit
 train_type_answer_submit = () ->
 
@@ -264,6 +267,9 @@ train_type_answer_submit = () ->
       hide_object train_type_question
       show_object train_type_result
       return true
+
+  # Init Done
+  true
 
 # Form Event Listener to Call Answer Submit
 train_type_form.addEventListener "submit", (evt) ->
