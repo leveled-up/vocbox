@@ -21,8 +21,8 @@ basic_template();
   <thead>
     <th>Languages</th>
     <th>Comment</th>
-    <th>Last Training</th>
-    <th>Actions</th>
+    <th>Training</th>
+    <th>&nbsp;</th>
   </thead>
   <tbody>
     <?php
@@ -44,7 +44,7 @@ basic_template();
           if($last_training == "")
             $last_training = "Never";
           else
-            $last_training = date("d/m", $last_training);
+            $last_training = date("d.m.", $last_training);
 
           echo "
           <tr>
