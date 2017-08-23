@@ -52,6 +52,7 @@ elseif(isset($_GET["action:results"])) {
     exit("{\"success\": false}");
 
   $word_details_query = query_words_getbyid($library_info["id"], $user, $word_id);
+  echo "test1";
   $result = query($word_id);
 
   if(!isset($result["id"]))
@@ -63,10 +64,12 @@ elseif(isset($_GET["action:results"])) {
     if($result["category"] == $library_info["categories"]) {
       // new category
       $query_cat_update = query_library_categoriesupdate($library_info["id"], $user, $cats);
+      echo "test2";
       $query_cat_result = query($query_cat_update);
     }
     // category ++
     $query_cat_update_ = query_words_categoryupdate($library_info["id"], $user, $word_id, $cats);
+    echo "test3";
     $query_cat_result_ = query($query_cat_update_);
 
   }
