@@ -467,6 +467,7 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
         text_ = item
         recognition_lang = forein_lang[1]
         translation_trg_lang = mother_lang[1]
+        result_pre = ""
 
         translate text_, recognition_lang, translation_trg_lang, (response_) ->
 
@@ -487,9 +488,8 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
             result_.push translation_result
 
             # if result_.length == lines_array_.length
-            result_pre = ""
-            result_.forEach (item) ->
-            result_pre += item.word_f + " - " + item.word_m + "\n"
+            result_.forEach (item_) ->
+              result_pre += item_.word_f + " - " + item_.word_m + "\n"
 
             # Show objects
             add_scan_status.innerHTML = "Please confirm the scan by clicking below once the translation is done."
