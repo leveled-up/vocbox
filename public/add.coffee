@@ -407,8 +407,8 @@ add_scan_update_progress = (percent, bytesTransferred, totalBytes, upload_start_
    size_data_complete = formatFilesize totalBytes
 
    # Update Details
-   if bytesTransferred > 10
-     add_scan_status.innerHTML = throbber_small + size_data_done + " (" + Math.round(percent) + "%) of " + size_data_complete + " uploaded with " + upload_speed + "/s (" + uploadETA + " remaining)"
+   #if bytesTransferred > 10
+   add_scan_status.innerHTML = throbber_small + size_data_done + " (" + Math.round(percent) + "%) of " + size_data_complete + " uploaded with " + upload_speed + "/s (" + uploadETA + " remaining)"
 
    console.log "Update Upload Progess => " + percent + " done, " + upload_speed + "ps, ETA: " + secondsRemaining + "s"
 
