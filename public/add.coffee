@@ -34,9 +34,22 @@ dom_objects = [
   "add_speak_comment",
   "add_speak_comment_span"
   # Objects for Method!Scan
-  "add_scan"
+  "add_scan",
+  "add_scan_back",
+  "add_scan_status",
+  "add_scan_upload_select_span",
+  "add_scan_upload_div",
+  "add_scan_file_button",
+  "add_scan_confirm_span",
+  "add_scan_confirm_btn",
+  "add_scan_confirm_pre",
+  "add_scan_done",
+  "add_scan_done_back"
 ]
 get_objects dom_objects
+
+# Variables
+throbber_small = "<img src=\"https://www.runstorageapis.com/img/throbber_small.svg\" alt=\"\" /> "
 
 # **** Save Word ****
 send_word_to_db = (word_m, word_f, comment, callback) ->
@@ -339,3 +352,182 @@ add_speak_back.addEventListener "click", () ->
   window.location.reload()
 
 # **** #Method!Scan ****
+# File Upload: Listen for file selection
+add_scan_file_button.addEventListener "change", (e) ->
+
+    # Get File
+    add_scan_file = e.target.files[0]
+    window.add_scan_upload_filename = add_scan_file.name
+    window.add_scan_upload_size = add_scan_file.size
+
+    if window.add_scan_upload_size > 15 * 1024 * 1024
+      alert "The maximal file size for image scanning is 5 MiB"
+      return false
+
+    # Show Progress Div
+    add_scan_status.innerHTML = "Preparing upload of " + add_scan_upload_filename + "..."
+
+    # Create a storage ref
+    storageFilename = getStorageFilename add_scan_file.name, "vision_images"
+    storageRef = firebase.storage().ref storageFilename
+
+    # Upload file
+    update_progress 0
+    window.add_scan_upload_start_time = Date.now() / 1000
+    task = storageRef.put file
+
+    # Update progress bar
+    task.on "state_changed", (snapshot) =>
+        add_scan_update_progress ( snapshot.bytesTransferred / snapshot.totalBytes ) * 100, snapshot.bytesTransferred, snapshot.totalBytes, window.add_scan_upload_start_time
+    , (err) =>
+        add_scan_upload_error err
+    , () =>
+        add_scan_upload_success storageFilename, window.add_scan_upload_filename, window.add_scan_upload_size
+
+# Update Upload Progress
+add_scan_update_progress = (percent, bytesTransferred, totalBytes, upload_start_time) ->
+   # Calculate Upload Speed
+   time_now = Date.now() / 1000
+   upload_speed_ = bytesTransferred / ( time_now - upload_start_time )
+   upload_speed = formatFilesize upload_speed_
+
+   # Calculate ETA
+   bytesRemaining = totalBytes - bytesTransferred
+   secondsRemaining_ = bytesRemaining / upload_speed_
+   secondsRemaining = Math.round secondsRemaining_
+   uploadETA = formatSeconds secondsRemaining
+
+   # Get Basic Upload Info
+   size_data_done = formatFilesize bytesTransferred
+   size_data_complete = formatFilesize totalBytes
+
+   # Update Details
+   if bytesTransferred > 10
+     add_scan_status.innerHTML = throbber_small + size_data_done + " (" + Math.round(percent) + "%) of " + size_data_complete + " uploaded with " + upload_speed + "/s (" + uploadETA + " remaining)"
+
+   console.log "Update Upload Progess => " + percent + " done, " + upload_speed + "ps, ETA: " + secondsRemaining + "s"
+
+# Upload Error
+add_scan_upload_error = (err) ->
+
+  # Log Error
+  console.warn "Upload Error"
+
+  # Log to User
+  add_scan_status.innerHTML = "The upload failed. Please contact us."
+
+# When Upload Succeeds
+add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
+
+  # Log Event
+  console.log "Upload Succeeded"
+  console.log upload_filename + " (" + upload_size + "B) uploaded as " + storageFilename
+
+  # Continue Processing
+  add_scan_status.innerHTML = "Upload successfully completed."
+  add_scan_status.innerHTML = throbber_small + "Processing image with OCR..."
+
+  # Scan Image
+  annotateImage storageFilename, "textDetection", (response) ->
+
+    if response != false
+      result = JSON.parse response
+      if not result.success
+        response = false
+
+    if response == false
+      # Failed
+      console.warn "Error Processing Image"
+      add_scan_status.innerHTML = "There was an error processing your image. Please contact us."
+    else
+      # Success
+      console.log "Scanning Succeeded."
+      add_scan_status.innerHTML = "The image was analyzed successfully."
+
+      # Take a look at result.
+      text = result.description
+      console.log "Text detected: " + text
+      lines_array = text.split "\n"
+      if lines_array.length < 1
+        console.warn "Nothing detected."
+        add_scan_status.innerHTML = "We couldn't detect any text in the image."
+        return
+
+      # Go on with lines_array
+      result_ = []
+      lines_array.forEach (item) ->
+
+        # Prepare translation
+        text_ = item
+        recognition_lang = forein_lang[1]
+        translation_trg_lang = mother_lang[1]
+
+        translate text_, recognition_lang, translation_trg_lang, (response_) ->
+
+          # Translation Complete
+          if response_ == false
+            # Log Error
+            console.warn "Error Translating"
+            add_scan_status.innerHTML = "Translation Error. Please contact us."
+            return
+
+          else
+            # Success
+            console.log "Translation Success: " + response_
+            translation_result = {
+              word_m: response_,
+              word_f: text
+            }
+            result_.push translation_result
+
+        # Translation Done
+      # forEach Done
+      result_pre = ""
+      result_.forEach (item) ->
+        result_pre += item.word_f + " - " + word_m + "\n"
+
+      # Show objects
+      add_scan_status.innerHTML = "Please confirm the scan by clicking below."
+      add_scan_confirm_pre.innerHTML = result_pre
+      hide_object add_scan_upload_select_span
+      show_object add_scan_confirm_span
+
+      # Make result_ public
+      window.add_span_result_ = result_
+
+# Scan Confirm Button
+add_scan_confirm_btn.addEventListener "click", () ->
+
+  # Log Event
+  console.log "User confirmed. Inserting Values"
+
+  # Insert Values
+  add_span_result_.forEach (item) ->
+    send_word_to_db item.word_m, item.word_f, "", (success) ->
+      if success
+        console.log item.word_f + " successfully inserted."
+      else
+        console.warn "Error saving word " + item.word_f
+        add_scan_status.innerHTML = "The word " + item.word_f + "could not be saved."
+
+  # Done, Clear Fields
+  hide_object add_scan_confirm_span
+  show_object add_scan_done
+
+# Return To Method Selection Button (Scan Done)
+add_scan_done_back.addEventListener "click", () ->
+
+  add_scan_back_()
+
+# Return To Method Selection Button
+add_scan_back.addEventListener "click", () ->
+
+  add_scan_back_()
+
+# Return to Method Selection
+add_scan_back_ = () ->
+  # Log Event
+  console.log "Requested add_scan_back()."
+
+  # Reload Page
+  window.location.reload()

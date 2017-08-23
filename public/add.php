@@ -182,7 +182,32 @@ basic_template();
 
 <!-- Add Method!Scan -->
 <div id="add_scan" style="display: none;">
-Scan
+  <p>
+    <span id="add_scan_status" style="color: grey;">Please click below to take a photo or select one from your gallery. Not the method you wanted? Get back by <a href="#" id="add_scan_back">clicking here</a>.</span>
+    <br /> <br />
+  </p>
+
+  <span id="add_scan_upload_select_span" style="">
+    <div id="add_scan_upload_div">
+      <label class="btn btn-default btn-file">
+          Select Photo <input type="file" value="upload" id="add_scan_file_button" class="form-control" style="display:none;" />
+      </label>
+    </div>
+  </span>
+
+  <span id="add_scan_confirm_span" style="display: none;">
+    <pre id="add_scan_confirm_pre">
+
+    </pre>
+
+    <a href="#" id="add_scan_confirm_btn" class="btn btn-success">Submit</a>
+  </span>
+
+  <span id="add_scan_done" style="display: none;">
+    <b>
+      Everything worked. <a href="#" id="add_scan_done_back">Back</a>
+    </b>
+  </span>
 </div>
 
 <!-- Scripts -->
@@ -193,6 +218,9 @@ Scan
   forein_lang = ["<?=$forein_lang_text?>", "<?=$forein_lang?>"];
   mother_lang = ["<?=$mother_lang_text?>", "<?=$mother_lang?>"];
 </script>
+<script src="https://vocbox-test.firebaseapp.com/__/firebase/4.2.0/firebase-app.js"></script>
+<script src="https://vocbox-test.firebaseapp.com/__/firebase/4.2.0/firebase-storage.js"></script>
+<script src="https://vocbox-test.firebaseapp.com/__/firebase/init.js"></script>
 <script src="/util.js"></script>
 <script src="/speech.js"></script>
 <script src="/main.js"></script>

@@ -56,3 +56,42 @@ show_object = (dom_object) ->
 # Alias for encodeURIComponent
 urlencode = (string) ->
   encodeURIComponent string
+
+# Generate storageFilename
+guid = () =>
+   s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4()
+
+# Generate storageFilename Helper
+s4 = () =>
+   Math.floor (1 + Math.random()) * 0x10000
+      .toString 16
+      .substring 1
+
+# Generate Filename From Input Filename
+getStorageFilename = (filename, server_dir) =>
+   server_dir + "/" + guid() + "-" + guid() + "." + filename.split('.').pop()
+
+# Function for Formatting File Sizes
+formatFilesize = (bytes) ->
+   sizes = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB']
+   return '0 Byte' if bytes == 0
+
+   i = parseInt Math.floor(Math.log(bytes) / Math.log(1024))
+   size = Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i]
+   return size
+
+# Function for Formatting Seconds in to Human Readable Format
+formatSeconds = (secs) ->
+   distance = secs * 1000
+
+   # Time calculations for hours, minutes and seconds
+   hours = Math.floor (distance / (1000 * 60 * 60))
+   minutes = Math.floor (distance % (1000 * 60 * 60)) / (1000 * 60)
+   seconds = Math.floor ((distance % (1000 * 60)) / 1000)
+
+   # Return the result as String
+   formattedTime = ""
+   formattedTime += hours + "h " if hours > 0
+   formattedTime += minutes + "m " if minutes > 0
+   formattedTime += seconds + "s "
+   return formattedTime
