@@ -488,6 +488,7 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
             result_.push translation_result
 
             # if result_.length == lines_array_.length
+            result_pre = ""
             result_.forEach (item_) ->
               result_pre += item_.word_f + " - " + item_.word_m + "\n"
 
