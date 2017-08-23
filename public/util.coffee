@@ -58,17 +58,17 @@ urlencode = (string) ->
   encodeURIComponent string
 
 # Generate storageFilename
-guid = () =>
+guid = () ->
    s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4()
 
 # Generate storageFilename Helper
-s4 = () =>
+s4 = () ->
    Math.floor (1 + Math.random()) * 0x10000
       .toString 16
       .substring 1
 
 # Generate Filename From Input Filename
-getStorageFilename = (filename, server_dir) =>
+getStorageFilename = (filename, server_dir) ->
    server_dir + "/" + guid() + "-" + guid() + "." + filename.split('.').pop()
 
 # Function for Formatting File Sizes

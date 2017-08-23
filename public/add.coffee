@@ -395,7 +395,6 @@ add_scan_file_button.addEventListener "change", (e) ->
 add_scan_update_progress = (percent, bytesTransferred, totalBytes, upload_start_time) ->
    # Calculate Upload Speed
    time_now = Date.now() / 1000
-   alert bytesTransferred
    upload_speed_ = bytesTransferred / ( time_now - upload_start_time )
    upload_speed = formatFilesize upload_speed_
 
