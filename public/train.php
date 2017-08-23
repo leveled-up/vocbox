@@ -69,6 +69,12 @@ elseif(isset($_GET["action:results"])) {
     $query_cat_update_ = query_words_categoryupdate($library_info["id"], $user, $word_id, $cats);
     $query_cat_result_ = query($query_cat_update_);
 
+  } else {
+    // wrong => set category to 1
+    $cats = 1;
+    $query_cat_update_ = query_words_categoryupdate($library_info["id"], $user, $word_id, $cats);
+    $query_cat_result_ = query($query_cat_update_);
+
   }
 
   // Update stats
@@ -200,7 +206,7 @@ basic_template();
       <b>
         <span id="train_type_result_correct">Exactly/Nope</span>!
       </b>
-      The correct answer is: The <?=$forein_lang_text?> 
+      The correct answer is: The <?=$forein_lang_text?>
       <b>
         <span id="train_type_result_word_f">train_type_result_positive_word_f</span>
       </b>
