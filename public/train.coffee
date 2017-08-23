@@ -257,6 +257,10 @@ train_type_answer_submit = () ->
   # Send Results to DB
   register_results train_type_word.id, correct, (success) ->
 
+    hide_object train_type_question
+    train_type_form_btn.innerHTML = train_type_form_btn_originaltext
+    show_object train_type_result
+    
     if not success
       console.warn "register_results() failed."
       alert "Error 500: Sending data to Server failed."
@@ -264,10 +268,6 @@ train_type_answer_submit = () ->
     else
       console.log "Success."
       return true
-
-    hide_object train_type_question
-    train_type_form_btn.innerHTML = train_type_form_btn_originaltext
-    show_object train_type_result
 
   # Init Done
   true
