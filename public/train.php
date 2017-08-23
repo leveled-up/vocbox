@@ -177,7 +177,7 @@ basic_template();
       <center>
         What's
         <b>
-          <span id="train_type_word_m">train_type_word_m</a>
+          <span id="train_type_word_m">train_type_word_m</span>
         </b>
         in <?=$forein_lang_text?>?
       </center>
