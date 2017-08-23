@@ -263,10 +263,11 @@ train_type_answer_submit = () ->
       return false
     else
       console.log "Success."
-      train_type_form_btn.innerHTML = train_type_form_btn_original_text
-      show_object train_type_result
-      hide_object train_type_question
       return true
+
+    train_type_form_btn.innerHTML = train_type_form_btn_original_text
+    show_object train_type_result
+    hide_object train_type_question
 
   # Init Done
   true
