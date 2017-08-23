@@ -176,7 +176,7 @@ speech_recognition_add = () ->
   add_speak_status.innerHTML = "Preparing Speech Recognition..."
 
   # Start Speech Recognition
-  speech_recognition speech_synthesis_lang, (status, transcript) ->
+  speech_recognition speech_recognition_lang, (status, transcript) ->
 
     # Log Event
     console.log "Speech Recognition State Changed: " + status
