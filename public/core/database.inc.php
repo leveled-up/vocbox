@@ -187,7 +187,7 @@ function query_words_get($library, $user, $categories) {
     $category = 1;
 
   // NOTE:  AND category = '$category'  has been removed, due to it causing bugs when empty categories exist
-  $query = "SELECT * FROM words WHERE library = '$library' AND owner = '$owner' ORDER BY rand_id LIMIT 1; UPDATE words SET rand_id = FLOOR(RAND()*1000000) WHERE library = '$library' AND owner = '$owner' ORDER BY rand_id LIMIT 1";
+  $query = array("SELECT * FROM words WHERE library = '$library' AND owner = '$owner' ORDER BY rand_id LIMIT 1", "UPDATE words SET rand_id = FLOOR(RAND()*1000000) WHERE library = '$library' AND owner = '$owner' ORDER BY rand_id LIMIT 1");
   return $query;
 
 }

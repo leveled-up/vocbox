@@ -19,7 +19,8 @@ if(isset($_GET["action:get_next_word"])) {
   $word_get_query = query_words_get($library_info["id"], $user, $library_info["categories"]);
   $result = array();
   for ($i = 1; $i <= 5; $i++) {
-    $result = query($word_get_query, false);
+    $result = query($word_get_query[0], false);
+    $result_ = query($word_get_query[1], false);
     if(count($result) > 0)
       break;
   }
