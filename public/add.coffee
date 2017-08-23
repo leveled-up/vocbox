@@ -448,14 +448,20 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
       text = response[0]
       console.log "Text detected: " + text
       lines_array = text.split "\n"
-      if lines_array.length < 1
+
+      lines_array_ = []
+      lines_array.forEach (item) ->
+        if item != ""
+          lines_array_.push item
+
+      if lines_array_.length < 1
         console.warn "Nothing detected."
         add_scan_status.innerHTML = "We couldn't detect any text in the image."
         return
 
       # Go on with lines_array
       result_ = []
-      lines_array.forEach (item) ->
+      lines_array_.forEach (item) ->
 
         # Prepare translation
         text_ = item
@@ -480,20 +486,22 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
             }
             result_.push translation_result
 
+            if result_.length == lines_array_.length
+              result_pre = ""
+              result_.forEach (item) ->
+                result_pre += item.word_f + " - " + word_m + "\n"
+
+              # Show objects
+              add_scan_status.innerHTML = "Please confirm the scan by clicking below once the translation is done."
+              add_scan_confirm_pre.innerHTML = result_pre
+              hide_object add_scan_upload_select_span
+              show_object add_scan_confirm_span
+
+              # Make result_ public
+              window.add_span_result_ = result_
+
         # Translation Done
       # forEach Done
-      result_pre = ""
-      result_.forEach (item) ->
-        result_pre += item.word_f + " - " + word_m + "\n"
-
-      # Show objects
-      add_scan_status.innerHTML = "Please confirm the scan by clicking below."
-      add_scan_confirm_pre.innerHTML = result_pre
-      hide_object add_scan_upload_select_span
-      show_object add_scan_confirm_span
-
-      # Make result_ public
-      window.add_span_result_ = result_
 
 # Scan Confirm Button
 add_scan_confirm_btn.addEventListener "click", () ->
