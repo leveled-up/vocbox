@@ -18,10 +18,11 @@ if(isset($_GET["action:get_next_word"])) {
   // get next word for training from DB
   $word_get_query = query_words_get($library_info["id"], $user, $library_info["categories"]);
   $result = array();
-  for ($i = 1; $i <= 5; $i++)
+  for ($i = 1; $i <= 5; $i++) {
     $result = query($word_get_query, false);
     if(count($result) > 0)
       break;
+  }
 
   if(count($result) > 0)
     exit("{\"success\": false}");
