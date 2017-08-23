@@ -24,7 +24,7 @@ if(isset($_GET["action:get_next_word"])) {
       break;
   }
 
-  if(count($result) > 0)
+  if(count($result) < 1)
     exit("{\"success\": false}");
 
   unset($result[0]["owner"]);
