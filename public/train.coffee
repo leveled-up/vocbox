@@ -71,7 +71,7 @@ get_next_word = (callback) ->
 
     # Log & Return
     console.log "Success. returning {result.word}"
-    callback word
+    callback result.word
 
   # Init Done.
   true
