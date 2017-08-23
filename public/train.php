@@ -189,7 +189,7 @@ basic_template();
 
 <!-- Scripts -->
 <script>
-  // Library ID, and Languages for add.js
+  // Library ID and Languages for train.js
   var library_id, forein_lang, mother_lang;
   library_id = <?=$library_info["id"]?>;
   forein_lang = ["<?=$forein_lang_text?>", "<?=$forein_lang?>"];
