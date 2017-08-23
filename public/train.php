@@ -168,7 +168,17 @@ basic_template();
 
 <!-- Train Method!Type -->
 <div id="train_type" style="display: none;">
-  Type
+  <p>
+    Here, you can train the good old way, just by reading the <?=$mother_lang_text?> words and then typing the <?=$forein_lang_text?> words.
+    If you're looking for a more modern way to train vocabulary, please <a href="?">click here</a>.
+
+    <br />
+    What's
+    <b>
+      <span id="train_type_word_m">train_type_word_m</a>
+    </b>
+    in <?=$forein_lang_text?>?
+  </p>
 </div>
 
 <!-- Train Method!Speak -->
