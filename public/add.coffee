@@ -265,6 +265,9 @@ add_speak_form.addEventListener "submit", (evt) ->
     if success
       speech_recognition_add()
 
+  # Init Done
+  true
+
 # Show Comment Input Box
 add_speak_comment_btn.addEventListener "click", () ->
 
