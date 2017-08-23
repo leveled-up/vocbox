@@ -435,11 +435,6 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
   # Scan Image
   annotateImage storageFilename_, "textDetection", (response) ->
 
-    if response != false
-      result = JSON.parse response
-      if not result.success
-        response = false
-
     if response == false
       # Failed
       console.warn "Error Processing Image"
@@ -450,7 +445,7 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
       add_scan_status.innerHTML = "The image was analyzed successfully."
 
       # Take a look at result.
-      text = result.description[0]
+      text = result[0]
       console.log "Text detected: " + text
       lines_array = text.split "\n"
       if lines_array.length < 1
