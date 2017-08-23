@@ -53,7 +53,7 @@ elseif(isset($_GET["action:results"])) {
 
   $word_details_query = query_words_getbyid($library_info["id"], $user, $word_id);
   echo "test1";
-  $result = query($word_id);
+  $result = query($word_details_query);
 
   if(!isset($result["id"]))
     exit("{\"success\": false}");
