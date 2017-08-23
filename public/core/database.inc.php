@@ -186,7 +186,8 @@ function query_words_get($library, $user, $categories) {
   else
     $category = 1;
 
-  $query = "SELECT * FROM words WHERE library = '$library' AND owner = '$owner' AND category = '$category' AND id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `words` ) ORDER BY id LIMIT 1";
+  // NOTE:  AND category = '$category'  has been removed, due to it causing bugs when empty categories exist
+  $query = "SELECT * FROM words WHERE library = '$library' AND owner = '$owner' AND id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `words` ) ORDER BY id LIMIT 1";
   return $query;
 
 }
