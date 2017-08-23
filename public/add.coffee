@@ -20,6 +20,7 @@ dom_objects = [
   "add_type_show_comment",
   "add_type_comment_btn",
   "add_type_comment",
+  "add_type_comment_span",
   # Objects for Method!Speak
   "add_speak",
   "add_speak_status",
@@ -125,7 +126,12 @@ add_type_form.addEventListener "submit", (evt) ->
     # process Result
     if success
       console.log "Success"
+
+      # Reset Form
       add_type_form.reset()
+      show_object add_type_show_comment
+      hide_object add_type_comment_span
+      add_type_word_f.focus()
     else
       console.warn "Failed"
       alert "Error 500: We weren't able to save your input"
@@ -141,7 +147,7 @@ add_type_comment_btn.addEventListener "click", () ->
 
   # Show Element
   hide_object add_type_show_comment
-  show_object add_type_comment
+  show_object add_type_comment_span
 
 # Return To Method Selection Button
 add_type_back.addEventListener "click", () ->

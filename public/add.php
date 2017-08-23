@@ -130,9 +130,12 @@ basic_template();
       </center>
     </span>
 
-    <input id="add_type_comment" style="display: none;" class="form-control" placeholder="Comment" />
+    <span id="add_type_comment_span" style="display: none;">
+      <input id="add_type_comment" class="form-control" placeholder="Comment" />
+      <br />
+    </span>
 
-    <br /> <br />
+    <br />
 
     <center>
       <button type="submit" id="add_type_form_btn" class="btn btn-success">Submit</button>
