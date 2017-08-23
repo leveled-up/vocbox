@@ -21,7 +21,6 @@ basic_template();
   <thead>
     <th>Languages</th>
     <th>Comment</th>
-    <th>Training</th>
     <th>&nbsp;</th>
   </thead>
   <tbody>
@@ -35,17 +34,9 @@ basic_template();
           <td>You don't have any libraries yet.</td>
           <td></td>
           <td></td>
-          <td></td>
         </tr>";
       else
-        foreach($libraries_list as $library) {
-
-          $last_training = json_decode($library["stats"], true)["last_training_time"];
-          if($last_training == "")
-            $last_training = "Never";
-          else
-            $last_training = date("d.m.", $last_training);
-
+        foreach($libraries_list as $library)
           echo "
           <tr>
             <td>
@@ -57,16 +48,11 @@ basic_template();
               <i>".htmlentities($library["comment"])."</i>
             </td>
             <td>
-              <b>$last_training</b>
-            </td>
-            <td>
               <a href=\"/delete_library?library={$library[id]}\" onclick=\"return confirm_library_deletion();\" class=\"btn btn-danger btn-xs\">
                 <i class=\"fa fa-times\"></i>
               </a>
             </td>
           </tr>";
-
-        }
     ?>
   </tbody>
 </table>
