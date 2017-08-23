@@ -160,6 +160,18 @@ function query_words_list($library, $user) {
 
 }
 
+// QUERY: get all words of library
+function query_words_getbyid($library, $user, $word) {
+
+  $owner = encode($user->id);
+  $library = encode($library);
+  $word = encode($word);
+
+  $query = "SELECT * FROM words WHERE owner = '$owner' AND library = '$library' AND id = '$word'";
+  return $query;
+
+}
+
 // QUERY: word picking query
 function query_words_get($library, $user, $categories) {
 
@@ -187,6 +199,19 @@ function query_words_delete($library, $user, $word_id) {
   $word_id = encode($word_id);
 
   $query = "DELETE FROM words WHERE owner = '$owner' AND library = '$library' AND id = '$word_id'";
+  return $query;
+
+}
+
+// QUERY: update category of a word
+function query_words_categoryupdate($library, $user, $word_id, $cats) {
+
+  $owner = encode($user->id);
+  $library = encode($library);
+  $word_id = encode($word_id);
+  $cats = encode($cats);
+
+  $query = "UPDATE words SET category = '$cats' WHERE owner = '$owner' AND library = '$library' AND id = '$word_id'";
   return $query;
 
 }

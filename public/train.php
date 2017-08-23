@@ -33,7 +33,7 @@ if(isset($_GET["action:get_next_word"])) {
     "success" => true,
     "word" => $result[0]
   );
-  
+
   header("Content-type: application/json");
   exit(json_encode($json, JSON_PRETTY_PRINT));
 
@@ -41,30 +41,52 @@ if(isset($_GET["action:get_next_word"])) {
 elseif(isset($_GET["action:results"])) {
 
   // save info about training, if user tricks this, he/she's just tricking him/herself
-  /*$insert = $_GET["action:insert"];
-  $insert = json_decode($insert, true);
-  if($insert[0] == "" or $insert[1] == "")
-    exit("1");
+  $param = json_decode($_GET["action:results"], false);
+  if($param->word_id == "" OR $param->correct == "")
+    exit("{\"success\": false}");
+  $word_id = $param->word_id;
+  if(!is_numeric($word_id))
+    exit("{\"success\": false}");
+  $correct = $param->correct;
+  if($correct != "1" and $correct != "0")
+    exit("{\"success\": false}");
 
-  if(count($insert) > 3 or count($insert) < 2)
-    exit("2");
+  $word_details_query = query_words_getbyid($library_info["id"], $user, $word_id);
+  $result = query($word_id);
 
-  if(isset($insert[2]))
-    if($insert[2] == "")
-      unset($insert[2]);
+  if(!isset($result["id"]))
+    exit("{\"success\": false}");
 
-  $insert_query = query_words_create($library_info["id"], $user, $insert);
-  $insert_result = query($insert_query);
+  if($correct == "1") {
+
+    $cats = $result["category"]++;
+    if($result["category"] == $library_info["categories"]) {
+      // new category
+      $query_cat_update = query_library_categoriesupdate($library_info["id"], $user, $cats);
+      $query_cat_result = query($query_cat_update);
+    }
+    // category ++
+    $query_cat_update_ = query_words_categoryupdate($library_info["id"], $user, $word_id, $cats);
+    $query_cat_result_ = query($query_cat_update_);
+
+  }
 
   // Update stats
+  // Stats: {words_added: int, words_trained: int, words_trained_correct: int, last_training_time: int}
   $stats = json_decode($library_info["stats"], true);
-  $stats["words_added"]++;
+  $stats["words_trained"]++;
+  if($correct == "1")
+    $stats["words_trained_correct"]++;
+  else
+    if(!isset($stats["words_trained_correct"]))
+      $stats["words_trained_correct"] = 0;
+  $stats["last_training_time"] = time();
   $stats = json_encode($stats);
   $stats_update_query = query_library_statsupdate($library_info["id"], $user, $stats);
   $stats_update_result = query($stats_update_query);
 
   // exit
-  exit("0");*/
+  exit("{\"success\": true}");
 }
 
 // Languages
