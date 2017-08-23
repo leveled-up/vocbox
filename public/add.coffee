@@ -493,10 +493,13 @@ add_scan_upload_success = (storageFilename, upload_filename, upload_size) ->
               result_pre += item_.word_f + " - " + item_.word_m + "\n"
 
             # Show objects
-            add_scan_status.innerHTML = "Please confirm the scan by clicking below once the translation is done."
-            add_scan_confirm_pre.innerHTML = result_pre
-            hide_object add_scan_upload_select_span
-            show_object add_scan_confirm_span
+            if result_.length == lines_array_.length
+              add_scan_status.innerHTML = "Please confirm the scan by clicking below."
+              add_scan_confirm_pre.innerHTML = result_pre
+              hide_object add_scan_upload_select_span
+              show_object add_scan_confirm_span
+            else
+              add_scan_status.innerHTML = throbber_small + "Translation in progress..."
 
             # Make result_ public
             window.add_span_result_ = result_
