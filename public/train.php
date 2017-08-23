@@ -173,11 +173,18 @@ basic_template();
     If you're looking for a more modern way to train vocabulary, please <a href="?">click here</a>.
 
     <br />
-    What's
-    <b>
-      <span id="train_type_word_m">train_type_word_m</a>
-    </b>
-    in <?=$forein_lang_text?>?
+    <span id="train_type_question">
+      <center>
+        What's
+        <b>
+          <span id="train_type_word_m">train_type_word_m</a>
+        </b>
+        in <?=$forein_lang_text?>?
+      </center>
+    </span>
+    <span id="train_type_result">
+      
+    </span>
   </p>
 </div>
 
