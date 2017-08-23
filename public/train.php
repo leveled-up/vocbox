@@ -33,8 +33,9 @@ if(isset($_GET["action:get_next_word"])) {
     "success" => true,
     "word" => $result[0]
   );
-
-  exit(json_encode($json));
+  
+  header("Content-type: application/json");
+  exit(json_encode($json, JSON_PRETTY_PRINT));
 
 }
 elseif(isset($_GET["action:results"])) {
