@@ -77,6 +77,12 @@ elseif(isset($_GET["action:results"])) {
     $query_cat_result_ = query($query_cat_update_);
 
   }
+  elseif(isset($_GET["action:wikipedia_proxy"])) {
+
+    $request = $_GET["action:wikipedia_proxy"];
+    exit(file_get_contents("https://en.wikipedia.org/w/api.php?$request"));
+
+  }
 
   // Update stats
   // Stats: {words_added: int, words_trained: int, words_trained_correct: int, last_training_time: int}
@@ -282,7 +288,47 @@ basic_template();
 
 <!-- Train Method!Libs -->
 <div id="train_libs" style="display: none;">
-  Voc Libs
+  <p>
+    VocLibs is a slightly different training method. You're not going to always train exactly the words from your library, but it's going to fun. Need to train exactly your words? <a href="?">Click here</a>.
+
+    <br />
+  </p>
+
+  <span id="train_libs_input" style="">
+    <center>
+      <span style="color: grey;">
+        <span id="train_libs_question">train_libs_suggestions</span>
+      </span>
+    </center>
+
+    <form action="#" method="" id="train_libs_form">
+
+      <input id="train_libs_form_input" class="form-control" placeholder="<?=$forein_lang_text?> Sentence" />
+      <br />
+
+      <center>
+        <button type="submit" id="train_libs_form_btn" class="btn btn-success">Submit</button>
+      </center>
+    </form>
+  </span>
+
+  <span id="train_libs_result" style="">
+    <div id="train_libs_result_alert" class="alert alert-success">
+      <b>
+        <span id="train_libs_result_correct">Exactly/Nope</span>!
+      </b>
+
+      <span id="train_libs_result_alert_text">train_libs_result_alert_text</span>
+    </div>
+    <br /> <br />
+
+    <span id="train_libs_result_story">train_libs_story</span>
+    <br /> <br />
+
+    <center>
+      <a href="#" id="train_libs_result_btn" class="btn btn-success">Confirm</a>
+    </center>
+  </span>
 </div>
 
 <!-- Train Method!Image -->

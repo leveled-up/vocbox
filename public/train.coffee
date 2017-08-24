@@ -40,6 +40,17 @@ dom_objects = [
   "train_speak_result_confirm",
   # Objects for Method!Libs
   "train_libs",
+  "train_libs_input",
+  "train_libs_question",
+  "train_libs_form",
+  "train_libs_form_input",
+  "train_libs_form_btn",
+  "train_libs_result",
+  "train_libs_result_alert",
+  "train_libs_result_correct",
+  "train_libs_result_alert_text",
+  "train_libs_result_story",
+  "train_libs_result_btn",
   # Objects for Method!Image
   "train_image"
 ]
@@ -51,7 +62,8 @@ console.log "Init Train.js/DB"
 db_baseurl = "/train/" + library_id + "?"
 db_actions = {
   get_next_word: "action:get_next_word=",
-  register: "action:results="
+  register: "action:results=",
+  wikipedia: "action:wikipedia_proxy="
 }
 db_client = new HttpClient()
 
@@ -461,3 +473,52 @@ train_speak_result_confirm.addEventListener "click", () ->
 
   # Call Init function
   train_speak_new_word()
+
+# **** #Method!Libs ****
+# Generate next question
+train_libs_new_question = () ->
+
+  # Log Event
+  console.log "Requested train_libs_new_question()"
+
+  # Prepare Inputs
+  train_libs_question.innerHTML = "Loading..."
+  train_libs_form.reset()
+  train_libs_input.focus()
+
+  # Get Random Text from Wikipedia
+  wikipedia_client = new HttpClient()
+  wikipedia_baseurl = db_baseurl + db_actions.wikipedia
+  console.log "Wikipedia Proxy URL: " + wikipedia_baseurl
+  wikipedia_params = {
+    random_article: "action=query&generator=random&grnnamespace=0&format=json",
+    summary_oa: "format=json&action=query&prop=extracts&exintro=&explaintext=&titles="
+  }
+
+  # Get Random Article
+  random_article_url = wikipedia_baseurl + urlencode wikipedia_params.random_article
+  console.log "Wikipedia Rand Article. Requesting: " + random_article_url
+  wikipedia_client.get random_article_url, (result_ra) ->
+
+    # Log Event
+    console.log "Request Result: " + result_ra
+
+    # Decode Result
+    result = JSON.parse result_ra
+    if not result.query.pages[0].title?
+      console.warn "Error in JSON result."
+    else
+      console.log "Success: Page is " + result.query.pages[0].title
+
+
+"train_libs_input",
+"train_libs_question",
+"train_libs_form",
+"train_libs_form_input",
+"train_libs_form_btn",
+"train_libs_result",
+"train_libs_result_alert",
+"train_libs_result_correct",
+"train_libs_result_alert_text",
+"train_libs_result_story",
+"train_libs_result_btn",
