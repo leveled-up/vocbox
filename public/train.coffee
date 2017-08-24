@@ -39,9 +39,9 @@ dom_objects = [
   "train_speak_result_word_m",
   "train_speak_result_confirm",
   # Objects for Method!Libs
-  "add_libs",
+  "train_libs",
   # Objects for Method!Image
-  "add_image"
+  "train_image"
 ]
 get_objects dom_objects
 
@@ -347,7 +347,7 @@ train_speak_new_word = () ->
 
     # Speech Synthesis
     console.log "Init Speech Synthesis."
-    add_speak_status.innerHTML = "Talking."
+    train_speak_status.innerHTML = "Talking."
     # speech_synthesis = (text, language, callback)
     speech_synthesis word.word_m, speech_synthesis_lang, (e) ->
 
@@ -356,7 +356,7 @@ train_speak_new_word = () ->
 
       # Speech Recognition
       console.log "Init Speech Recognition."
-      add_speak_status.innerHTML = "Enable microphone access and start talking."
+      train_speak_status.innerHTML = "Enable microphone access and start talking."
       # speech_recognition = (language, callback)
       speech_recognition speech_recognition_lang, (status, transcript) ->
 
