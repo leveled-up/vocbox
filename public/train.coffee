@@ -509,16 +509,3 @@ train_libs_new_question = () ->
       console.warn "Error in JSON result."
     else
       console.log "Success: Page is " + result.query.pages[0].title
-
-
-"train_libs_input",
-"train_libs_question",
-"train_libs_form",
-"train_libs_form_input",
-"train_libs_form_btn",
-"train_libs_result",
-"train_libs_result_alert",
-"train_libs_result_correct",
-"train_libs_result_alert_text",
-"train_libs_result_story",
-"train_libs_result_btn",
