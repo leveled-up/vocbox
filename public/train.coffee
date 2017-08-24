@@ -383,7 +383,7 @@ train_speak_new_word = () ->
             # Insert into Form
             console.log "Final transcript: " + transcript
             train_speak_status.innerHTML = "Is <i>" + transcript + "</i> correct?"
-            train_speak_word_f.value = transcript
+            train_speak_form_word_f.value = transcript
 
   # Init Done
   true
