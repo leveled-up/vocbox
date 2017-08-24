@@ -163,7 +163,6 @@ train_method_speak.addEventListener "click", () ->
   # Init Type
   console.log "Init Method!Speak"
   train_speak_status.innerHTML = "Loading..."
-  console.log "TEST"
 
   # Show Method!Type
   show_object train_speak
@@ -323,7 +322,7 @@ train_speak_new_word = () ->
 
   # Log Event
   console.log "train_speak_new_word()"
-  add_speak_status.innerHTML = "Loading..."
+  train_speak_status.innerHTML = "Loading..."
 
   # Get New Word
   get_next_word (word) ->
