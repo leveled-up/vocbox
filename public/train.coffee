@@ -168,7 +168,7 @@ train_method_speak.addEventListener "click", () ->
   show_object train_speak
 
   # Load new word + start speech
-  train_type_new_word()
+  train_speak_new_word()
 
   # Return false to prevent a.href
   false
