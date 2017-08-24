@@ -227,7 +227,57 @@ basic_template();
 
 <!-- Train Method!Speak -->
 <div id="train_speak" style="display: none;">
-  Speak
+  <p>
+    Here, you can train <?=$forein_lang_text?>, by listening to <?=$mother_lang_text?> words and then speaking the <?=$forein_lang_text?> words.
+    You can get back by <a href="?">clicking here</a>.
+
+    <br />
+  </p>
+  <span id="train_speak_question" style="">
+    <center>
+      What's
+      <b>
+        <span id="train_speak_word_m">train_speak_word_m</span>
+      </b>
+      in <?=$forein_lang_text?>?
+
+      <br />
+
+      <span id="train_speak_status" style="color: grey;">train_speak_status</span>
+    </center>
+    <br /> <br />
+
+    <form action="#" method="" id="train_speak_form">
+      <b>
+        <input id="train_speak_form_word_f" class="form-control" placeholder="<?=$forein_lang_text?> Word" />
+      </b>
+      <br />
+
+      <center>
+        <button type="submit" id="train_speak_form_btn" class="btn btn-success btn-lg">Submit</button>
+      </center>
+    </form>
+  </span>
+  <span id="train_speak_result" style="display: none;">
+    <div id="train_speak_result_alert" class="alert alert-success">
+      <b>
+        <span id="train_speak_result_correct">Exactly/Nope</span>!
+      </b>
+      The correct answer is: The <?=$forein_lang_text?>
+      <b>
+        <span id="train_speak_result_word_f">train_speak_result_positive_word_f</span>
+      </b>
+      means
+      <b>
+        <span id="train_speak_result_word_m">train_speak_result_word_m</span>
+      </b>.
+    </div>
+    <br />
+
+    <center>
+      <a href="#" id="train_speak_result_confirm" class="btn btn-success btn-lg">Confirm</a>
+    </center>
+  </span>
 </div>
 
 <!-- Train Method!Libs -->

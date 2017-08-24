@@ -6,13 +6,13 @@ console.warn "This script may not be compatible entirely with all browsers."
 # Get objects from DOM
 dom_objects = [
   # Objects for Method!Chooser
-  "add_method_chooser",
-  "add_method_type",
-  "add_method_speak",
-  "add_method_libs",
-  "add_method_image",
+  "train_method_chooser",
+  "train_method_type",
+  "train_method_speak",
+  "train_method_libs",
+  "train_method_image",
   # Objects for Method!Type
-  "add_type",
+  "train_type",
   "train_type_question",
   "train_type_word_m",
   "train_type_form",
@@ -25,7 +25,19 @@ dom_objects = [
   "train_type_result_word_m",
   "train_type_result_confirm",
   # Objects for Method!Speak
-  "add_speak",
+  "train_speak",
+  "train_speak_status",
+  "train_speak_question",
+  "train_speak_word_m",
+  "train_speak_form",
+  "train_speak_form_word_f",
+  "train_speak_form_btn",
+  "train_speak_result",
+  "train_speak_result_alert",
+  "train_speak_result_correct",
+  "train_speak_result_word_f",
+  "train_speak_result_word_m",
+  "train_speak_result_confirm",
   # Objects for Method!Libs
   "add_libs",
   # Objects for Method!Image
@@ -261,7 +273,6 @@ train_type_answer_submit = () ->
 
     hide_object train_type_question
     console.log train_type_form_btn_original_text
-    train_type_form_btn.innerHTML = "TEST!!!!!!!!"
     train_type_form_btn.innerHTML = train_type_form_btn_original_text
     show_object train_type_result
 
@@ -297,3 +308,106 @@ train_type_result_confirm.addEventListener "click", () ->
 
   # Call Init function
   train_type_new_word()
+
+# **** #Method!Speak ****
+# Variables
+train_speak_form_btn_original_text = train_speak_form_btn.innerHTML
+
+# New Word Function
+train_speak_new_word = () ->
+
+  # Log Event
+  console.log "train_speak_new_word()"
+
+  # Get New Word
+  get_next_word (word) ->
+
+    # Log Event
+    console.log "Loaded Word: " + JSON.stringify word
+
+    # Continue
+    window.train_speak_word = word
+    show_object train_speak_question
+    hide_object train_speak_result
+    train_speak_word_m.innerHTML = word.word_m
+
+    # Focus Input
+    train_speak_form.reset()
+    train_speak_form_word_f.focus()
+
+  # Init Done
+  true
+
+# Question, On Answer Submit
+train_speak_answer_submit = () ->
+
+  # Log Event
+  console.log "train_speak_answer_submit()"
+
+  # Validate Correctness of Input
+  train_speak_form_btn.innerHTML = "Submitting..."
+  word_f = train_speak_form_word_f.value.toLowerCase()
+  console.log "input.word_f: " + word_f
+
+  if train_speak_word.word_f.toLowerCase() == word_f
+    # Log Event & Set Info for DB
+    console.log "Word answered correctly."
+    correct = true
+
+    # Set Result GUI
+    train_speak_result_alert.className = "alert alert-success"
+    train_speak_result_correct.innerHTML = "Exactly"
+
+  else
+    # Log Event & Set Info for DB
+    console.warn "Word answered incorrectly."
+    correct = false
+
+    # Set Result GUI
+    train_speak_result_alert.className = "alert alert-danger"
+    train_speak_result_correct.innerHTML = "Nope"
+
+  # Set Result GUI words
+  train_speak_result_word_f.innerHTML = train_speak_word.word_f
+  train_speak_result_word_m.innerHTML = train_speak_word.word_m
+
+  # Send Results to DB
+  register_results train_speak_word.id, correct, (success) ->
+
+    hide_object train_speak_question
+    console.log train_speak_form_btn_original_text
+    train_speak_form_btn.innerHTML = train_speak_form_btn_original_text
+    show_object train_speak_result
+
+    if not success
+      console.warn "register_results() failed."
+      alert "Error 500: Sending data to Server failed."
+      return false
+    else
+      console.log "Success."
+      return true
+
+  # Init Done
+  true
+
+# Form Event Listener to Call Answer Submit
+train_speak_form.addEventListener "submit", (evt) ->
+
+  # Prevent action=X
+  evt.preventDefault()
+
+  # Call answer submit function
+  train_speak_answer_submit()
+
+# Form Btn Event Listener to Submit Form
+train_speak_form_btn.addEventListener "click", () ->
+
+  # Call answer submit function
+  train_speak_answer_submit()
+
+
+# Confirm Btn to Activate new Session
+train_speak_result_confirm.addEventListener "click", () ->
+
+  # Call Init function
+  train_speak_new_word()
