@@ -163,12 +163,13 @@ train_method_speak.addEventListener "click", () ->
   # Init Type
   console.log "Init Method!Speak"
   train_speak_status.innerHTML = "Loading..."
+  console.log "TEST"
 
   # Show Method!Type
   show_object train_speak
 
   # Load new word + start speech
-  train_speak_new_word()
+  console.log train_speak_new_word()
 
   # Return false to prevent a.href
   false
