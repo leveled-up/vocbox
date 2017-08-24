@@ -162,9 +162,13 @@ train_method_speak.addEventListener "click", () ->
 
   # Init Type
   console.log "Init Method!Speak"
+  train_speak_status.innerHTML = "Loading..."
 
   # Show Method!Type
   show_object train_speak
+
+  # Load new word + start speech
+  train_type_new_word()
 
   # Return false to prevent a.href
   false
@@ -318,6 +322,7 @@ train_speak_new_word = () ->
 
   # Log Event
   console.log "train_speak_new_word()"
+  add_speak_status.innerHTML = "Loading..."
 
   # Get New Word
   get_next_word (word) ->
@@ -332,8 +337,51 @@ train_speak_new_word = () ->
     train_speak_word_m.innerHTML = word.word_m
 
     # Focus Input
+    # NOTE: no focus (prevent mobile keyboard)
+    train_speak_form_word_f.blur()
     train_speak_form.reset()
-    train_speak_form_word_f.focus()
+
+    # Speech Synthesis & Recognition Langs
+    speech_synthesis_lang = mother_lang[1]
+    speech_recognition_lang = forein_lang[1]
+
+    # Speech Synthesis
+    console.log "Init Speech Synthesis."
+    add_speak_status.innerHTML = "Talking."
+    # speech_synthesis = (text, language, callback)
+    speech_synthesis word.word_m, speech_synthesis_lang, (e) ->
+
+      # Log Event
+      console.log "Synthesis done."
+
+      # Speech Recognition
+      console.log "Init Speech Recognition."
+      add_speak_status.innerHTML = "Enable microphone access and start talking."
+      # speech_recognition = (language, callback)
+      speech_recognition speech_recognition_lang, (status, transcript) ->
+
+        # Log Event
+        console.log "Speech Recognition State Change: " + status
+        console.log "transcript: " + transcript
+
+        # Process Results
+        switch status
+          # Init Complete
+          when 0
+            train_speak_status.innerHTML = "Please allow microphone access and start speaking."
+          # New Transcript, not Final
+          when 1
+            train_speak_status.innerHTML = transcript
+          # Nothing Recognized
+          when 3
+            train_speak_status.innerHTML = "Nothing Recognized."
+          # Error
+          when 4
+            train_speak_status.innerHTML = "Nothing Recognized."
+          # New Transcript, isFinal
+          when 2
+            # Insert into Form
+            train_speak_word_f.value = transcript
 
   # Init Done
   true
