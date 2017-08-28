@@ -643,7 +643,7 @@ train_libs_check_result = () ->
         else
           console.log item + " found."
           count++
-          result_[item] input_[input_.indexOf(item)]
+          result_[item] = input_[input_.indexOf(item)]
 
       if count == train_libs_req.length
         # User Succeeded, Create Story
