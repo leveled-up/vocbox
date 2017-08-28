@@ -164,7 +164,7 @@ basic_template();
       <div class="panel-body">
         <center>
           <a href="#" id="train_method_image">
-            <h3>Describing</h3>
+            <h3>Describe</h3>
             <span>We'll show you pictures, which you need to describe in <?=$forein_lang_text?>.</span>
             <span style="color: grey;"> (difficult)</span>
           </a>
