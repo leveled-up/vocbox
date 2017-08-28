@@ -546,7 +546,45 @@ train_libs_new_question = () ->
               # Success
               console.log "Success analyzeTextSyntax()"
 
-              #  Create words array
+              # Create words array
               window.train_libs_words = []
               words.forEach (item, index) ->
                 window.train_libs_words[item] = result[index]
+
+              console.log "Words: " + JSON.stringify train_libs_words
+
+              # Set sentence requirements
+              rand = Math.floor Math.random() * 4
+              switch rand
+                case 0
+                  requirements = "one noun, one verb and one adjective"
+                  window.train_libs_req = ["NOUN", "VERB", "ADJ"]
+                case 1
+                  requirements = "one noun and one adjective"
+                  window.train_libs_req = ["NOUN", "ADJ"]
+                case 2
+                  requirements = "one noun and one verb"
+                  window.train_libs_req = ["NOUN", "VERB"]
+                case 3
+                  requirements = "one noun"
+                  window.train_libs_req = ["NOUN"]
+
+              # Prepare GUI
+
+              train_libs_question.innerHTML = "Please build a sentence in " + forein_lang[0] + " which contains at least " + requirements + "."
+
+              # get suggestion
+              get_next_word (word) ->
+
+                # Log Event
+                console.log "Loaded Word: " + JSON.stringify word
+
+                # Continue
+                window.train_libs_word = word
+                train_libs_question.innerHTML += " You may use something like " + word
+
+                # Show GUI
+                hide_object train_libs_result
+                show_object train_libs_input
+                train_libs_form.reset()
+                train_libs_form_input.focus()

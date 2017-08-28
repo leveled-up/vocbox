@@ -312,7 +312,7 @@ basic_template();
     </form>
   </span>
 
-  <span id="train_libs_result" style="">
+  <span id="train_libs_result" style="display: none;">
     <div id="train_libs_result_alert" class="alert alert-success">
       <b>
         <span id="train_libs_result_correct">Exactly/Nope</span>!
