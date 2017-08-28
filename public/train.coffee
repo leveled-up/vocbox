@@ -556,16 +556,16 @@ train_libs_new_question = () ->
               # Set sentence requirements
               rand = Math.floor Math.random() * 4
               switch rand
-                case 0
+                when 0
                   requirements = "one noun, one verb and one adjective"
                   window.train_libs_req = ["NOUN", "VERB", "ADJ"]
-                case 1
+                when 1
                   requirements = "one noun and one adjective"
                   window.train_libs_req = ["NOUN", "ADJ"]
-                case 2
+                when 2
                   requirements = "one noun and one verb"
                   window.train_libs_req = ["NOUN", "VERB"]
-                case 3
+                when 3
                   requirements = "one noun"
                   window.train_libs_req = ["NOUN"]
 
