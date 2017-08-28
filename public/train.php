@@ -166,7 +166,10 @@ basic_template();
           <a href="#" id="train_method_image">
             <h3>Describe</h3>
             <span>We'll show you pictures, which you need to describe in <?=$forein_lang_text?>.</span>
-            <span style="color: grey;"> Watch out! It might be difficult.</span>
+            <span style="color: grey;">
+              <br />
+              Watch out! It might be difficult.
+            </span>
           </a>
         </center>
       </div>
