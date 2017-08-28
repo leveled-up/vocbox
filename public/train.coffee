@@ -698,12 +698,12 @@ train_image_check_result = () ->
   if correct_words > 0
     # Correct
     train_image_result_alert.className = "alert alert-success"
-    train_image_result_alert.innerHTML = "Exactly!"
+    train_image_result_correct.innerHTML = "Exactly!"
     console.log "Correct."
   else
     # Wrong
     train_image_result_alert.className = "alert alert-danger"
-    train_image_result_alert.innerHTML = "Nope!"
+    train_image_result_correct.innerHTML = "Nope!"
     console.log "User failed."
 
   hide_object train_image_input
