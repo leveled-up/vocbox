@@ -581,7 +581,7 @@ train_libs_new_question = () ->
 
                 # Continue
                 window.train_libs_word = word
-                train_libs_question.innerHTML += " You may use something related to " + word.word_ms
+                train_libs_question.innerHTML += " You may use something related to " + word.word_m
 
                 # Show GUI
                 hide_object train_libs_result
