@@ -677,6 +677,10 @@ train_image_check_result = () ->
   # Log Event
   console.log "Requested train_image_check_result()"
 
+  # Prepare GUI
+  train_image_form_btn_original_text = train_image_form_btn.innerHTML
+  train_image_form_btn.innerHTML = "Submitting..."
+
   # Prepare Input
   input = train_image_form_input.value.toLowerCase()
   console.log "User Input: " + input
@@ -687,3 +691,21 @@ train_image_check_result = () ->
     console.log "Searching for " + word
 
     correct_words++ if input.indexOf(word) >= 0
+
+  # Check results
+  list_of_words = train_img_words_correct.join ", "
+  train_image_result_alert_text = "The image contains " + list_of_words + "."
+  if correct_words > 0
+    # Correct
+    train_image_result_alert.className = "alert alert-success"
+    train_image_result_alert.innerHTML = "Exactly!"
+    console.log "Correct."
+  else
+    # Wrong
+    train_image_result_alert.className = "alert alert-danger"
+    train_image_result_alert.innerHTML = "Nope!"
+    console.log "User failed."
+
+  hide_object train_image_input
+  show_object train_image_result
+  train_image_form_btn.innerHTML = train_image_form_btn_original_text
