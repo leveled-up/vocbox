@@ -572,7 +572,7 @@ train_libs_new_question = () ->
                 console.warn "Debug: " + item + ", " + index
                 window.train_libs_words[item] = result[index]
 
-              console.log "Words: " + JSON.stringify train_libs_words
+              console.log "Words: " + JSON.stringify window.train_libs_words
 
               # Set sentence requirements
               rand = Math.floor Math.random() * 4
