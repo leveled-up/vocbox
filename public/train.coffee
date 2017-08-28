@@ -508,11 +508,12 @@ train_libs_new_question = () ->
     if not result.query.pages[Object.keys(result.query.pages)[0]].title?
       console.warn "Error in JSON result."
     else
-      console.log "Success: Page is " + result.query.pages[0].title
+      result_ = result.query.pages[Object.keys(result.query.pages)[0]].title
+      console.log "Success: Page is " + result_
 
       # Get Page Summary
       console.log "Get article description..."
-      article_url = wikipedia_baseurl + urlencode(wikipedia_params.summary_oa) + urlencode result.query.pages[0].title
+      article_url = wikipedia_baseurl + urlencode(wikipedia_params.summary_oa) + urlencode result_
       console.log "Wikipedia Article Summary. Requesting: " + article_url
       wikipedia_client.get article_url, (result_soa) ->
 
