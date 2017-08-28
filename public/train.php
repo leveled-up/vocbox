@@ -339,12 +339,15 @@ basic_template();
     <br /> <br />
   </p>
   <span id="train_image_input">
-      <img id="train_image_img" alt="Loading..." />
+      <center>
+        <img id="train_image_img" alt="Loading..." />
+      </center>
       <br /> <br />
 
       <form action="#" method="" id="train_image_form">
 
         <input id="train_image_form_input" class="form-control" placeholder="<?=$forein_lang_text?> sentence" />
+        <br /> <br />
 
         <center>
           <a href="#" id="train_image_form_btn" class="btn btn-success">Confirm</a>
