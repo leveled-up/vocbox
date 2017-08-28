@@ -568,9 +568,11 @@ train_libs_new_question = () ->
 
               # Create words array
               window.train_libs_words = []
+              window.train_libs_words_c = []
               words.forEach (item, index) ->
                 console.warn "Debug: " + item + ", " + index
                 window.train_libs_words[item] = result[index]
+                window.train_libs_words_c.push [item, result[item]]
 
               console.log "Words: " + JSON.stringify window.train_libs_words
 
@@ -653,11 +655,12 @@ train_libs_check_result = () ->
         train_libs_result_alert_text.innerHTML = "Your answer works."
 
         train_libs_result_story.innerHTML = throbber_small + train_libs_wikipedia_extract
-        extract = train_libs_words
+        extract = train_libs_words_c
         console.log "Debug: Extract: " + JSON.stringify extract
         extract_ = []
         # result_ = {"NOUN": "world", "ADJ": "beautiful"}
-        # extract = {"world": "NOUN", "beautiful": "ADJ"}
+        console.log JSON.stringify result_
+        # extract = {["world", "NOUN"], ["beautiful", "ADJ"]}
         extract.forEach (item, index) ->
           if result_.indexOf(item) < 0
             console.log item + ", " + index
