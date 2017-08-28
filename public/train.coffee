@@ -569,6 +569,7 @@ train_libs_new_question = () ->
               # Create words array
               window.train_libs_words = []
               words.forEach (item, index) ->
+                console.warn "Debug: " + item + ", " + index
                 window.train_libs_words[item] = result[index]
 
               console.log "Words: " + JSON.stringify train_libs_words
