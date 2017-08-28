@@ -547,5 +547,6 @@ train_libs_new_question = () ->
               console.log "Success analyzeTextSyntax()"
 
               #  Create words array
+              window.train_libs_words = []
               words.forEach (item, index) ->
                 window.train_libs_words[item] = result[index]
