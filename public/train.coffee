@@ -505,7 +505,7 @@ train_libs_new_question = () ->
 
     # Decode Result
     result = JSON.parse result_ra
-    if not result.query.pages[0].title?
+    if not result["query"]["pages"][0]["title"]?
       console.warn "Error in JSON result."
     else
       console.log "Success: Page is " + result.query.pages[0].title
