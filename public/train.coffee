@@ -572,7 +572,7 @@ train_libs_new_question = () ->
               words.forEach (item, index) ->
                 console.warn "Debug: " + item + ", " + index
                 window.train_libs_words[item] = result[index]
-                window.train_libs_words_c.push [item, result[item]]
+                window.train_libs_words_c.push [item, result[index]]
 
               console.log "Words: " + JSON.stringify window.train_libs_words
 
