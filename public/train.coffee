@@ -608,6 +608,37 @@ train_libs_new_question = () ->
                 train_libs_form.reset()
                 train_libs_form_input.focus()
 
+train_libs_check_result = () ->
+
+  # Log Event
+  console.log "Requested train_libs_check_result()"
+
+  # Process Response
+  train_libs_form_btn_original_text = train_libs_form_btn.innerHTML
+  train_libs_form_btn.innerHTML = "Submitting..."
+  input = train_libs_form_input.value.split " "
+
+  analyzeTextSyntax input, (result) ->
+
+    # Log Event
+    console.log "Result: " + JSON.stringify result
+
+    # Check Result
+    if not result
+      # Error
+      console.warn "Error."
+      alert "Error 500: Natural Language Processing failed. (train_libs_check_result/2)"
+    else
+      # Success
+      console.log "Success."
+      input_ = result
+      train_libs_req.forEach (item) ->
+
+        # Check if Exists
+        if input_.indexOf(item) < 0
+          console.warn "User failed."
+          #
+
 # TODO: complete voclibs
 
 # **** #Method!Image ****
