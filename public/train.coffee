@@ -520,11 +520,11 @@ train_libs_new_question = () ->
         # Log Event
         console.log "Request Result: " + result_soa
         result = JSON.parse result_soa
-        if not result.query.pages[0].extract?
+        if not result.query.pages[Object.keys(result.query.pages)[0]].extract?
           console.warn "Error in JSON result."
           alert "Error 500: Error requesting Wikipedia."
         else
-          extract = result.query.pages[0].extract
+          extract = result.query.pages[Object.keys(result.query.pages)[0]].extract
           console.log "Success. Summary: " + extract
           words = extract.split " "
 
