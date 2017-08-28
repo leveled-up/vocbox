@@ -10,7 +10,9 @@ $request_time = time();
 
 // Check Session
 session_start();
-if(!isset($_SESSION["user"]))
+if($request_url == "/" and !isset($_SESSION["user"]))
+  exit(file_get_contents("template/index.html"));
+elseif(!isset($_SESSION["user"]))
   redirect("/auth?redirect=$request_url_encoded");
 $user = (object)$_SESSION["user"];
 
