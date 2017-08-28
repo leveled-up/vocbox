@@ -82,7 +82,9 @@ echo file_get_contents("template/basic.tpl");
 </div>
 
 <br /> <br />
-<address>&copy; RunStorage Technologies &middot; Google is a registered trademark of Google, Inc.</address>
+<small>
+  <address>&copy; <?=date("Y")?> RunStorage Technologies &middot; Google is a registered trademark of Google, Inc.</address>
+</small>
 
 <!-- Scripts -->
 <script src="https://vocbox-test.firebaseapp.com/__/firebase/4.2.0/firebase-app.js"></script>
