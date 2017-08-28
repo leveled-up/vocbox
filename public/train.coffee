@@ -647,7 +647,7 @@ train_libs_check_result = () ->
 
       if count == train_libs_req.length
         # User Succeeded, Create Story
-        train_libs_alert.className = "alert alert-success"
+        train_libs_result_alert.className = "alert alert-success"
         train_libs_result_correct.innerHTML = "Exactly"
         train_libs_result_alert_text.innerHTML = "Your answer works."
 
