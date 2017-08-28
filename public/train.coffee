@@ -694,16 +694,16 @@ train_image_check_result = () ->
 
   # Check results
   list_of_words = train_img_words_correct.join ", "
-  train_image_result_alert_text = "The image contains " + list_of_words + "."
+  train_image_result_alert_text.innerHTML = "The image contains " + list_of_words + "."
   if correct_words > 0
     # Correct
     train_image_result_alert.className = "alert alert-success"
-    train_image_result_correct.innerHTML = "Exactly!"
+    train_image_result_correct.innerHTML = "Exactly"
     console.log "Correct."
   else
     # Wrong
     train_image_result_alert.className = "alert alert-danger"
-    train_image_result_correct.innerHTML = "Nope!"
+    train_image_result_correct.innerHTML = "Nope"
     console.log "User failed."
 
   hide_object train_image_input
