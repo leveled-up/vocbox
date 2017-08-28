@@ -709,3 +709,24 @@ train_image_check_result = () ->
   hide_object train_image_input
   show_object train_image_result
   train_image_form_btn.innerHTML = train_image_form_btn_original_text
+
+# Form Event Listener to Call Answer Submit
+train_image_form.addEventListener "submit", (evt) ->
+
+  # Prevent action=X
+  evt.preventDefault()
+
+  # Call answer submit function
+  train_image_check_result()
+
+# Form Btn Event Listener to Submit Form
+train_image_form_btn.addEventListener "click", () ->
+
+  # Call answer submit function
+  train_image_check_result()
+
+# Confirm Btn to Activate new Session
+train_image_result_confirm.addEventListener "click", () ->
+
+  # Call Init function
+  train_image_new_img()
