@@ -207,9 +207,12 @@ train_method_libs.addEventListener "click", () ->
 
   # Init Type
   console.log "Init Method!Libs"
+  train_libs_question.innerHTML = "Loading..."
 
   # Show Method!Type
   show_object train_libs
+  train_libs_new_question()
+  train_libs_form_input.focus()
 
   # Return false to prevent a.href
   false
@@ -229,6 +232,7 @@ train_method_image.addEventListener "click", () ->
 
   # Show Method!Type
   show_object train_image
+  train_image_form_input.focus()
 
   # Return false to prevent a.href
   false
