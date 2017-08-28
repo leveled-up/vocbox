@@ -66,6 +66,9 @@ dom_objects = [
 ]
 get_objects dom_objects
 
+# Variables
+throbber_small = "<img src=\"https://www.runstorageapis.com/img/throbber_small.svg\" alt=\"\" />&nbsp; "
+
 # **** #DB ****
 # Variables
 console.log "Init Train.js/DB"
@@ -207,7 +210,7 @@ train_method_libs.addEventListener "click", () ->
 
   # Init Type
   console.log "Init Method!Libs"
-  train_libs_question.innerHTML = "Loading..."
+  train_libs_question.innerHTML = throbber_small + "Loading..."
 
   # Show Method!Type
   show_object train_libs
@@ -498,7 +501,7 @@ train_libs_new_question = () ->
   console.log "Requested train_libs_new_question()"
 
   # Prepare Inputs
-  train_libs_question.innerHTML = "Loading..."
+  train_libs_question.innerHTML = throbber_small + "Loading..."
   train_libs_form.reset()
   train_libs_input.focus()
 
