@@ -669,8 +669,7 @@ train_libs_check_result = () ->
         console.log "Story JSON: " + JSON.stringify extract_f
         story = extract_.join " "
         console.log "Story: " + story
-        train_libs_result_story.innerHTML =
-
+        train_libs_result_story.innerHTML = story
 
       else
         # User failed
