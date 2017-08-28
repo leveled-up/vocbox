@@ -624,7 +624,7 @@ train_image_new_img = () ->
 
   info_param = db_actions.imginfo + rand
   info_url = db_baseurl + info_param
-  console.log "Info URL: " + info_param
+  console.log "Info URL: " + info_url
 
   window.train_image_img_id = rand
 
@@ -634,6 +634,8 @@ train_image_new_img = () ->
 
   train_image_form.reset()
   train_image_form_input.focus()
+
+  # TODO: speech recognition code here (eventually)
 
   # Request word info
   db_client.get info_url, (result) ->
@@ -667,6 +669,21 @@ train_image_new_img = () ->
           else
             # Success, Push to Array
             console.log "Success, train_img_words_correct[] = " + response
-            train_img_words_correct.push response
+            train_img_words_correct.push response.toLowerCase()
 
 # Check Response
+train_image_check_result = () ->
+
+  # Log Event
+  console.log "Requested train_image_check_result()"
+
+  # Prepare Input
+  input = train_image_form_input.value.toLowerCase()
+  console.log "User Input: " + input
+  correct_words = 0
+  train_img_words_correct.forEach (word) ->
+
+    # Check if word exists in response
+    console.log "Searching for " + word
+
+    correct_words++ if input.indexOf(word) >= 0
