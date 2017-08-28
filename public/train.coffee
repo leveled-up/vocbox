@@ -73,7 +73,8 @@ db_baseurl = "/train/" + library_id + "?"
 db_actions = {
   get_next_word: "action:get_next_word=",
   register: "action:results=",
-  wikipedia: "action:wikipedia_proxy="
+  wikipedia: "action:wikipedia_proxy=",
+  imginfo: "action:image_info_proxy="
 }
 db_client = new HttpClient()
 
