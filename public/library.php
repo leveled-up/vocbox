@@ -52,6 +52,12 @@ if(!isset($stats_echo))
     </b>
   </center>";
 
+// count words
+$query_count_words = query_words_getids($library_info["id"], $user);
+$count_words = query($query_count_words, false);
+if(count($count_words) < 1)
+  $training_enabled = " disabled";
+
 // Prepare & Print Page
 $languages_text = language_pair_to_text($library_info["langs"]);
 $languages_text_array = explode(" - ", $languages_text);
@@ -71,7 +77,7 @@ basic_template();
     <i class="fa fa-plus"></i>
     Add Words
   </a>
-  <a href="/train/<?=$library_info["id"]?>" id="library_btn_train" class="btn btn-default">
+  <a href="/train/<?=$library_info["id"]?>" id="library_btn_train" class="btn btn-default<?=$training_enabled?>">
     <i class="fa fa-arrow-up"></i>
     Training
   </a>

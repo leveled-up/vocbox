@@ -216,3 +216,14 @@ function query_words_categoryupdate($library, $user, $word_id, $cats) {
   return $query;
 
 }
+
+// QUERY: get id's of words in library (for counting words)
+function query_words_getids($library, $user) {
+
+  $owner = encode($user->id);
+  $library = encode($library);
+
+  $query = "SELECT id FROM words WHERE owner = '$owner' AND library = '$library'";
+  return $query;
+
+}
