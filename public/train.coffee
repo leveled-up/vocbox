@@ -225,6 +225,7 @@ train_method_image.addEventListener "click", () ->
 
   # Init Type
   console.log "Init Method!Image"
+  train_image_new_img()
 
   # Show Method!Type
   show_object train_image
@@ -604,3 +605,68 @@ train_libs_new_question = () ->
 
 # **** #Method!Image ****
 # Get New Image
+train_image_new_img = () ->
+
+  # Log Event
+  console.log "Requested train_image_new_img()"
+
+  # Get Random Number
+  limit = 5000
+  rand = Math.floor Math.random() * (limit+1)
+  console.log "Image selected: img-" + rand
+
+  # URLs
+  img_baseurl = "https://storage.googleapis.com/vocbox-test.appspot.com/vision_images/_d/"
+  img_filename = "img-" + rand + ".jpg"
+  img_url = img_baseurl + img_filename
+  console.log "Image URL: " + img_url
+  train_image_img.src = img_url
+
+  info_param = db_actions.imginfo + rand
+  info_url = db_baseurl + info_param
+  console.log "Info URL: " + info_param
+
+  window.train_image_img_id = rand
+
+  # Prepare & Show GUI
+  hide_object train_image_result
+  show_object train_image_input
+
+  train_image_form.reset()
+  train_image_form_input.focus()
+
+  # Request word info
+  db_client.get info_url, (result) ->
+
+    console.log "Result (img-" + train_image_img_id + ".json): " + result
+    result = JSON.parse result
+
+    if forein_lang[1] == "en"
+      # Forein Lang is English, no Translation Required
+      console.log "forein_lang = en, no translation"
+      window.train_img_words_correct = result.labels
+    else
+      # Translate Labels
+      console.log "forein_lang != en, translation required"
+      window.train_img_words_correct = []
+      result.labels.forEach (label) ->
+
+        # Log Event
+        console.log "Translation Requested for " + label
+
+        # Translate
+        translate label, "en", forein_lang[1], (response) ->
+
+          # Log Event
+          console.log "Translation Done. Response: " + response
+
+          # Chech response
+          if not response
+            # Error
+            console.warn "Translation failed."
+          else
+            # Success, Push to Array
+            console.log "Success, train_img_words_correct[] = " + response
+            train_img_words_correct.push response
+
+# Check Response
