@@ -298,6 +298,7 @@ basic_template();
     <center>
       <span style="color: grey;">
         <span id="train_libs_question">train_libs_suggestions</span>
+        <br /> <br />
       </span>
     </center>
 
