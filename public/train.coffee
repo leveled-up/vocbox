@@ -726,7 +726,7 @@ train_image_form_btn.addEventListener "click", () ->
   train_image_check_result()
 
 # Confirm Btn to Activate new Session
-train_image_result_confirm.addEventListener "click", () ->
+train_image_result_btn.addEventListener "click", () ->
 
   # Call Init function
   train_image_new_img()
