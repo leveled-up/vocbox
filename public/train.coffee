@@ -513,7 +513,7 @@ train_libs_new_question = () ->
 
       # Get Page Summary
       console.log "Get article description..."
-      article_url = wikipedia_baseurl + urlencode(wikipedia_params.summary_oa) + urlencode result_
+      article_url = wikipedia_baseurl + urlencode(wikipedia_params.summary_oa) + urlencode urlencode result_
       console.log "Wikipedia Article Summary. Requesting: " + article_url
       wikipedia_client.get article_url, (result_soa) ->
 
