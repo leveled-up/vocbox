@@ -77,12 +77,6 @@ elseif(isset($_GET["action:results"])) {
     $query_cat_result_ = query($query_cat_update_);
 
   }
-  elseif(isset($_GET["action:wikipedia_proxy"])) {
-
-    $request = $_GET["action:wikipedia_proxy"];
-    exit(file_get_contents("https://en.wikipedia.org/w/api.php?$request"));
-
-  }
 
   // Update stats
   // Stats: {words_added: int, words_trained: int, words_trained_correct: int, last_training_time: int}
@@ -101,6 +95,12 @@ elseif(isset($_GET["action:results"])) {
 
   // exit
   exit("{\"success\": true}");
+}
+elseif(isset($_GET["action:wikipedia_proxy"])) {
+
+  $request = $_GET["action:wikipedia_proxy"];
+  exit(file_get_contents("https://en.wikipedia.org/w/api.php?$request"));
+
 }
 
 // Languages
