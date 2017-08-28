@@ -346,7 +346,7 @@ basic_template();
   </p>
   <span id="train_image_input">
       <center>
-        <img id="train_image_img" alt="Loading..." />
+        <img id="train_image_img" alt="Loading..." width="90%" />
       </center>
       <br /> <br />
 
