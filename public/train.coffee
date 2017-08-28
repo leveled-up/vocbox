@@ -649,6 +649,7 @@ train_libs_check_result = () ->
           result_.push [item, input_[input_.indexOf(item)]]
 
       console.log "Debug result_: " + JSON.stringify result_
+      console.log "Debug input_: " + JSON.stringify input_
 
       if count == train_libs_req.length
         # User Succeeded, Create Story
