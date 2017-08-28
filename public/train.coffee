@@ -52,7 +52,17 @@ dom_objects = [
   "train_libs_result_story",
   "train_libs_result_btn",
   # Objects for Method!Image
-  "train_image"
+  "train_image",
+  "train_image_input",
+  "train_image_img",
+  "train_image_form",
+  "train_image_form_input",
+  "train_image_form_btn",
+  "train_image_result",
+  "train_image_result_alert",
+  "train_image_result_correct",
+  "train_image_result_alert_text",
+  "train_image_result_btn"
 ]
 get_objects dom_objects
 
