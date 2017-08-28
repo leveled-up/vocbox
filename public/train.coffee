@@ -653,17 +653,21 @@ train_libs_check_result = () ->
 
         train_libs_result_story.innerHTML = throbber_small + train_libs_wikipedia_extract
         extract = train_libs_words
+        console.log "Debug: Extract: " + JSON.stringify extract
         extract_ = []
         # result_ = {"NOUN": "world", "ADJ": "beautiful"}
         # extract = {"world": "NOUN", "beautiful": "ADJ"}
         extract.forEach (item, index) ->
           if result_.indexOf(item) < 0
+            console.log item + ", " + index
             extract_[result_[result_.indexOf(item)]] = result_.indexOf(item)
           else
+            console.log item + ", " + index + "2"
             extract_[index] = item
 
         extract_f = []
         extract_.forEach (item, index) ->
+          console.log index
           extract_f.push index
 
         console.log "Story JSON: " + JSON.stringify extract_f
