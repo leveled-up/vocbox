@@ -553,7 +553,7 @@ train_libs_new_question = () ->
           analyzeTextSyntax extract, (response_atx) ->
 
             # Log Event
-            console.log "analyzeTextSyntax() Result: " + response_atx
+            console.log "analyzeTextSyntax() Result: " + JSON.stringify response_atx
 
             # JSON Decode
             result = response_atx
