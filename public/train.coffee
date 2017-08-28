@@ -544,6 +544,7 @@ train_libs_new_question = () ->
           alert "Error 500: Error requesting Wikipedia."
         else
           extract = result.query.pages[Object.keys(result.query.pages)[0]].extract
+          window.train_libs_wikipedia_extract = extract
           console.log "Success. Summary: " + extract
           words = extract.split " "
 
@@ -632,12 +633,55 @@ train_libs_check_result = () ->
       # Success
       console.log "Success."
       input_ = result
+      count = 0
+      result_ = []
       train_libs_req.forEach (item) ->
 
         # Check if Exists
         if input_.indexOf(item) < 0
           console.warn "User failed."
-          #
+        else
+          console.log item + " found."
+          count++
+          result_[item] input_[input_.indexOf(item)]
+
+      if count == train_libs_req.length
+        # User Succeeded, Create Story
+        train_libs_alert.className = "alert alert-success"
+        train_libs_result_correct.innerHTML = "Exactly"
+        train_libs_result_alert_text.innerHTML = "Your answer works."
+
+        train_libs_result_story.innerHTML = throbber_small + train_libs_wikipedia_extract
+        extract = train_libs_words
+        extract_ = []
+        # result_ = {"NOUN": "world", "ADJ": "beautiful"}
+        # extract = {"world": "NOUN", "beautiful": "ADJ"}
+        extract.forEach (item, index) ->
+          if result_.indexOf(item) < 0
+            extract_[result_[result_.indexOf(item)]] = result_.indexOf(item)
+          else
+            extract_[index] = item
+
+        extract_f = []
+        extract_.forEach (item, index) ->
+          extract_f.push index
+
+        console.log "Story JSON: " + JSON.stringify extract_f
+        story = extract_.join " "
+        console.log "Story: " + story
+        train_libs_result_story.innerHTML =
+
+
+      else
+        # User failed
+        train_libs_alert.className = "alert alert-danger"
+        train_libs_result_correct.innerHTML = "Nope"
+        train_libs_result_alert_text.innerHTML = "That was not correct."
+        train_libs_result_story.innerHTML = "Your answer wasn't correct. <i>No story.</i>"
+
+      # Update GUI
+      hide_object train_libs_input
+      show_object train_libs_result
 
 # TODO: complete voclibs
 
