@@ -77,7 +77,7 @@ basic_template();
     <i class="fa fa-plus"></i>
     Add Words
   </a>
-  <a href="/share/<?=$library_info["id"]?>?create=1" id="library_btn_share" class="btn btn-default">
+  <a href="/share/<?=$library_info["id"]?>?create=1" id="library_btn_share" class="btn btn-default disabled">
     <i class="fa fa-share-alt"></i>
     Share
   </a>
