@@ -158,19 +158,6 @@ basic_template();
       </div>
     </div>
   </div>
-  <!-- Method:Libs -->
-  <div class="col-sm-3">
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <center>
-          <a href="#" id="train_method_libs">
-            <h3>VocLibs</h3>
-            <span>We'll play a game. We ask you to tell us some sentences in <?=$forein_lang_text?> and we'll create a nice text.</span>
-          </a>
-        </center>
-      </div>
-    </div>
-  </div>
   <!-- Method:Image -->
   <div class="col-sm-3">
     <div class="panel panel-default">
@@ -179,6 +166,20 @@ basic_template();
           <a href="#" id="train_method_image">
             <h3>Describing</h3>
             <span>We'll show you pictures, which you need to describe in <?=$forein_lang_text?>.</span>
+            <span style="color: grey;"> (difficult)</span>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
+  <!-- Method:Libs -->
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <a href="#" id="train_method_libs">
+            <h3>VocLibs</h3>
+            <span>We'll play a game. We ask you to tell us some sentences in <?=$forein_lang_text?> and we'll create a nice text.</span>
           </a>
         </center>
       </div>
