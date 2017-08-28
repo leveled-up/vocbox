@@ -694,7 +694,7 @@ train_image_check_result = () ->
 
   # Check results
   list_of_words = train_img_words_correct.join ", "
-  train_image_result_alert_text.innerHTML = "The image contains " + list_of_words + "."
+  train_image_result_alert_text.innerHTML = "The image contains <i>" + list_of_words + "</i>."
   if correct_words > 0
     # Correct
     train_image_result_alert.className = "alert alert-success"
