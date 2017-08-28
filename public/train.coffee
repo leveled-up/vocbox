@@ -646,6 +646,7 @@ train_libs_check_result = () ->
         else
           console.log item + " found."
           count++
+          console.log "input[]: " + input[input_.indexOf(item)] + ", " + input_.indexOf(item)
           result_.push [item, input[input_.indexOf(item)]]
 
       console.log "Debug result_: " + JSON.stringify result_
