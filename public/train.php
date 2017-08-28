@@ -102,6 +102,12 @@ elseif(isset($_GET["action:wikipedia_proxy"])) {
   exit(file_get_contents("https://en.wikipedia.org/w/api.php?$request"));
 
 }
+elseif(isset($_GET["action:image_info_proxy"])) {
+
+  $request = $_GET["action:image_info_proxy"];
+  exit(file_get_contents("https://storage.googleapis.com/vocbox-test.appspot.com/vision_images/_d/img-$request.json"));
+
+}
 
 // Languages
 $languages_text = language_pair_to_text($library_info["langs"]);

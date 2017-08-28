@@ -598,3 +598,8 @@ train_libs_new_question = () ->
                 show_object train_libs_input
                 train_libs_form.reset()
                 train_libs_form_input.focus()
+
+# TODO: complete voclibs
+
+# **** #Method!Image ****
+# Get New Image
