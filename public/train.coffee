@@ -536,7 +536,7 @@ train_libs_new_question = () ->
             console.log "analyzeTextSyntax() Result: " + response_atx
 
             # JSON Decode
-            result = JSON.parse response_atx
+            result = response_atx
             if result.length < 1
               # Error
               console.warn "Error."
