@@ -334,7 +334,38 @@ basic_template();
 
 <!-- Train Method!Image -->
 <div id="train_image" style="display: none;">
-  Describing
+  <p>
+    Here you are going to train <?=$forein_lang_text?> by describing images in full sentences. If this is not the method you wanted, please <a href="?">click here</a>.
+    <br /> <br />
+  </p>
+  <span id="train_image_input">
+      <img id="train_image_img" alt="Loading..." />
+      <br /> <br />
+
+      <form action="#" method="" id="train_image_form">
+
+        <input id="train_image_form_input" class="form-control" placeholder="<?=$forein_lang_text?> sentence" />
+
+        <center>
+          <a href="#" id="train_image_form_btn" class="btn btn-success">Confirm</a>
+        </center>
+      </form>
+  </span>
+
+  <span id="train_image_result" style="display: none;">
+    <div id="train_image_result_alert" class="alert alert-success">
+      <b>
+        <span id="train_image_result_correct">Exactly/Nope</span>!
+      </b>
+
+      <span id="train_image_result_alert_text">train_image_result_alert_text</span>
+    </div>
+    <br /> <br />
+
+    <center>
+      <a href="#" id="train_image_result_btn" class="btn btn-success">Confirm</a>
+    </center>
+  </span>
 </div>
 
 <!-- Scripts -->
