@@ -509,3 +509,42 @@ train_libs_new_question = () ->
       console.warn "Error in JSON result."
     else
       console.log "Success: Page is " + result.query.pages[0].title
+
+      # Get Page Summary
+      console.log "Get article description..."
+      article_url = wikipedia_baseurl + urlencode(wikipedia_params.summary_oa) + urlencode result.query.pages[0].title
+      console.log "Wikipedia Article Summary. Requesting: " + article_url
+      wikipedia_client.get article_url, (result_soa) ->
+
+        # Log Event
+        console.log "Request Result: " + result_soa
+        result = JSON.parse result_soa
+        if not result.query.pages[0].extract?
+          console.warn "Error in JSON result."
+          alert "Error 500: Error requesting Wikipedia."
+        else
+          extract = result.query.pages[0].extract
+          console.log "Success. Summary: " + extract
+          words = extract.split " "
+
+          # Request Natural Language Processing
+          console.log "Request analyzeTextSyntax() for " + extract
+          analyzeTextSyntax extract, (response_atx) ->
+
+            # Log Event
+            console.log "analyzeTextSyntax() Result: " + response_atx
+
+            # JSON Decode
+            result = JSON.parse response_atx
+            if result.length < 1
+              # Error
+              console.warn "Error."
+              alert "Error 500: Failed Natural Language Processing."
+
+            else
+              # Success
+              console.log "Success analyzeTextSyntax()"
+
+              #  Create words array
+              words.forEach (item, index) ->
+                window.train_libs_words[item] = result[index]
