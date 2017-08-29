@@ -227,3 +227,25 @@ function query_words_getids($library, $user) {
   return $query;
 
 }
+
+// QUERY: read words of other user
+function query_words_other_user($library) {
+
+  $library = encode($library);
+
+  $query = "SELECT * FROM words WHERE library = '$library'";
+  return $query;
+
+}
+
+// QUERY: get word by word_f
+function query_words_by_word_f($word_f, $library, $user) {
+
+  $owner = encode($user->id);
+  $library = encode($library);
+  $word_f = encode($word_f);
+
+  $query = "SELECT id FROM words WHERE owner = '$owner' AND library = '$library' AND word_f = '$word_f'";
+  return $query;
+
+}
