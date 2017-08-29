@@ -4,6 +4,7 @@
     <title>VocBox</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#67696b">
     <link rel="stylesheet" href="https://www.runstorageapis.com/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.runstorageapis.com/css/bootstrap-theme.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
