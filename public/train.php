@@ -52,30 +52,33 @@ elseif(isset($_GET["action:results"])) {
   if($correct != "1" and $correct != "0")
     exit("{\"success\": false}");
 
-  $word_details_query = query_words_getbyid($library_info["id"], $user, $word_id);
-  $result = query($word_details_query);
+  if($word_id != "0") {
+    $word_details_query = query_words_getbyid($library_info["id"], $user, $word_id);
+    $result = query($word_details_query);
 
-  if(!isset($result["id"]))
-    exit("{\"success\": false}");
+    if(!isset($result["id"]))
+      exit("{\"success\": false}");
 
-  if($correct == "1") {
 
-    $cats = $result["category"]+1;
-    if($result["category"] >= $library_info["categories"]) {
-      // new category
-      $query_cat_update = query_library_categoriesupdate($library_info["id"], $user, $cats);
-      $query_cat_result = query($query_cat_update);
+    if($correct == "1") {
+
+      $cats = $result["category"]+1;
+      if($result["category"] >= $library_info["categories"]) {
+        // new category
+        $query_cat_update = query_library_categoriesupdate($library_info["id"], $user, $cats);
+        $query_cat_result = query($query_cat_update);
+      }
+      // category ++
+      $query_cat_update_ = query_words_categoryupdate($library_info["id"], $user, $word_id, $cats);
+      $query_cat_result_ = query($query_cat_update_);
+
+    } else {
+      // wrong => set category to 1
+      $cats = 1;
+      $query_cat_update_ = query_words_categoryupdate($library_info["id"], $user, $word_id, $cats);
+      $query_cat_result_ = query($query_cat_update_);
+
     }
-    // category ++
-    $query_cat_update_ = query_words_categoryupdate($library_info["id"], $user, $word_id, $cats);
-    $query_cat_result_ = query($query_cat_update_);
-
-  } else {
-    // wrong => set category to 1
-    $cats = 1;
-    $query_cat_update_ = query_words_categoryupdate($library_info["id"], $user, $word_id, $cats);
-    $query_cat_result_ = query($query_cat_update_);
-
   }
 
   // Update stats

@@ -794,15 +794,28 @@ train_image_check_result = () ->
     train_image_result_alert.className = "alert alert-success"
     train_image_result_correct.innerHTML = "Exactly"
     console.log "Correct."
+    correct = true
   else
     # Wrong
     train_image_result_alert.className = "alert alert-danger"
     train_image_result_correct.innerHTML = "Nope"
     console.log "User failed."
+    correct = false
 
-  hide_object train_image_input
-  show_object train_image_result
-  train_image_form_btn.innerHTML = train_image_form_btn_original_text
+  # Send Results to DB
+  register_results "0", correct, (success) ->
+
+    hide_object train_image_input
+    show_object train_image_result
+    train_image_form_btn.innerHTML = train_image_form_btn_original_text
+
+    if not success
+      console.warn "register_results() failed."
+      alert "Error 500: Sending data to Server failed."
+      return false
+    else
+      console.log "Success."
+      return true
 
 # Form Event Listener to Call Answer Submit
 train_image_form.addEventListener "submit", (evt) ->
