@@ -52,18 +52,10 @@ if(!isset($_GET["into"])) {
   <h2>Import #<?=$import_library?></h2>
 
   <p>
-    <div class="row">
-      <div class="col-sm-6">
-        <img src="<?=$user_details["picture"]?>" alt="Profile Picture" width="48px"/>
-      </div>
-      <div class="col-sm-6">
-        Vocabulary by
-        <br />
-        <b style="font-size: large;"><?=$user_details["given_name"]?></b>
-      </div>
-    </div>
-  </p>
-  <p>
+    <center>
+      Vocabulary by <b><?=$user_details["given_name"]?></b>.
+    </center>
+    <br />
     You clicked a link to import library #<?=$import_library?> into your account. Please confirm below.
 
     <span id="show_pre_span">
