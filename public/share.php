@@ -57,10 +57,9 @@ if(!isset($_GET["into"])) {
     </center>
     <br />
     You clicked a link to import library #<?=$import_library?> into your account. Please confirm below.
-    <br />
+    <br /> <br />
 
     <span id="show_pre_span">
-      <br />
       <a href="#" id="show_pre">
         <i class="fa fa-arrow-right"></i>
         Show words to import
