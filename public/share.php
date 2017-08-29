@@ -11,7 +11,7 @@ if(isset($_GET["create"])) {
   <p>
     You can share this library by giving the following link to others:
 
-    <pre><a href="#">https://<?=$_SERVER["SERVER_NAME"]?>/share/<?=$_GET["library"]?></a></pre>
+    <pre><a href="/share/<?=$_GET["library"]?>">https://<?=$_SERVER["SERVER_NAME"]?>/share/<?=$_GET["library"]?></a></pre>
 
     <br />
     <a href="/library/<?=$_GET["library"]?>" class="btn btn-primary">
