@@ -39,7 +39,7 @@ if(count($words) < 1)
 $user_id_ = $words[0]["owner"];
 $user_info_query = query_user_info($user_id_);
 $user_info_ = query($user_info_query);
-$user_details = json_decode($user_info_["google_info"]);
+$user_details = json_decode($user_info_["google_info"], true);
 
 if(!isset($_GET["into"])) {
   // user hasn't selected into which library should be imported
@@ -57,7 +57,7 @@ if(!isset($_GET["into"])) {
         <img src="<?=$user_details["picture"]?>" alt="Profile Picture" />
       </div>
       <div class="col-sm-6">
-        
+        <h3><?=$user_details["given_name"]?></h3>
       </div>
     </div>
   </p>
