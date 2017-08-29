@@ -54,7 +54,7 @@ if(!isset($_GET["into"])) {
   <p>
     <div class="row">
       <div class="col-sm-6">
-        <img src="<?=$user_details["picture"]?>" alt="Profile Picture" />
+        <img src="<?=$user_details["picture"]?>" alt="Profile Picture" width="48px"/>
       </div>
       <div class="col-sm-6">
         <h3><?=$user_details["given_name"]?></h3>
