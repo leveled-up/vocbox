@@ -91,7 +91,7 @@ if(!isset($_GET["into"])) {
 
 // import words
 // Read Parameter
-$into_library = $_GET["library"];
+$into_library = $_GET["into"];
 if(!is_numeric($into_library))
   exit("Error 404: The library ID (_into) provided cannot exist.");
 
