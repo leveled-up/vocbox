@@ -77,7 +77,7 @@ echo file_get_contents("template/basic.tpl");
 <p>To use VocBox we kindly request you to sign in with <i>Google</i>, so we can identify you, if you come back.</p>
 <div id="auth_index">
   <a href="#" id="auth_index_signin_btn">
-    <img src="https://www.runstorageapis.com/img/vocbox/btn_google_signin_dark_normal_web.png" alt="Sign in w/ Google" />
+    <img src="https://www.runstorageapis.com/img/vocbox/btn_google_signin_dark_normal_web.png" alt="Sign in with Google" />
   </a>
 </div>
 
