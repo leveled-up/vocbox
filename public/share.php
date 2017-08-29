@@ -65,6 +65,7 @@ if(!isset($_GET["into"])) {
         <i class="fa fa-arrow-right"></i>
         Show words to import
       </a>
+      <br />
     </span>
     <pre id="pre" style="display: none;"><?=$output?></pre>
     <br />
