@@ -57,6 +57,7 @@ if(!isset($_GET["into"])) {
     </center>
     <br />
     You clicked a link to import library #<?=$import_library?> into your account. Please confirm below.
+    <br />
 
     <span id="show_pre_span">
       <br />
