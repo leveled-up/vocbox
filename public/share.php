@@ -57,7 +57,7 @@ if(!isset($_GET["into"])) {
         <img src="<?=$user_details["picture"]?>" alt="Profile Picture" />
       </div>
       <div class="col-sm-6">
-        <h3><?=$user_details["given_name"]?></h3>
+        
       </div>
     </div>
   </p>
