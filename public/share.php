@@ -54,7 +54,11 @@ if(!isset($_GET["into"])) {
   <p>
     You clicked a link to import library #<?=$import_library?> into your account. Please confirm below.
 
-    <pre><?=$output?></pre>
+    <a href="#" id="show_pre">
+      <i class="fa fa-arrow-right"></i>
+      Show words to import
+    </a>
+    <pre id="pre" style="display: none;"><?=$output?></pre>
     <br />
     Please select the library into which the import should happen below:
     <br />
@@ -87,6 +91,10 @@ if(!isset($_GET["into"])) {
   </form>
 
   <br /> <br />
+
+  <!-- Scripts -->
+  <script src="/util.js"></script>
+  <script src="/share.js"></script>
   <?php
   exit();
 }
