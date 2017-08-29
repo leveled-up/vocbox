@@ -52,6 +52,16 @@ if(!isset($_GET["into"])) {
   <h2>Import #<?=$import_library?></h2>
 
   <p>
+    <div class="row">
+      <div class="col-sm-6">
+        <img src="<?=$user_details["picture"]?>" alt="Profile Picture" />
+      </div>
+      <div class="col-sm-6">
+        <h3><?=$user_details["given_name"]?></h3>
+      </div>
+    </div>
+  </p>
+  <p>
     You clicked a link to import library #<?=$import_library?> into your account. Please confirm below.
 
     <span id="show_pre_span">
