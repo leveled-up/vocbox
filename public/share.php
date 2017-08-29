@@ -85,6 +85,8 @@ if(!isset($_GET["into"])) {
       Confirm
     </button>
   </form>
+
+  <br /> <br />
   <?php
   exit();
 }
