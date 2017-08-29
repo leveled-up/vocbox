@@ -44,7 +44,6 @@ $user_details = json_decode($user_info_["google_info"]);
 if(!isset($_GET["into"])) {
   // user hasn't selected into which library should be imported
 
-  $ouput = "Words:";
   foreach($words as $word)
     $output .= "\n{$word[word_f]} - {$word[word_m]}";
 
@@ -61,9 +60,9 @@ if(!isset($_GET["into"])) {
     <br />
   </p>
 
-  <form action="" method="post">
+  <form action="" method="get">
 
-    <select name="library_s" class="form-control">
+    <select name="into" class="form-control" required="required">
       <option value="" selected disabled>Choose Library</option>
       <?php
         $libraries_list_query = query_library_list($user);
@@ -91,3 +90,26 @@ if(!isset($_GET["into"])) {
 }
 
 // import words
+// Read Parameter
+$into_library = $_GET["library"];
+if(!is_numeric($into_library))
+  exit("Error 404: The library ID (_into) provided cannot exist.");
+
+foreach($words as $key => $word) {
+
+  $query = query_words_by_word_f($word["word_f"], $into_library, $user);
+  $result = query($query);
+  if(count($result) > 0)
+    unset($words[$key]);
+  else {
+    $word_ = array($word["word_m"], $word["word_f"]);
+    $c = json_decode($word["info"], true);
+    if(isset($c["comment"]))
+      $word_[] = $c["comment"];
+    $create_query = query_words_create($into_library, $user, $word_);
+    $create_result = query($create_query);
+  }
+
+}
+
+redirect("/library/$into_library");
