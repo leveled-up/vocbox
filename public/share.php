@@ -9,9 +9,9 @@ if(isset($_GET["create"])) {
   <h2>Share #<?=$_GET["library"]?></h2>
 
   <p>
-    You can share this library by giving the following link to others:
+    You can share this library by giving the following link to others (<i>on mobile you can just click the link to share via e.g. WhatsApp</i>):
 
-    <pre><a href="/share/<?=$_GET["library"]?>">https://<?=$_SERVER["SERVER_NAME"]?>/share/<?=$_GET["library"]?></a></pre>
+    <pre><a href="#" id="share_btn">https://<?=$_SERVER["SERVER_NAME"]?>/share/<?=$_GET["library"]?></a></pre>
 
     <br />
     <a href="/library/<?=$_GET["library"]?>" class="btn btn-primary">
@@ -20,6 +20,14 @@ if(isset($_GET["create"])) {
     </a>
   </p>
 
+  <!-- Scripts -->
+  <script>
+    var library_id = <?=$_GET["library"]?>;
+    var share_url = "https://<?=$_SERVER["SERVER_NAME"]?>/share/<?=$_GET["library"]?>";
+    var twitter_url = "https://twitter.com/intent/tweet?url=" + encodeURIComponent(share_url);
+  </script>
+  <script src="/util.js"></script>
+  <script src="/share.js"></script>
   <?php
   exit();
 }
