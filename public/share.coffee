@@ -9,11 +9,12 @@ dom_objects = [
 get_objects dom_objects
 
 # EventListener
-show_pre.addEventListener "click", () ->
+if show_pre?
+  show_pre.addEventListener "click", () ->
 
-  console.log "User clicked show_pre."
-  hide_object show_pre_span
-  show_object pre
+    console.log "User clicked show_pre."
+    hide_object show_pre_span
+    show_object pre
 
 share_btn.addEventListener "click", () ->
 
