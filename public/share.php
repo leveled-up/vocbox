@@ -73,7 +73,7 @@ if(!isset($_GET["into"])) {
           foreach($libraries_list as $library)
             echo "
               <option value=\"{$library[id]}\">
-                  <b>".language_pair_to_text($library["langs"])."</b>
+                  <b>".language_pair_to_text($library["langs"])."</b> - {$library[comment]}
               </option>";
       ?>
     </select>
