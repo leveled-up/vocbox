@@ -13,7 +13,7 @@ if(isset($_GET["create"])) {
 
     <pre><a href="#">https://<?=$_SERVER["SERVER_NAME"]?>/share/<?=$_GET["library"]?></a></pre>
 
-    <br /> <br />
+    <br />
     <a href="/library/<?=$_GET["library"]?>" class="btn btn-primary">
       <i class="fa fa-check"></i>
       Back
@@ -46,6 +46,46 @@ if(!isset($_GET["into"])) {
 
   $ouput = "Words:";
   foreach($words as $word)
-    $output .= "{$word[word_f]} - {$word[word_m]}";
+    $output .= "\n{$word[word_f]} - {$word[word_m]}";
 
+  basic_template();
+  ?>
+  <h2>Import #<?=$import_library?></h2>
+
+  <p>
+    You clicked a link to import library #<?=$import_library?> into your account. Please confirm below.
+
+    <pre><?=$output?></pre>
+    <br /> <br />
+  </p>
+
+  <form action="" method="post">
+
+    <select name="library_s" class="form-control">
+      <option value="" selected disabled>Choose Library</option>
+      <?php
+        $libraries_list_query = query_library_list($user);
+        $libraries_list = query($libraries_list_query, false);
+
+        if(count($libraries_list) < 1)
+          echo "<option value=\"\" selected disabled>No Libraries</option>";
+        else
+          foreach($libraries_list as $library)
+            echo "
+              <option value=\"{$library[id]}\">
+                  <b>".language_pair_to_text($library["langs"])."</b>
+              </option>";
+      ?>
+    </select>
+
+    <br /> <br />
+    <button type="submit" class="btn btn-primary">
+      <i class="fa fa-check"></i>
+      Confirm
+    </button>
+  </form>
+  <?php
+  exit();
 }
+
+// import words
