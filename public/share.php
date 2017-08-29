@@ -56,7 +56,9 @@ if(!isset($_GET["into"])) {
     You clicked a link to import library #<?=$import_library?> into your account. Please confirm below.
 
     <pre><?=$output?></pre>
-    <br /> <br />
+    <br />
+    Please select the library into which the import should happen below:
+    <br />
   </p>
 
   <form action="" method="post">
