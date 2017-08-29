@@ -54,10 +54,13 @@ if(!isset($_GET["into"])) {
   <p>
     You clicked a link to import library #<?=$import_library?> into your account. Please confirm below.
 
-    <a href="#" id="show_pre">
-      <i class="fa fa-arrow-right"></i>
-      Show words to import
-    </a>
+    <span id="show_pre_span">
+      <br />
+      <a href="#" id="show_pre">
+        <i class="fa fa-arrow-right"></i>
+        Show words to import
+      </a>
+    </span>
     <pre id="pre" style="display: none;"><?=$output?></pre>
     <br />
     Please select the library into which the import should happen below:
