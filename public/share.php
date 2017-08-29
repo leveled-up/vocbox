@@ -62,7 +62,7 @@ if(!isset($_GET["into"])) {
 
   <form action="" method="get">
 
-    <select name="into" class="form-control" required="required">
+    <select name="into" id="into" class="form-control" required="required">
       <option value="" selected disabled>Choose Library</option>
       <?php
         $libraries_list_query = query_library_list($user);
