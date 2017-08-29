@@ -84,6 +84,7 @@ echo file_get_contents("template/basic.tpl");
 <br /> <br />
 <span style="color: grey;">
   <small>
+    <address>By clicking <b>Sign in with Google</b>, you agree to our <a href="https://www.runstorage.com/terms">Terms of Service</a>, <a href="https://www.runstorage.com/privacy">Privacy Policy</a> and <a href="https://www.runstorageapis.com/static/vocbox/policy.html">VocBox Additional Policy</a>.</address>
     <address>&copy; <?=date("Y")?> RunStorage Technologies &middot; Google is a registered trademark of Google, Inc.</address>
   </small>
 </span>
