@@ -12,7 +12,7 @@ Vision = require '@google-cloud/vision'
 apiKey = functions.config().firebase.apiKey
 translateBaseUrl = "https://www.googleapis.com/language/translate/v2"
 gcsImageBaseUrl = "gs://vocbox-test.appspot.com/vision_images/"
-vocboxDomain = "https://vocbox-staging.play-them-all.com"
+vocboxDomain = "https://vocbox.work"
 
 # Helper Functions
 urlencode = (string) ->
