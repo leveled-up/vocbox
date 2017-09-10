@@ -252,7 +252,7 @@ basic_template();
 <div id="train_speak" style="display: none;">
   <p>
     Here, you can train <?=$forein_lang_text?>, by listening to <?=$mother_lang_text?> words and then speaking the <?=$forein_lang_text?> words.
-    You can get back by <a href="?">clicking here</a>.
+    You can get back by <a href="?">clicking here</a>. <i>Text will be translated by Google.</i>
 
     <br />
   </p>
@@ -352,7 +352,7 @@ basic_template();
 <!-- Train Method!Image -->
 <div id="train_image" style="display: none;">
   <p>
-    Here you are going to train <?=$forein_lang_text?> by describing images in full sentences. If this is not the method you wanted, please <a href="?">click here</a>.
+    Here you are going to train <?=$forein_lang_text?> by describing images in full sentences. If this is not the method you wanted, please <a href="?">click here</a>. <i>Image Labels will be translated by Google.</i>
     <br /> <br />
   </p>
   <span id="train_image_input">

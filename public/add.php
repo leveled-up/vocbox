@@ -146,7 +146,7 @@ basic_template();
 <!-- Add Method!Speak -->
 <div id="add_speak" style="display: none;">
   <p>
-    <span id="add_speak_status" style="color: grey;">Not the method you wanted? To get back, <a href="#" id="add_speak_back">click here</a>.</span>
+    <span id="add_speak_status" style="color: grey;">Not the method you wanted? To get back, <a href="#" id="add_speak_back">click here</a>. <i>Text will be translated by Google.</i></span>
     <br /> <br />
   </p>
 
@@ -183,7 +183,7 @@ basic_template();
 <!-- Add Method!Scan -->
 <div id="add_scan" style="display: none;">
   <p>
-    <span id="add_scan_status" style="color: grey;">Please click below to take a photo or select one from your gallery. Not the method you wanted? Get back by <a href="#" id="add_scan_back">clicking here</a>.</span>
+    <span id="add_scan_status" style="color: grey;">Please click below to take a photo or select one from your gallery. Not the method you wanted? Get back by <a href="#" id="add_scan_back">clicking here</a>. <i>Text will be translated by Google.</i></span>
     <br /> <br />
   </p>
 
