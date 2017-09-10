@@ -146,7 +146,8 @@ basic_template();
 <!-- Add Method!Speak -->
 <div id="add_speak" style="display: none;">
   <p>
-    <span id="add_speak_status" style="color: grey;">Not the method you wanted? To get back, <a href="#" id="add_speak_back">click here</a>. <i>Text will be translated by Google.</i></span>
+    <span id="add_speak_status" style="color: grey;">Not the method you wanted? To get back, <a href="#" id="add_speak_back">click here</a>.</span>
+    <i>Text will be translated by Google.</i>
     <br /> <br />
   </p>
 
