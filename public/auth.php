@@ -92,6 +92,6 @@ echo file_get_contents("template/basic.tpl");
 <!-- Scripts -->
 <script src="https://vocbox-test.firebaseapp.com/__/firebase/4.2.0/firebase-app.js"></script>
 <script src="https://vocbox-test.firebaseapp.com/__/firebase/4.2.0/firebase-auth.js"></script>
-<script src="https://vocbox-test.firebaseapp.com/__/firebase/init.js"></script>
+<script src="https://vocbox-test.firebaseapp.com/init.js"></script>
 <script src="/util.js"></script>
 <script src="/auth.js"></script>
