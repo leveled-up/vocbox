@@ -225,6 +225,8 @@ basic_template();
         <button type="submit" id="train_type_form_btn" class="btn btn-success">Submit</button>
       </center>
     </form>
+
+    <br /> <br />
   </span>
   <span id="train_type_result" style="display: none;">
     <div id="train_type_result_alert" class="alert alert-success">
