@@ -131,6 +131,8 @@ basic_template();
         </tr>
       </tbody>
     </table>
+
+    <br /> <br />
   </span>
 </div>
 
