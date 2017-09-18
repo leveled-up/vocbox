@@ -28,6 +28,7 @@ foreach ($words_list as $word)
       <td>".($word["category"] > 1? round($word["category"]/2):$word["category"])."</td>
       <td>
         <span id=\"info_{$word[id]}\" style=\"display:none;\">".json_encode(array(
+                        // workaround double-submit
                         "category" => ($word["category"] > 1? round($word["category"]/2):$word["category"]),
                         "info" => json_decode($word["info"]) ))."
         </span>
