@@ -23,7 +23,7 @@ if(count($words_list) < 1)
 foreach ($words_list as $word)
   echo "
     <tr>
-      <td>".htmlentities($word["word_f"])."</td>
+      <td>".htmlentities($word["word_f"])."".(json_decode($word["info"], true)["comment"] != ""?"(!)":"")."</td>
       <td>".htmlentities($word["word_m"])."</td>
       <td>{$word[category]}</td>
       <td>
