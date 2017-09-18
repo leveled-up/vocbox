@@ -5,6 +5,8 @@ console.log "Init auth.js"
 dom_objects = [
   "auth_index",
   "auth_index_signin_btn",
+  "auth_index_signin_span",
+  "auth_index_signin_state_span"
 ]
 get_objects dom_objects
 
@@ -25,6 +27,10 @@ auth.onAuthStateChanged (user) ->
 
       # Set User Details Cookie for Functions
       console.log "User signed in successfully"
+      hide_object auth_index_signin_btn
+      auth_index_signin_state_span.innerHTML = "Signing in. This may take up to 10s if you are signing in for the first time."
+      show_object auth_index_signin_span
+
       window.location.reload()
     else
       firebase.auth().signOut().then () ->
@@ -41,6 +47,11 @@ auth.onAuthStateChanged (user) ->
 
       # Handle Sign In Flow
       console.log "User requested Sign In. Initializing."
+
+      hide_object auth_index_signin_btn
+      auth_index_signin_state_span.innerHTML = "Waiting. Please sign in to Google inside the new browser window. If this is not possible, please click <a href=\"\">here</a> to reload the page."
+      show_object auth_index_signin_span
+
       provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then((result) =>
 
@@ -61,4 +72,8 @@ auth.onAuthStateChanged (user) ->
 
         console.log "Sign in failed" + JSON.stringify error_details
         alert "Sign in Failed"
+
+        hide_object auth_index_signin_btn
+        auth_index_signin_state_span.innerHTML = "Signing in failed, please click <a href=\"\">here</a> to reload the page."
+        show_object auth_index_signin_span
       )

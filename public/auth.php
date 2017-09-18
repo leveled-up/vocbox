@@ -78,8 +78,10 @@ echo file_get_contents("template/basic.tpl");
 <div id="auth_index">
 
   <span id="auth_index_signin_span" style="display: none;">
+    <br />
+
     <img src="https://www.runstorageapis.com/img/throbber_small.svg" /> &nbsp;
-    <span id="auth_index_signin_state_span" style="display: none;">auth_index_signin_state_span</span>
+    <span id="auth_index_signin_state_span">auth_index_signin_state_span</span>
   </span>
 
   <a href="#" id="auth_index_signin_btn" style="">
