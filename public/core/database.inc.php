@@ -181,7 +181,7 @@ function query_words_get($library, $user, $categories) {
   if(!is_numeric($categories))
     return false;
 
-  if(rand(1,3) <= 1)
+  if(rand(10,50) >= 20)
     $sort = " category ASC,";
 
   // NOTE:  AND category = '$category'  has been removed, due to it causing bugs when empty categories exist
