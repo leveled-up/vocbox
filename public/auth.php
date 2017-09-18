@@ -76,7 +76,13 @@ echo file_get_contents("template/basic.tpl");
 <h2>Welcome to VocBox</h2>
 <p>To use VocBox we kindly request you to sign in with <i>Google</i>, so we can identify you, if you come back.</p>
 <div id="auth_index">
-  <a href="#" id="auth_index_signin_btn">
+
+  <span id="auth_index_signin_span" style="display: none;">
+    <img src="https://www.runstorageapis.com/img/throbber_small.svg" /> &nbsp;
+    <span id="auth_index_signin_state_span" style="display: none;">auth_index_signin_state_span</span>
+  </span>
+
+  <a href="#" id="auth_index_signin_btn" style="">
     <img src="https://www.runstorageapis.com/img/vocbox/btn_google_signin_dark_normal_web.png" alt="Sign in with Google" />
   </a>
 </div>
