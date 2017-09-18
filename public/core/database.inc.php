@@ -181,13 +181,11 @@ function query_words_get($library, $user, $categories) {
   if(!is_numeric($categories))
     return false;
 
-  if(rand(1,3) > 1 and $categories > 1)
-    $category = rand(1, $categories);
-  else
-    $category = 1;
+  if(rand(1,3) <= 1)
+    $sort = " category ASC,";
 
   // NOTE:  AND category = '$category'  has been removed, due to it causing bugs when empty categories exist
-  $query = array("SELECT * FROM words WHERE library = '$library' AND owner = '$owner' ORDER BY rand_id LIMIT 1", "UPDATE words SET rand_id = FLOOR(RAND()*1000000) WHERE library = '$library' AND owner = '$owner' ORDER BY rand_id LIMIT 1");
+  $query = array("SELECT * FROM words WHERE library = '$library' AND owner = '$owner' ORDER BY$sort rand_id DESC LIMIT 1", "UPDATE words SET rand_id = FLOOR(RAND()*1000000) WHERE library = '$library' AND owner = '$owner' ORDER BY$sort rand_id DESC LIMIT 1");
   return $query;
 
 }
