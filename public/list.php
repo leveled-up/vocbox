@@ -25,10 +25,10 @@ foreach ($words_list as $word)
     <tr>
       <td>".htmlentities($word["word_f"])."".(json_decode($word["info"], true)["comment"] != "" ? "&nbsp; <i class=\"fa fa-exclamation-circle\"></i>" : "")."</td>
       <td>".htmlentities($word["word_m"])."</td>
-      <td>".($word["category"] > 1? $word["category"]/2:$word["category"])."</td>
+      <td>".($word["category"] > 1? round($word["category"]/2):$word["category"])."</td>
       <td>
         <span id=\"info_{$word[id]}\" style=\"display:none;\">".json_encode(array(
-                        "category" => $word["category"],
+                        "category" => ($word["category"] > 1? round($word["category"]/2):$word["category"]),
                         "info" => json_decode($word["info"]) ))."
         </span>
         <div class=\"btn-group btn-group-xs\">
