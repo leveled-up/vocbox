@@ -188,7 +188,7 @@ basic_template();
       <div class="panel-body">
         <center>
           <a href="#" id="train_method_libs">
-            <h3>VocLibs</h3>
+            <h3>VocLibs <span style="color: grey;">Beta</span></h3>
             <span>We'll play a game. We ask you to tell us some sentences in <?=$forein_lang_text?> and we'll create a nice text.</span>
             <span style="color: grey;">
               <br />
