@@ -454,6 +454,10 @@ train_speak_answer_submit = () ->
   # Set Result GUI words
   train_speak_result_word_f.innerHTML = train_speak_word.word_f
   train_speak_result_word_m.innerHTML = train_speak_word.word_m
+  word_info = JSON.parse train_speak_word.info
+  if word_info.comment?
+    train_speak_result_word_m.innerHTML += " <span style=\"font-weight: normal; font-style: italic;\">(Comment: " +word_info.comment + ")</span>"
+
 
   # Send Results to DB
   register_results train_speak_word.id, correct, (success) ->
