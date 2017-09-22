@@ -316,7 +316,7 @@ basic_template();
   <span id="train_libs_input" style="">
     <center>
       <span style="color: grey;">
-        <span id="train_libs_question">train_libs_suggestions</span>
+        <span id="train_libs_question">Please enter a complete <?=$forein_lang_text?> sentence below. </span>
         <br /> <br />
       </span>
     </center>
@@ -338,11 +338,15 @@ basic_template();
         <span id="train_libs_result_correct">Yes</span>!
       </b>
 
-      <span id="train_libs_result_alert_text">The new text is ready for you to see below:</span>
+      <span id="train_libs_result_alert_text">The new text is ready for you to read.</span>
     </div>
-    <br /> <br />
+    <br />
 
-    <span id="train_libs_result_story">train_libs_story</span>
+    <center>
+      <div class="well">
+        <span id="train_libs_result_story">train_libs_story</span>
+      </div>
+    </center>
     <br /> <br />
 
     <center>
