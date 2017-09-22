@@ -11,5 +11,5 @@ ErrorDocument 404 "<h1>404 Not Found</h1>"
 ErrorDocument 403 "<h1>403 Forbidden</h1>"
 
 <FilesMatch "\.js$">
-    Header set Cache-Control "public, max-age=500"
+    Header set Cache-Control "max-age=500"
 </FilesMatch>
