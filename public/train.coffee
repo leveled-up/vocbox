@@ -302,7 +302,7 @@ train_type_answer_submit = () ->
   # Set Result GUI words
   train_type_result_word_f.innerHTML = train_type_word.word_f
   train_type_result_word_m.innerHTML = train_type_word.word_m
-  word_info = JSON.stringify train_type_word.info
+  word_info = JSON.parse train_type_word.info
   if word_info.comment?
     train_type_result_word_m.innerHTML += " (Comment: " +word_info.comment + ")"
 
