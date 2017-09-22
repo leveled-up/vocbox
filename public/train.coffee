@@ -734,9 +734,16 @@ train_libs_check_result = () ->
     if not result
       alert "500: Processing Failed."
     else
-      train_libs_result_story.innerHTML = result
-      hide_object train_libs_input
-      show_object train_libs_result
+      register_results "0", 1, (success) ->
+
+        if not success
+          console.log "Error"
+          alert "500: Database Error"
+        else
+          console.log "Success"
+          train_libs_result_story.innerHTML = result
+          hide_object train_libs_input
+          show_object train_libs_result
 
 # Form Event Listener to Call Answer Submit
 train_libs_form.addEventListener "submit", (evt) ->
