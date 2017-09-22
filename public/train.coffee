@@ -338,7 +338,7 @@ train_type_form.addEventListener "submit", (evt) ->
 train_type_form_btn.addEventListener "click", () ->
 
   # Call answer submit function
-  train_type_answer_submit()
+  # train_type_answer_submit()
 
 
 # Confirm Btn to Activate new Session
@@ -491,7 +491,7 @@ train_speak_form.addEventListener "submit", (evt) ->
 train_speak_form_btn.addEventListener "click", () ->
 
   # Call answer submit function
-  train_speak_answer_submit()
+  # train_speak_answer_submit()
 
 
 # Confirm Btn to Activate new Session
