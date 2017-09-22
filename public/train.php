@@ -324,14 +324,14 @@ basic_template();
     <form action="#" method="" id="train_libs_form">
 
       <input id="train_libs_form_input" class="form-control" placeholder="<?=$forein_lang_text?> Sentence" />
-    </span>
+
       <br />
 
       <center>
         <button type="submit" id="train_libs_form_btn" class="btn btn-success">Submit</button>
       </center>
     </form>
-
+  </span>
   <span id="train_libs_result" style="display: none;">
     <div id="train_libs_result_alert" class="alert alert-success">
       <b>
