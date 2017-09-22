@@ -751,7 +751,7 @@ train_libs_form.addEventListener "submit", (evt) ->
 train_libs_form_btn.addEventListener "click", () ->
 
   # Call answer submit function
-  train_libs_check_result()
+  #train_libs_check_result()
 
 # Confirm Btn to Activate new Session
 train_libs_result_btn.addEventListener "click", () ->
