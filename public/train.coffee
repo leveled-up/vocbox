@@ -304,7 +304,7 @@ train_type_answer_submit = () ->
   train_type_result_word_m.innerHTML = train_type_word.word_m
   word_info = JSON.parse train_type_word.info
   if word_info.comment?
-    train_type_result_word_m.innerHTML += " (Comment: " +word_info.comment + ")"
+    train_type_result_word_m.innerHTML += " <span style=\"font-weight: normal;\">(Comment: " +word_info.comment + ")</span>"
 
   # Send Results to DB
   register_results train_type_word.id, correct, (success) ->
