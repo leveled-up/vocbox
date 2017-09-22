@@ -728,7 +728,7 @@ train_libs_check_result = () ->
   train_libs_form_btn.innerHTML = "Processing..."
 
   # Check & create text
-  create_voclibs_text forein_lang[1], train_libs_form_input, (result) ->
+  create_voclibs_text forein_lang[1], train_libs_form_input.value, (result) ->
 
     console.log "Response: " + result
     if not result
