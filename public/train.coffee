@@ -500,7 +500,7 @@ train_speak_result_confirm.addEventListener "click", () ->
   # Call Init function
   train_speak_new_word()
 
-# **** #Method!Libs ****
+# DEPRECATED *** #Method!Libs ***
 # Generate next question
 train_libs_new_question = () ->
 
@@ -702,7 +702,65 @@ train_libs_check_result = () ->
       hide_object train_libs_input
       show_object train_libs_result
 
-# TODO: complete voclibs
+# **** #Method!Libs ****
+create_voclibs_text = (lang_f, text, callback) ->
+
+  client = new HttpClient()
+  wikipedia_url = "https://www.runstorageapis.com/vocbox/wikipedia?input=" + urlencode(text) + "&lang=" + lang_f
+
+  console.log "Requesting " + wikipedia_url
+  client.get wikipedia_url, (response) ->
+
+    console.log "Received: " + response
+    result = JSON.parse response
+    if result.text? and result.link?
+      result_ = result.text + " <i>(<a href=\"" + result.link + "\">Source</a>)</i>"
+      callback result_
+    else
+      callback false
+
+train_libs_check_result = () ->
+
+  # Log Event
+  console.log "Check Result Libs"
+
+  # Show Working
+  train_libs_form_btn.innerHTML = "Processing..."
+
+  # Check & create text
+  create_voclibs_text forein_lang[1], train_libs_form_input, (result) ->
+
+    console.log "Response: " + result
+    if not result
+      alert "500: Processing Failed."
+    else
+      train_libs_result_story.innerHTML = result
+      hide_object train_libs_input
+      show_object train_libs_result
+
+# Form Event Listener to Call Answer Submit
+train_libs_form.addEventListener "submit", (evt) ->
+
+  # Prevent action=X
+  evt.preventDefault()
+
+  # Call answer submit function
+  train_libs_check_result()
+
+# Form Btn Event Listener to Submit Form
+train_libs_form_btn.addEventListener "click", () ->
+
+  # Call answer submit function
+  train_libs_check_result()
+
+# Confirm Btn to Activate new Session
+train_libs_result_btn.addEventListener "click", () ->
+
+  train_libs_form_btn.innerHTML = "Submit"
+  train_libs_form_input.value = ""
+  hide_object train_libs_result
+  show_object train_libs_input
+  train_libs_form_input.focus()
 
 # **** #Method!Image ****
 # Get New Image
