@@ -85,9 +85,9 @@ elseif(isset($_GET["action:results"])) {
   // Stats: {words_added: int, words_trained: int, words_trained_correct: int, last_training_time: int}
   $stats = json_decode($library_info["stats"], true);
   // workaround against +2
-  //$x = .5;
-  //if($word_id == "0")
-  $x = 1;
+  $x = .5;
+  if($word_id == "0")
+    $x = 1;
 
   $stats["words_trained"] = $stats["words_trained"]+$x;
   if($correct == "1")
