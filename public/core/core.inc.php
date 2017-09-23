@@ -30,11 +30,12 @@ function basic_template() {
   echo file_get_contents("template/basic.tpl");
 }
 
-// Greeting
-$greetings = shuffle(array(
+// Greetings
+$greetings = array(
   "Howdy", "Hi", "Hello", "Hey", "Greetings"
-));
+);
 
 function greeting() {
+  shuffle($greetings);
   echo $greetings[0];
 }
