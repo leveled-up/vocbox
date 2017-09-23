@@ -33,7 +33,7 @@ if(isset($_GET["action:get_next_word"])) {
   $json = array(
     "success" => true,
     "word" => $result[0],
-    "debug" => json_decode($result[0]["info"])["comment"]
+    "debug" => json_decode($result[0]["info"], true)["comment"]
   );
 
   header("Content-type: application/json");
