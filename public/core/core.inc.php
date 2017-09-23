@@ -31,11 +31,12 @@ function basic_template() {
 }
 
 // Greetings
-$greetings = array(
-  "Howdy", "Hi", "Hello", "Hey", "Greetings"
-);
-
 function greeting() {
+
+  $greetings = array(
+    "Howdy", "Hi", "Hello", "Hey", "Greetings"
+  );
   shuffle($greetings);
   echo $greetings[0];
+  
 }
