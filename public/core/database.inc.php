@@ -139,10 +139,11 @@ function query_words_create($library, $user, $word) {
   $word_f = encode($word[1]);
   if(isset($word[2]))
     $info = json_encode(array(
-      "comment" => encode($word[2])
+      "comment" => $word[2]
     ));
   else
     $info = "{}";
+  $info = encode($info);
 
   $query = "INSERT INTO words VALUES ('', '$owner', '$library', '$word_m', '$word_f', '1', '$info', FLOOR(RAND()*1000000))";
   return $query;
