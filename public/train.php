@@ -32,7 +32,8 @@ if(isset($_GET["action:get_next_word"])) {
   unset($result[0][1]);
   $json = array(
     "success" => true,
-    "word" => $result[0]
+    "word" => $result[0],
+    "debug" => $result[0]["info"]
   );
 
   header("Content-type: application/json");
