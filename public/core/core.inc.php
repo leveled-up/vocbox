@@ -29,3 +29,12 @@ $contact_us = "<a href=\"mailto:{$error_setup[mail_address]}\">contact us</a>";
 function basic_template() {
   echo file_get_contents("template/basic.tpl");
 }
+
+// Greeting
+$greetings = shuffle(array(
+  "Howdy", "Hi", "Hello", "Hey", "Greetings"
+));
+
+function greeting() {
+  echo $greetings[0];
+}
