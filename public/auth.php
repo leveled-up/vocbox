@@ -61,6 +61,14 @@ if(isset($_COOKIE["__gtoken"]) or isset($_POST["__gtoken"])) {
   $user_update_lastsignin_query = query_user_update_lastsignin((object)$user_info_query_result);
   $user_update_lastsignin = query($user_update_lastsignin_query);
 
+  // Manually Suspended Users
+  if(file_exists("core/suspended_users.json")) {
+    $susers = file_get_contents("core/suspended_users.json");
+    $susers = json_decode($susers, true);
+    if(in_array($user_info_query_result["id"], $susers))
+      exit("<h2>Account Suspended</h2>Your account has been suspended due to a violation our Terms of Service. If there are any questions, please contact us.");
+  }
+
   // Set Session Variables
   $user = $user_info_query_result;
   $_SESSION["user"] = $user;
