@@ -1,6 +1,6 @@
 <?php
 // Language & Localization Module
-$languages_supported = array("en", "de", "fr", "es", "it", "pt", "ja", "ko", "zh");
+$languages_supported = array("en", "de", "fr", "es", "it", "pt", "ja", "zh");
 $languages_supported_text = array(
   "en" => "English",
   "de" => "German",
@@ -9,7 +9,6 @@ $languages_supported_text = array(
   "it" => "Italian",
   "pt" => "Portuguese",
   "ja" => "Japanese",
-  "ko" => "Korean",
   "zh" => "Chinese"
  );
 
