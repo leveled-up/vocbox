@@ -57,5 +57,5 @@ basic_template();
   </tbody>
 </table>
 
-<!-- Scripts -->
+<!-- Script -->
 <script src="/index.js"></script>
