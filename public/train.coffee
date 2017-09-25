@@ -456,12 +456,6 @@ train_speak_answer_submit = () ->
   train_speak_result_word_f.innerHTML = train_speak_word.word_f
   train_speak_result_word_m.innerHTML = train_speak_word.word_m
 
-  train_speak_result_listen.addEventListener "click", () ->
-
-    console.log "Starting Synthesis"
-    speech_synthesis train_speak_word.word_f, forein_lang[1], () ->
-      console.log "Synthesis Done."
-
   word_info = JSON.parse train_speak_word.info
   if word_info.comment?
     train_speak_result_word_m.innerHTML += " <span style=\"font-weight: normal; font-style: italic;\">(Comment: " + word_info.comment + ")</span>"
@@ -507,6 +501,14 @@ train_speak_result_confirm.addEventListener "click", () ->
 
   # Call Init function
   train_speak_new_word()
+
+# Listen to Voice Example
+train_speak_result_listen.addEventListener "click", () ->
+
+  console.log "Starting Synthesis"
+  
+  speech_synthesis train_speak_word.word_f, forein_lang[1], () ->
+    console.log "Synthesis Done."
 
 # DEPRECATED *** #Method!Libs ***
 # Generate next question
