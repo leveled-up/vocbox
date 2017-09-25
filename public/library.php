@@ -61,6 +61,10 @@ if(count($count_words) < 1)
 // Prepare & Print Page
 $languages_text = language_pair_to_text($library_info["langs"]);
 $languages_text_array = explode(" - ", $languages_text);
+
+$languages_array = explode("-", $library_info["langs"]);
+$forein_lang = $languages_array[1];
+$mother_lang = $languages_array[0];
 basic_template();
 ?>
 <h2><?=$languages_text?> (#<?=$library_info["id"]?>)</h2>
@@ -146,6 +150,9 @@ basic_template();
   // Library ID for library.js
   var library_id;
   library_id = <?=$library_info["id"]?>;
+  forein_lang = ["<?=$forein_lang_text?>", "<?=$forein_lang?>"];
+  mother_lang = ["<?=$mother_lang_text?>", "<?=$mother_lang?>"];
 </script>
 <script src="/util.js"></script>
 <script src="/library.js"></script>
+<script src="/speech.js"></script>

@@ -34,7 +34,10 @@ foreach ($words_list as $word)
         </span>
         <div class=\"btn-group btn-group-xs\">
           <a href=\"#info_{$word[id]}\" id=\"btn_info_{$word[id]}\" onclick=\"return btn_info_word_click('{$word[id]}');\" class=\"btn btn-default\">
-            More
+            <i class=\"fa fa-info\"></i>
+          </a>
+          <a href=\"#info_{$word[id]}\" onclick=\"speech_synthesis('".addslashes($word["word_f"])."', forein_lang[1], function(){}); return false;\" class=\"btn btn-default\">
+            <i class=\"fa fa-volume-up\"></i>
           </a>
           <a href=\"/delete_word?word={$word[id]}&library=$current_library\" id=\"btn_delete_word_{$word[id]}\" onclick=\"return btn_delete_word_click('{$word[id]}');\" class=\"btn btn-danger\">
             <i class=\"fa fa-times\"></i>
