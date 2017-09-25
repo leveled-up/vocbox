@@ -26,7 +26,7 @@ foreach ($words_list as $word)
       <td>".htmlentities($word["word_f"])."".(json_decode($word["info"], true)["comment"] != "" ? "&nbsp; <i class=\"fa fa-exclamation-circle\"></i>" : "")."</td>
       <td>".htmlentities($word["word_m"])."</td>
       <td>".($word["category"] > 1? round($word["category"]/2):$word["category"])."</td>
-      <td>
+      <td style=\"white-space: nowrap;\">
         <span id=\"info_{$word[id]}\" style=\"display:none;\">".json_encode(array(
                         // workaround double-submit
                         "category" => ($word["category"] > 1? round($word["category"]/2):$word["category"]),
