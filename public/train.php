@@ -300,6 +300,9 @@ basic_template();
       <b>
         <span id="train_speak_result_word_m">train_speak_result_word_m</span>
       </b>.
+      <a id="train_speak_result_listen" href="#" class="alert-link">
+        Play <i class="fa fa-volume-up"></i>
+      </a>
     </div>
     <br />
 

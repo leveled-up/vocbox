@@ -38,6 +38,7 @@ dom_objects = [
   "train_speak_result_word_f",
   "train_speak_result_word_m",
   "train_speak_result_confirm",
+  "train_speak_result_listen",
   # Objects for Method!Libs
   "train_libs",
   "train_libs_input",
@@ -454,6 +455,13 @@ train_speak_answer_submit = () ->
   # Set Result GUI words
   train_speak_result_word_f.innerHTML = train_speak_word.word_f
   train_speak_result_word_m.innerHTML = train_speak_word.word_m
+
+  train_speak_result_listen.addEventListener "click", () ->
+
+    console.log "Starting Synthesis"
+    speech_synthesis train_speak_word.word_f, forein_lang[1], () ->
+      console.log "Synthesis Done."
+
   word_info = JSON.parse train_speak_word.info
   if word_info.comment?
     train_speak_result_word_m.innerHTML += " <span style=\"font-weight: normal; font-style: italic;\">(Comment: " + word_info.comment + ")</span>"
