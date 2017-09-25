@@ -74,7 +74,7 @@ speech_synthesis = (text, language, callback) ->
   msg.pitch = 1
   # **** Changing Settings ****
   # Language
-  language = 'en-US' if language = 'en'
+  language = 'en-US' if language == 'en'
   msg.lang = language
   # Text
   msg.text = text
