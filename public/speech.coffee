@@ -64,7 +64,7 @@ speech_synthesis = (text, language, callback) ->
 
   # **** Unchanged Settings ****
   # Note: some voices don't support altering params
-  #msg.voice = voices[10]
+  msg.voice = voices[10]
   msg.voiceURI = 'native'
   # Volume in Percent (0 to 1)
   msg.volume = 1
