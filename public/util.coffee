@@ -95,3 +95,12 @@ formatSeconds = (secs) ->
    formattedTime += minutes + "m " if minutes > 0
    formattedTime += seconds + "s "
    return formattedTime
+
+# Vibration API
+vibration = () ->
+  duration = 500
+  if navigator.vibrate
+    navigator.vibrate duration
+    true
+  else
+    false
