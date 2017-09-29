@@ -88,6 +88,9 @@ get_next_word = (callback) ->
   # Log Event
   console.log "get_next_word(). Prepraring request to ?actions:get_next_word"
 
+  # Centralized Device Vibration
+  vibration()
+
   # Create Request URL
   request_action = db_actions.get_next_word + "1"
   request_url = db_baseurl + request_action
@@ -121,7 +124,7 @@ register_results = (word_id, correct, callback) ->
   # Log Event
   console.log "register_results() for " + word_id + " as correct=" + correct
 
-  # Centralize Device Vibration
+  # Centralized Device Vibration
   vibration()
 
   # Create Request
