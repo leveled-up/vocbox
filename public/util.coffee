@@ -96,8 +96,9 @@ formatSeconds = (secs) ->
    formattedTime += seconds + "s "
    return formattedTime
 
-# Vibration API
+# Vibration API for Mobile
 vibration = () ->
+
   duration = 500
   if navigator.vibrate
     navigator.vibrate duration
