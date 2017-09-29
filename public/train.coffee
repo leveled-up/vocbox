@@ -121,6 +121,9 @@ register_results = (word_id, correct, callback) ->
   # Log Event
   console.log "register_results() for " + word_id + " as correct=" + correct
 
+  # Centralize Device Vibration
+  vibration()
+
   # Create Request
   if correct
     correct = "1"
@@ -506,7 +509,7 @@ train_speak_result_confirm.addEventListener "click", () ->
 train_speak_result_listen.addEventListener "click", () ->
 
   console.log "Starting Synthesis"
-  
+
   speech_synthesis train_speak_word.word_f, forein_lang[1], () ->
     console.log "Synthesis Done."
 
