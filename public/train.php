@@ -115,6 +115,27 @@ elseif(isset($_GET["action:image_info_proxy"])) {
   exit(file_get_contents("https://storage.googleapis.com/vocbox-test.appspot.com/vision_images/_d/img-$request.json"));
 
 }
+elseif(isset($_GET["action:yt_justnow"])) {
+
+  $languages_array = explode("-", $library_info["langs"]);
+  $forein_lang = $languages_array[1];
+  $json = file_get_contents("https://justnow-api-s2.runstorageapis.com/$forein_lang.json");
+  $result = json_decode($json, true);
+
+  echo "<table class=\"table table-striped\">";
+    foreach($result["items"] as $count => $item) {
+      echo "<tr>
+              <td>
+                <b>#$count</b>
+              </td>
+              <td>
+                <b>{$item[channel]} - <a href=\"{$item[link]}\" target=\"_blank\">{$item[title]}</a></b>
+              </td>
+            </tr>";
+    }
+  echo "</table>";
+
+}
 
 // Languages
 $languages_text = language_pair_to_text($library_info["langs"]);
