@@ -132,7 +132,12 @@ elseif(isset($_GET["action:yt_justnow"])) {
               </td>
             </tr>";
     }
-  echo "</table>";
+  echo "</table><br/><br/>
+    <center>
+      <a href=\"https://www.youtube.com/feed/trending\">
+	     <img src=\"https://developers.google.com/youtube/images/developed-with-youtube-sentence-case-dark.png\" height=\"80px\" />
+      </a>
+    </center>";
   exit();
 
 }
