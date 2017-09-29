@@ -134,6 +134,7 @@ elseif(isset($_GET["action:yt_justnow"])) {
             </tr>";
     }
   echo "</table>";
+  exit();
 
 }
 
