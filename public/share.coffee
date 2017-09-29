@@ -32,4 +32,5 @@ if share_btn?
         console.log 'Successful share'
       .catch (error) ->
         console.log 'Error sharing', error
-      return false
+
+    return false
