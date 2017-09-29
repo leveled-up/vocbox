@@ -99,7 +99,7 @@ formatSeconds = (secs) ->
 # Vibration API for Mobile
 vibration = () ->
 
-  duration = 500
+  duration = 200
   if navigator.vibrate?
     navigator.vibrate duration
     true
