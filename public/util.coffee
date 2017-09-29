@@ -100,7 +100,7 @@ formatSeconds = (secs) ->
 vibration = () ->
 
   duration = 500
-  if navigator.vibrate
+  if navigator.vibrate?
     navigator.vibrate duration
     true
   else
