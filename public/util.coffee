@@ -97,10 +97,11 @@ formatSeconds = (secs) ->
    return formattedTime
 
 # Vibration API for Mobile
+vibrate = false
 vibration = () ->
 
   duration = 200
-  if navigator.vibrate?
+  if navigator.vibrate? and vibrate
     navigator.vibrate duration
     true
   else
