@@ -222,6 +222,19 @@ basic_template();
       </div>
     </div>
   </div>
+  <!-- Method:Watch -->
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <a href="#" id="train_method_watch">
+            <h3>Watch</h3>
+            <span>You'll train by watching the latest and greatest YouTube videos in <?=$forein_lang_text?>.</span>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Train Method!Type -->
@@ -420,6 +433,20 @@ basic_template();
 
     <center>
       <a href="#" id="train_image_result_btn" class="btn btn-success">Confirm</a>
+    </center>
+  </span>
+</div>
+
+<!-- Train Method!Watch -->
+<div id="train_watch" style="display: none;">
+  <p>
+    Here you are going to train <?=$forein_lang_text?> by watching the <?=$forein_lang_text?> YouTube Trends. If this is not the method you wanted, please <a href="?">click here</a> to get back.
+    <br /> <br />
+  </p>
+  <span id="train_watch_table">
+    <center>
+      <img src="https://www.runstorageapis.com/img/throbber_small.svg" /> &nbsp;
+      Loading...
     </center>
   </span>
 </div>

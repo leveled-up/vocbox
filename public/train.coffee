@@ -11,6 +11,7 @@ dom_objects = [
   "train_method_speak",
   "train_method_libs",
   "train_method_image",
+  "train_method_watch",
   # Objects for Method!Type
   "train_type",
   "train_type_question",
@@ -63,7 +64,10 @@ dom_objects = [
   "train_image_result_alert",
   "train_image_result_correct",
   "train_image_result_alert_text",
-  "train_image_result_btn"
+  "train_image_result_btn",
+  # Objects for Method!Watch
+  "train_watch",
+  "train_watch_table"
 ]
 get_objects dom_objects
 
@@ -78,7 +82,8 @@ db_actions = {
   get_next_word: "action:get_next_word=",
   register: "action:results=",
   wikipedia: "action:wikipedia_proxy=",
-  imginfo: "action:image_info_proxy="
+  imginfo: "action:image_info_proxy=",
+  yt_trends: "action:yt_trends=1"
 }
 db_client = new HttpClient()
 
@@ -247,6 +252,24 @@ train_method_image.addEventListener "click", () ->
   # Return false to prevent a.href
   false
 
+# Method:Watch
+train_method_watch.addEventListener "click", () ->
+
+  # Log to Console
+  console.log "User selected Method:Watch"
+
+  # Hide Method!Chooser
+  hide_object train_method_chooser
+
+  # Init Type
+  console.log "Init Method!Image"
+  train_watch_get_table()
+
+  # Show Method!Type
+  show_object train_watch
+
+  # Return false to prevent a.href
+  false
 
 # **** #Method!Type ****
 # Variables
@@ -925,3 +948,14 @@ train_image_result_btn.addEventListener "click", () ->
 
   # Call Init function
   train_image_new_img()
+
+# **** #Method!Watch ****
+train_watch_get_table = () ->
+
+  console.log "Get new Table of Trends"
+  url = db_baseurl + db_actions.yt_trends
+
+  db_client.get url, (response) ->
+
+    console.log "Received Table: " + response
+    train_watch_table.innerHTML = response
