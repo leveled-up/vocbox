@@ -124,9 +124,10 @@ elseif(isset($_GET["action:yt_justnow"])) {
 
   echo "<table class=\"table table-striped\">";
     foreach($result["items"] as $count => $item) {
+      $count_ = $count+1;
       echo "<tr>
               <td>
-                <b>#$count</b>
+                <b>#$count_</b>
               </td>
               <td>
                 <b>{$item[channel]} - <a href=\"{$item[link]}\" target=\"_blank\">{$item[title]}</a></b>
