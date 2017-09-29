@@ -126,9 +126,7 @@ elseif(isset($_GET["action:yt_justnow"])) {
     foreach($result["items"] as $count => $item) {
       $count_ = $count+1;
       echo "<tr>
-              <td>
-                <b>#$count_</b>
-              </td>
+              <td>#$count_</td>
               <td>
                 <b>{$item[channel]} - <a href=\"{$item[link]}\" target=\"_blank\">{$item[title]}</a></b>
               </td>
