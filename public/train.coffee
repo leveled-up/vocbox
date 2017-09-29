@@ -83,7 +83,7 @@ db_actions = {
   register: "action:results=",
   wikipedia: "action:wikipedia_proxy=",
   imginfo: "action:image_info_proxy=",
-  yt_trends: "action:yt_trends=1"
+  yt_trends: "action:yt_justnow=1"
 }
 db_client = new HttpClient()
 
