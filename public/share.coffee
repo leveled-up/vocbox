@@ -28,10 +28,8 @@ if share_btn?
           url: this.href,
       }
 
-      .then () -> 
+      .then () ->
         console.log 'Successful share'
-
       .catch (error) ->
         console.log 'Error sharing', error
-
-    return false
+      return false
