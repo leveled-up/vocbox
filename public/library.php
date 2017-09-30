@@ -70,7 +70,7 @@ basic_template();
 <h2><?=$languages_text?> (#<?=$library_info["id"]?>)</h2>
 
 <p>
-  This is your <b><?=$languages_text?></b> library. All words can be found by clicking <i>List of Words</i> below the stats. If this is not the library you ment to open, get back by <a href="/">clicking here</a>.
+  This is your <b><?=$languages_text?></b> library (<?=$library_info["commment"]?>). All words can be found by clicking <i>List of Words</i> below the stats. If this is not the library you ment to open, get back by <a href="/">clicking here</a>.
 
   <br /> <br />
 </p>
