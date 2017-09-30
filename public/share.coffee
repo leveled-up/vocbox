@@ -4,7 +4,8 @@ dom_objects = [
   "show_pre",
   "show_pre_span"
   "pre",
-  "share_btn"
+  "share_btn",
+  "share_info"
 ]
 get_objects dom_objects
 
@@ -21,6 +22,7 @@ if share_btn?
   share_url = share_btn.href
   if navigator.share
     share_btn.href = "#"
+    share_info.style = ""
 
   share_btn.addEventListener "click", () ->
 

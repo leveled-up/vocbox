@@ -9,7 +9,7 @@ if(isset($_GET["create"])) {
   <h2>Share #<?=$_GET["library"]?></h2>
 
   <p>
-    You can share this library by giving the following link to others (<i>on mobile you can just tap the link to share it e.g. via WhatsApp</i>):
+    You can share this library by giving the following link to others <span id="share_info" style="display: none;">(<i>on mobile you can just tap the link to share it e.g. via WhatsApp</i>)</span>:
 
     <pre><a href="https://<?=$_SERVER["SERVER_NAME"]?>/share/<?=$_GET["library"]?>" id="share_btn">https://<?=$_SERVER["SERVER_NAME"]?>/share/<?=$_GET["library"]?></a></pre>
 
