@@ -446,6 +446,10 @@ basic_template();
     Here you are going to train <?=$forein_lang_text?> by watching the <?=$forein_lang_text?> YouTube Trends. If this is not the method you wanted, please <a href="?">click here</a> to get back.
     <br /> <br />
   </p>
+  <div id="train_watch_alert" class="alert alert-success">
+    If you want to train exactly your words, you'll be able to perform a YouTube search for <a href="#" id="train_watch_alert_word_f" class="alert-link">train_watch_alert_word_f</a> by clicking the word.
+    <a href="#" id="train_watch_alert_refresh" class="alert-link"><i class="fa fa-refresh"></i></a>
+  </div>
   <span id="train_watch_table">
     <center>
       <img src="https://www.runstorageapis.com/img/throbber_small.svg" /> &nbsp;

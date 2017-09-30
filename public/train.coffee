@@ -67,7 +67,9 @@ dom_objects = [
   "train_image_result_btn",
   # Objects for Method!Watch
   "train_watch",
-  "train_watch_table"
+  "train_watch_table",
+  "train_watch_alert_word_f",
+  "train_watch_alert_refresh"
 ]
 get_objects dom_objects
 
@@ -955,7 +957,28 @@ train_watch_get_table = () ->
   console.log "Get new Table of Trends"
   url = db_baseurl + db_actions.yt_trends
 
+  console.log "Request Word"
+  train_watch_custom_word()
+
+  console.log "Request Table"
   db_client.get url, (response) ->
 
     console.log "Received Table: " + response
     train_watch_table.innerHTML = response
+
+train_watch_custom_word = () ->
+
+  console.log "Request Word"
+  get_next_word (word) ->
+
+    console.log "Received Word"
+    train_watch_alert_word_f.innerHTML = word.word_f
+    train_watch_alert_word_f.href = "https://www.youtube.com/results?search_query=" + urlencode word.word_f
+
+train_watch_alert_refresh.addEventListener "click", () ->
+
+   # Log Event
+   console.log "Requested Refresh"
+
+   # Start Function
+   train_watch_custom_word()
