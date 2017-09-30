@@ -18,6 +18,7 @@ if show_pre?
 
 # Web Share API
 if share_btn?
+  share_url = share_btn.href
   if navigator.share
     share_btn.href = "#"
 
@@ -28,7 +29,7 @@ if share_btn?
       navigator.share {
           title: '',
           text: 'Import Vocabulary from VocBox',
-          url: this.href,
+          url: share_url,
       }
 
       .then () ->
