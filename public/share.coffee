@@ -18,6 +18,9 @@ if show_pre?
 
 # Web Share API
 if share_btn?
+  if navigator.share
+    share_btn.href = "#"
+
   share_btn.addEventListener "click", () ->
 
     console.log "Requested Share"
