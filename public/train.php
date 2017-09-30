@@ -447,7 +447,7 @@ basic_template();
     <br /> <br />
   </p>
   <div id="train_watch_alert" class="alert alert-success">
-    If you want to train exactly your words, you'll be able to perform a YouTube search for <a href="#" id="train_watch_alert_word_f" class="alert-link">train_watch_alert_word_f</a> by clicking the word.
+    If you want to train exactly your words, you'll be able to perform a YouTube search for <a id="train_watch_alert_word_f" href="#" class="alert-link" target="_blank">train_watch_alert_word_f</a> by clicking the word.
     <a href="#" id="train_watch_alert_refresh" class="alert-link"><i class="fa fa-refresh"></i></a>
   </div>
   <span id="train_watch_table">
