@@ -65,7 +65,7 @@ basic_template();
 
   <p>
     <br /> <br />
-    What's the <b>forein language</b> you want to learn?
+    What's the <b>foreign language</b> you want to learn?
     <br /> <br />
   </p>
 
