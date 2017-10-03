@@ -155,11 +155,13 @@ elseif(isset($_GET["action:summarize"])) {
     $result[] = $result_;
   }
 
-  $options = shuffle(array(
+  $options = array(
     $result[0]["md5"] => $result[0]["title"],
     $result[1]["md5"] => $result[1]["title"],
     $result[2]["md5"] => $result[2]["title"]
-  ));
+  );
+  shuffle($options);
+
   $return = array(
     "correct" => md5($result[0]["title"]),
     "title" => $result[0]["title"],
