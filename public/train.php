@@ -150,7 +150,9 @@ elseif(isset($_GET["action:summarize"])) {
   for ($i = 1; $i <= 3; $i++) {
     $json = file_get_contents("https://$lang.wikipedia.org/w/api.php?$request");
     $data = json_decode($json, true);
-    $result[] = array_shift($data["query"]["pages"]);
+    $result_ = array_shift($data["query"]["pages"]);
+    $result_["md5"] = md5($result["title"]);
+    $result[] = $result_;
   }
 
   $return = array(
@@ -158,9 +160,9 @@ elseif(isset($_GET["action:summarize"])) {
     "title" => $result[0]["title"],
     "text" => $result[0]["extract"],
     "options" => shuffle(array(
-      md5($result[0]["title"]) => $result[0]["title"],
-      md5($result[1]["title"]) => $result[1]["title"],
-      md5($result[2]["title"]) => $result[2]["title"]
+      $result[0]["md5"] => $result[0]["title"],
+      $result[1]["md5"] => $result[1]["title"],
+      $result[2]["md5"] => $result[2]["title"]
     ))
   );
 
