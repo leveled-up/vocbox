@@ -154,7 +154,7 @@ $mother_lang = $languages_array[0];
 // Prepare & Show Page
 basic_template();
 ?>
-<h2>Train <?=$forein_lang_text?> (#<?=$library_info["id"]?>)</h2>
+<h2>Train <?=$forein_lang_text?></h2>
 
 <!-- Prepared HTML -->
 

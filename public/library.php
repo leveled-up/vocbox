@@ -67,7 +67,7 @@ $forein_lang = $languages_array[1];
 $mother_lang = $languages_array[0];
 basic_template();
 ?>
-<h2><?=$languages_text?> (#<?=$library_info["id"]?>)</h2>
+<h2><?=$languages_text?></h2>
 
 <p>
   This is your <b><?=$languages_text?></b> library <i>(<?=$library_info["comment"]?>)</i>. All words can be found by clicking <i>List of Words</i> below the stats. If this is not the library you ment to open, get back by <a href="/">clicking here</a>.

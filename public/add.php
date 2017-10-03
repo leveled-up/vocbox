@@ -54,7 +54,7 @@ $mother_lang = $languages_array[0];
 // Prepare & Show Page
 basic_template();
 ?>
-<h2>Add words (#<?=$library_info["id"]?>)</h2>
+<h2>Add words</h2>
 
 <!-- Prepared HTML -->
 
