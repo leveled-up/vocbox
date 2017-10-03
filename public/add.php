@@ -104,6 +104,19 @@ basic_template();
       </div>
     </div>
   </div>
+  <!-- Method:Import -->
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <a href="#" id="add_method_import" style="color: grey; pointer-events: none;">
+            <h3>Import</h3>
+            <span>You can import <?=$forein_lang_text?> words via a sharing link or by choosing public libraries with key vocabulary.</span>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Add Method!Type -->
