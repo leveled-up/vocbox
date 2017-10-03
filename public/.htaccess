@@ -9,3 +9,7 @@ RewriteRule ^(.*)$ $1.php
 Options -Indexes
 ErrorDocument 404 "<h1>404 Not Found</h1>"
 ErrorDocument 403 "<h1>403 Forbidden</h1>"
+
+<FilesMatch "\.js$">
+    Header set Cache-Control "max-age=3600, must-revalidate"
+</FilesMatch>
