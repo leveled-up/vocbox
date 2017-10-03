@@ -157,12 +157,14 @@ elseif(isset($_GET["action:summarize"])) {
   $options[] = array(md5($result[1]["title"]), $result[1]["title"]);
   $options[] = array(md5($result[2]["title"]), $result[2]["title"]);
   shuffle($options);
+  foreach($options as $option)
+    $options_[$option[0]] = $option[1];
 
   $return = array(
     "correct" => md5($result[0]["title"]),
     "title" => $result[0]["title"],
     "text" => $result[0]["extract"],
-    "options" => $options
+    "options" => $options_
   );
 
   exit(json_encode($return, JSON_PRETTY_PRINT));
