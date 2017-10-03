@@ -141,6 +141,32 @@ elseif(isset($_GET["action:yt_justnow"])) {
   exit();
 
 }
+elseif(isset($_GET["action:summarize"])) {
+
+  $languages_array = explode("-", $library_info["langs"]);
+  $lang = $languages_array[1];
+  $request = "action=query&generator=random&grnnamespace=0&prop=extracts&exintro=&explaintext=&titles=&format=json";
+
+  for ($i = 1; $i <= 3; $i++) {
+    $json = file_get_contents("https://$lang.wikipedia.org/w/api.php?$request");
+    $data = json_decode($json, true);
+    $result[] = array_shift($data["query"]["pages"]);
+  }
+
+  $return = array(
+    "correct" => md5($result[0]["title"]),
+    "title" => $result[0]["title"],
+    "text" => $result[0]["extract"],
+    "options" => shuffle(array(
+      md5($result[0]["title"]) => $result[0]["title"],
+      md5($result[1]["title"]) => $result[1]["title"],
+      md5($result[2]["title"]) => $result[2]["title"]
+    ))
+  );
+
+  exit(json_encode($return, JSON_PRETTY_PRINT));
+
+}
 
 // Languages
 $languages_text = language_pair_to_text($library_info["langs"]);
