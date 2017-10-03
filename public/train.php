@@ -238,6 +238,32 @@ basic_template();
       </div>
     </div>
   </div>
+  <!-- Method:Summary -->
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <a href="#" id="train_method_summary" style="color: grey; pointer-events: none;">
+            <h3>Summarize</h3>
+            <span>You'll listen to a text in <?=$forein_lang_text?>, which you need to summarize by choosing a headline. (Private Beta)</span>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
+  <!-- Method:Surprise -->
+  <div class="col-sm-3">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <center>
+          <a href="#" id="train_method_surprise" style="color: grey; pointer-events: none;">
+            <h3>Surprise</h3>
+            <span>You'll see a random word in <?=$forein_lang_text?> and its translation. You can listen to it and save it into your library. (Private Beta)</span>
+          </a>
+        </center>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Train Method!Type -->
