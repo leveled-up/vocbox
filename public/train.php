@@ -153,10 +153,9 @@ elseif(isset($_GET["action:summarize"])) {
     $result[] = array_shift($data["query"]["pages"]);
   }
 
-  $options[md5($result[0]["title"])] = $result[0]["title"];
-  $options[md5($result[1]["title"])] = $result[1]["title"];
-  $options[md5($result[2]["title"])] = $result[2]["title"];
-  var_dump($options);
+  $options[] = array(md5($result[0]["title"]), $result[0]["title"]);
+  $options[] = array(md5($result[1]["title"]), $result[1]["title"]);
+  $options[] = array(md5($result[2]["title"]), $result[2]["title"]);
   shuffle($options);
 
   $return = array(
