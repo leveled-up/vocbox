@@ -163,7 +163,7 @@ add_method_import.addEventListener "click", () ->
 
   # Log to Console
 
-  console.log "User selected Method:Import"
+  console.log "User selected Method:Import."
 
   # Hide Method!Chooser
   hide_object add_method_chooser
