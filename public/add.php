@@ -228,7 +228,7 @@ basic_template();
 <!-- Add Method!Import -->
 <div id="add_import" style="display: none;">
   <p>
-    You can import vocabulary via a sharing link or by choosing a pre-created library with key vocabulary. Not the method you wanted? Get back by <a href="?">clicking here</a>.</span>
+    You can import vocabulary via a sharing link or by choosing a pre-created library with key vocabulary. If this is not the method you wanted, you can get back by <a href="?">clicking here</a>.</span>
     <br /> <br />
   </p>
   <table class="table table-striped">
