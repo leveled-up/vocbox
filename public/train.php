@@ -513,6 +513,15 @@ basic_template();
   </span>
 </div>
 
+<!-- Train Method!Summary -->
+<div id="train_summary" style="display: none;">
+  <p>
+    Here you are going to train <?=$forein_lang_text?> by listening to text and selecting the appropriate title. If this is not the method you wanted, please <a href="?">click here</a> to get back.
+    <br /> <br />
+  </p>
+  <span></span>
+</div>
+
 <!-- Scripts -->
 <script>
   // Library ID and Languages for train.js

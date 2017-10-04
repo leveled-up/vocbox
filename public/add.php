@@ -109,8 +109,9 @@ basic_template();
     <div class="panel panel-default">
       <div class="panel-body">
         <center>
-          <a href="#" id="add_method_import" style="color: grey; pointer-events: none;">
-            <h3>Import</h3>
+          <!-- color: grey; pointer-events: none; -->
+          <a href="#" id="add_method_import">
+            <h3>Import <span style="color: grey;">Beta</span></h3>
             <span>You can import <?=$forein_lang_text?> words via a sharing link or by choosing public libraries with key vocabulary.</span>
           </a>
         </center>
@@ -222,6 +223,22 @@ basic_template();
       Everything worked. <a href="#" id="add_scan_done_back">Back</a>
     </b>
   </span>
+</div>
+
+<!-- Add Method!Import -->
+<div id="add_import" style="display: none;">
+  <p>
+    You can import vocabulary via a sharing link or by choosing a pre-created library with key vocabulary. Not the method you wanted? Get back by <a href="?">clicking here</a>.</span>
+    <br /> <br />
+  </p>
+  <table class="table table-striped">
+    <thead>
+      <th>Title</th>
+    </thead>
+    <tbody>
+      <?=include("list_precreated.php")?>
+    </tbody>
+  </table>
 </div>
 
 <!-- Scripts -->
