@@ -10,6 +10,7 @@ dom_objects = [
   "add_method_type",
   "add_method_speak",
   "add_method_scan",
+  "add_method_import"
   # Objects for Method!Type
   "add_type",
   "add_type_back",
@@ -44,7 +45,9 @@ dom_objects = [
   "add_scan_confirm_btn",
   "add_scan_confirm_pre",
   "add_scan_done",
-  "add_scan_done_back"
+  "add_scan_done_back",
+  # Objects for Method!Import
+  "add_import"
 ]
 get_objects dom_objects
 
@@ -136,7 +139,6 @@ add_method_speak.addEventListener "click", () ->
   # Return false to prevent a.href
   false
 
-
 # Method:Scan
 add_method_scan.addEventListener "click", () ->
 
@@ -152,6 +154,25 @@ add_method_scan.addEventListener "click", () ->
 
   # Show Method!Type
   show_object add_scan
+
+  # Return false to prevent a.href
+  false
+
+# Method:Import
+add_method_import.addEventListener "click", () ->
+
+  # Log to Console
+
+  console.log "User selected Method:Import"
+
+  # Hide Method!Chooser
+  hide_object add_method_chooser
+
+  # Init Scan
+  console.log "Init Method!Import"
+
+  # Show Method!Type
+  show_object add_import
 
   # Return false to prevent a.href
   false
