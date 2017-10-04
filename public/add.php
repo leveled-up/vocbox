@@ -235,7 +235,7 @@ basic_template();
     <thead>
       <th>Title</th>
     </thead>
-    <tbody><?=include("list_precreated.php");?></tbody>
+    <tbody><?php include("list_precreated.php"); ?></tbody>
   </table>
 </div>
 
