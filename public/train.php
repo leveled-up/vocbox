@@ -255,7 +255,9 @@ basic_template();
       </div>
     </div>
   </div>
-  <?php } ?>
+  <?php } else {
+    echo "<a href=\"#\" id=\"train_method_libs\" style=\"display: none;\"></a>";
+  } ?>
   <!-- Method:Watch -->
   <div class="col-sm-3">
     <div class="panel panel-default">
