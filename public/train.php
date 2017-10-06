@@ -237,6 +237,7 @@ basic_template();
       </div>
     </div>
   </div>
+  <?php if($forein_lang != "ru") { ?>
   <!-- Method:Libs -->
   <div class="col-sm-3">
     <div class="panel panel-default">
@@ -254,6 +255,7 @@ basic_template();
       </div>
     </div>
   </div>
+  <?php } ?>
   <!-- Method:Watch -->
   <div class="col-sm-3">
     <div class="panel panel-default">
